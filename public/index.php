@@ -22,8 +22,11 @@ require_once __DIR__ . '/../src/navbar.php';
 
 			<!-- Navigation bar. -->
 			<div id="navbar">
-				<?= nav_item('index', '/') ?>
-				<?= nav_item('contact', '/contact') ?>
+				<?= nav_item('index', '/', 'first') ?>
+				<span class="spacer">|</span>
+				<?= nav_item('blog', '/blog') ?>
+				<span class="spacer">|</span>
+				<?= nav_item('contact', '/contact', 'last') ?>
 			</div>
 
 			<hr>

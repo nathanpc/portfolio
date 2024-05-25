@@ -5,4 +5,69 @@
  * @author Nathan Campos <nathan@innoveworkshop.com>
  */
 
+html, body {
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	text-rendering: optimizeSpeed;
 
+	margin: 0;
+}
+
+body {
+	margin: 10px;
+}
+
+hr {
+	height: 1px;
+	border: 0 none;
+
+	background-color: #585858;
+	color: #585858;
+}
+
+a {
+	color: #ab7025;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	border-bottom: 1px solid blue;
+}
+
+a:visited {
+	color: #ab7025;
+}
+
+#title-head {
+	margin-bottom: 10px;
+}
+
+#title-head h1 {
+	margin: 0;
+
+	font-size: 22pt;
+	font-weight: normal;
+}
+
+#title-head #breadcrumbs {
+	font-size: 10pt;
+}
+
+#navbar .item {
+}
+
+#navbar .item.first {
+	margin-left: 0;
+}
+
+#navbar .item.last {
+	margin-right: 0;
+}
+
+#navbar .spacer {
+	display: inline-block;
+	display: -moz-inline-box;
+	visibility: hidden;
+
+	width: 10px;
+	text-align: center;
+}
