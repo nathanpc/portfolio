@@ -30,11 +30,8 @@ a {
 }
 
 a:hover, a:active {
-	border-bottom: 1px solid blue;
-}
-
-a:visited {
-	color: #ab7025;
+	color: #7e4c0d;
+	border-bottom: 1px solid #ab7025;
 }
 
 #title-head {
@@ -50,17 +47,6 @@ a:visited {
 
 #title-head #breadcrumbs {
 	font-size: 10pt;
-}
-
-#navbar .item {
-}
-
-#navbar .item.first {
-	margin-left: 0;
-}
-
-#navbar .item.last {
-	margin-right: 0;
 }
 
 #navbar .spacer {

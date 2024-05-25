@@ -22,11 +22,14 @@ require_once __DIR__ . '/../src/navbar.php';
 
 			<!-- Navigation bar. -->
 			<div id="navbar">
-				<?= nav_item('index', '/', 'first') ?>
-				<span class="spacer">|</span>
-				<?= nav_item('blog', '/blog') ?>
-				<span class="spacer">|</span>
-				<?= nav_item('contact', '/contact', 'last') ?>
+				<?= navbar(array(
+					'index' => '/',
+					'projects' => '/projects',
+					'blog' => '/blog',
+					'work' => $_SERVER['REQUEST_SCHEME'] .
+						'://innoveworkshop.com/',
+					'contact' => '/contact'
+				)); ?>
 			</div>
 
 			<hr>
