@@ -8,3 +8,15 @@ php_flag html_errors on
 php_flag log_errors on
 php_value error_reporting -1
 php_value error_log "/dev/stderr"
+
+# Protect the .htaccess file.
+<FilesMatch "\.htaccess$">
+	Order Allow,Deny
+	Deny from all
+</FilesMatch>
+
+# Protect the .gitignore file.
+<FilesMatch "\.gitignore$">
+	Order Allow,Deny
+	Deny from all
+</FilesMatch>
