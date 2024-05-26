@@ -43,20 +43,28 @@ require_once __DIR__ . '/../src/navbar.php';
 			<div class="section">
 				<h2>about me</h2>
 
-				<p>I'm a <b>full-stack developer</b> (although I prefer the
-				backend), <b>creative technologist</b> and an <b>electronics
-				engineer</b> born in <a
-				href="https://en.wikipedia.org/wiki/Brazil">Brazil</a> and
-				currently living in <a
-				href="https://en.wikipedia.org/wiki/Portugal">Portugal</a>.
-				You can find me working on almost anything that involves
-				electricity, both in terms of hardware and software. Building
-				things has always been a passion of mine, so you'll notice that
-				I'm always self-motivated to work on new projects that involve
-				technology. Some of the things that I've worked on have been
-				used by hundreds of thousands of people, maybe into the millions
-				depending on who's counting, and my work has definitely reached
-				at least tens of millions.</p>
+
+				<p>
+					<img src="/assets/images/nathan/profile.jpg" width="200px"
+						height="200px" style="float: left; padding-right: 10px;"
+						alt="A picture of me smiling with my workbench as the background">
+
+					I'm a <b>full-stack developer</b> (although I prefer the
+					backend), <b>creative technologist</b> and an <b>electronics
+					engineer</b> born in <a
+					href="https://en.wikipedia.org/wiki/Brazil">Brazil</a> and
+					currently living in <a
+					href="https://en.wikipedia.org/wiki/Portugal">Portugal</a>.
+					You can find me working on almost anything that involves
+					electricity, both in terms of hardware and software.
+					Building things has always been a passion of mine, so you'll
+					notice that I'm always self-motivated to work on new
+					projects that involve technology. Some of the things that
+					I've worked on have been used by hundreds of thousands of
+					people, maybe into the millions depending on who's counting,
+					and my work has definitely reached at least tens of
+					millions.
+				</p>
 
 				<p>I'm currently dedicating some of my time to passing some of
 				my knowledge to another generation and having a lot of fun
