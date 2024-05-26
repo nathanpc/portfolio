@@ -57,3 +57,7 @@ a:hover, a:active {
 	width: 10px;
 	text-align: center;
 }
+
+#footer .last-modified {
+	font-size: 9pt;
+}

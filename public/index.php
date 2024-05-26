@@ -55,6 +55,9 @@ require_once __DIR__ . '/../src/navbar.php';
 			<div class="copyright">
 				Nathan Campos &#169; <?= '2024-' . date('Y') ?>
 			</div>
+			<div class="last-modified">
+				Last modified: <?= date('Y-m-d H:i', getlastmod()) ?>
+			</div>
 		</div>
 	</body>
 </html>
