@@ -1,0 +1,20 @@
+{
+  "name": "nathanpc/portfolio",
+  "description": "Nathan's portfolio website",
+  "authors": [
+    {
+      "name": "Nathan Campos",
+      "email": "nathan@innoveworkshop.com",
+      "homepage": "https://nathancampos.me/"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Portfolio\\": "src/"
+    }
+  }
+}
