@@ -45,9 +45,13 @@ require_once __DIR__ . '/../src/navbar.php';
 
 
 				<p>
-					<img src="/assets/images/nathan/profile.jpg" width="200px"
-						height="200px" style="float: left; padding-right: 10px;"
+					<img src="<?= href('/assets/images/nathan/profile.jpg') ?>"
+						width="200px" height="200px"
+						style="float: left; padding-right: 10px;"
 						alt="A picture of me smiling with my workbench as the background">
+					<?php if (compat_isconsole()) { ?>
+						<p></p>
+					<?php } ?>
 
 					I'm a <b>full-stack developer</b> (although I prefer the
 					backend), <b>creative technologist</b> and an <b>electronics
