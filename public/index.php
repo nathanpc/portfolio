@@ -91,6 +91,49 @@ require_once __DIR__ . '/../src/navbar.php';
 				idea become a reality feel free to reach out to me at <?=
 				safe_email('nathan@innoveworkshop.com') ?>.</p>
 			</div>
+
+			<div class="section">
+				<h2>this website</h2>
+
+				<p>As you can clearly notice this website doesn't look like your
+				regular client-side rendered, Javascript-dependent, bloated,
+				spying, and resource hungry webpage that's so prevalent today. I
+				despise the way things currently are, the web used to be such a
+				wonderful place and currently it's simply depressing. I hate so
+				much how the modern website is built that I've decided to build
+				a proper website that adheres to the <a
+				href="https://smolweb.org/guidelines.html">smolweb
+				guidelines</a>.</p>
+
+				<p>This website was built to showcase that you don't need
+				gigabytes of node modules in order to build a <a
+				href="https://thebestmotherfucking.website">webpage</a>, and
+				most importantly just because <a
+				href="https://web.dev/baseline/">Baseline</a> tells you to
+				target the "almost latest and greatest" doesn't mean you should.
+				This website is built to be properly rendered on almost any web
+				browser, from Lynx to Netscape on Windows 3.11 to the latest
+				version of Chrome Canary.</p>
+
+				<p>The main goal behind this website is to bring back <a
+				href="https://daniel.industries/2023/10/17/what-happened-to-web-design/">the
+				joy of the old web days</a> and allow me to publish more things
+				online, something that I felt I was less and less inclined to do
+				given our current social media realities. Building this website
+				brought back that joy I felt when I first started building
+				webpages and I hope will allow me to keep motivated to continue
+				publishing more of what I'm currently up to.</p>
+
+				<p>You can check the source code that powers this amazing
+				webpage <a
+				href="https://github.com/nathanpc/portfolio">here</a>. I'm
+				currently working on a solution to hosting my Git repositories
+				on GitHub, so that they are more accessible to everyone (I hate
+				how you can't clone a repo on an older Linux machine anymore),
+				but since I already have a local Git server that only mirrors
+				things to GitHub I need to figure out a three way solution that
+				is publicly accessible and won't be fiddly to maintain.</p>
+			</div>
 		</div>
 
 		<div id="footer">
