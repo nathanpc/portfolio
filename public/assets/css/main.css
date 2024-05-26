@@ -42,6 +42,18 @@ a.email {
 	letter-spacing: 1px;
 }
 
+pre {
+	font-family: Courier New, monospace;
+}
+
+pre.code-block {
+	max-width: 800px;
+	padding: 5px;
+	overflow-x: scroll;
+
+	background-color: #ffefd5;
+}
+
 #title-head {
 	margin-bottom: 10px;
 }

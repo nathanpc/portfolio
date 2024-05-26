@@ -98,5 +98,9 @@ require_once __DIR__ . '/../src/navbar.php';
 				Last modified: <?= date('Y-m-d H:i', getlastmod()) ?>
 			</div>
 		</div>
+
+		<?php if (is_debug()) { ?><pre id="debug" class="code-block" width="800"><code><?php
+			print_r(get_browser(null, true));
+		?></code></pre><?php }  ?>
 	</body>
 </html>

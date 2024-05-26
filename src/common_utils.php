@@ -32,3 +32,12 @@ function safe_email(string $email): string {
 	return "<a class=\"email\" href=\"mailto:$email\">{$parts[0]} [at] " .
 		"{$parts[1]}</a>";
 }
+
+/**
+ * Checks if we are in debug mode.
+ *
+ * @return TRUE if the debug URL parameter is set to a truthful value.
+ */
+function is_debug(): bool {
+	return isset($_GET['debug']) ? (bool)$_GET['debug'] : false;
+}
