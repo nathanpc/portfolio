@@ -47,10 +47,23 @@ function get_blog_post(): array|null {
 	ob_start();
 	include_once($path);
 	$post['content'] = ob_get_contents();
-	$post['date'] = date_create(preg_replace('/[^0-9\-]/', '', $_GET['date']));
 	ob_end_clean();
+	$post['slug'] = preg_replace('/[^0-9a-zA-Z\-_]/', '', $_GET['slug']); 
+	$post['date'] = date_create(preg_replace('/[^0-9\-]/', '', $_GET['date']));
 
 	return $post;
+}
+
+/**
+ * Gets the permalink to the blog post.
+ *
+ * @param $post Blog post structure.
+ *
+ * @return Permalink to the blog post.
+ */
+function post_permalink(array $post): string {
+	return href('/blog/' . date('Y-m-d', $post['date']->getTimestamp()) .
+		"/{$post['slug']}");
 }
 
 // Get the blog post.
@@ -76,8 +89,8 @@ if (is_null($post)) {
 
 <!-- Blog post header. -->
 <div id="blog-post" class="section">
-	<h2><?= $post['title'] ?></h2>
-	<div class="published">
+	<h2><?= $post['title'] ?> <a href="<?= post_permalink($post) ?>">#</a></h2>
+	<div id="published-date">
 		<?= date('Y-m-d', $post['date']->getTimestamp()) ?>
 	</div>
 </div>
@@ -87,5 +100,6 @@ if (is_null($post)) {
 echo $post['content'];
 
 // Render the page footer.
+// TODO: Fix last modified date to coincide with blog post file modification.
 template_footer();
 ?>

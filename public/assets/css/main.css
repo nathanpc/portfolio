@@ -83,6 +83,19 @@ pre.code-block {
 	margin-bottom: 10px;
 }
 
+#content #blog-post h2 a {
+	font-weight: normal;
+	font-size: 0.9em;
+}
+
+#content #blog-post h2 {
+	margin-bottom: 0;
+}
+
+#content #blog-post #published-date {
+	color: #636363;
+}
+
 #footer .last-modified {
 	font-size: 9pt;
 }
