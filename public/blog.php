@@ -48,6 +48,7 @@ function get_blog_post(): array|null {
 	ob_end_clean();
 	$post['slug'] = preg_replace('/[^0-9a-zA-Z\-_]/', '', $_GET['slug']); 
 	$post['date'] = date_create(preg_replace('/[^0-9\-]/', '', $_GET['date']));
+	$post['last_modified'] = filemtime($path);
 
 	return $post;
 }
@@ -64,8 +65,15 @@ function post_permalink(array $post): string {
 		"/{$post['slug']}");
 }
 
-// Get the blog post and render the DOCTYPE template.
+// Get the blog post.
 $post = get_blog_post();
+$last_modified = null;
+if (!is_null($post)) {
+	// Ensure that the last modified date displayed is of the post's file.
+	$last_modified = $post['last_modified'];
+}
+
+// Render the DOCTYPE template.
 include_once __DIR__ . '/../templates/doctype.php';
 ?>
 <html>
@@ -99,9 +107,6 @@ include_once __DIR__ . '/../templates/doctype.php';
 		</div>
 	<?php } ?>
 	
-	<?php
-	// TODO: Fix last modified date to coincide with blog post file modification.
-	?>
 	<?php include_once __DIR__ . '/../templates/footer.php'; ?>
 </body>
 </html>
