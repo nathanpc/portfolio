@@ -16,7 +16,7 @@ $browser_info = get_browser(null, true);
  * Checks if the browser that is requesting us is console-based and won't be
  * capable of interpreting CSS or displaying images.
  *
- * @return TRUE if the browser visiting us is console-based.
+ * @return bool TRUE if the browser visiting us is console-based.
  */
 function compat_isconsole(): bool {
 	global $browser_info;
@@ -27,9 +27,9 @@ function compat_isconsole(): bool {
 /**
  * Generates a compatible image for an ancient browser.
  *
- * @param $loc Location of an image relative to the public folder.
+ * @param string $loc Location of an image relative to the public folder.
  *
- * @return Compatible image binary file.
+ * @return string Compatible image binary file.
  */
 function compat_image(string $loc): string {
 	global $browser_info;

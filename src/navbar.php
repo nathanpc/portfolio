@@ -11,11 +11,12 @@ require_once __DIR__ . '/common_utils.php';
 /**
  * Builds up a navigation bar item.
  *
- * @param $label   Item label.
- * @param $loc     Location reference. Passed through href() if beings with /.
- * @param $classes HTML classes associated with the element.
+ * @param string $label   Item label.
+ * @param string $loc     Location reference. Passed through href() if it beings
+ *                        with /.
+ * @param string $classes HTML classes associated with the element.
  *
- * @return Navigation bar item element.
+ * @return string Navigation bar item element.
  */
 function nav_item(string $label, string $loc, string $classes = ''): string {
 	// Build up the classes HTML property.
@@ -34,7 +35,7 @@ function nav_item(string $label, string $loc, string $classes = ''): string {
 /**
  * Spacer to be used between navigation bar items.
  *
- * @return Navigation bar spacer element.
+ * @return string Navigation bar spacer element.
  */
 function nav_spacer(): string {
 	return '<span class="spacer">|</span>';
@@ -43,9 +44,9 @@ function nav_spacer(): string {
 /**
  * Builds up an entire navigation bar.
  *
- * @param $items Associative array with label and href of an item.
+ * @param array $items Associative array with label and href of an item.
  *
- * @return Navigation bar elements. Should be placed inside a container.
+ * @return string Navigation bar elements. Should be placed inside a container.
  */
 function navbar(array $items): string {
 	$nav = '';

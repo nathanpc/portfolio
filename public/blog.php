@@ -4,11 +4,11 @@ require_once __DIR__ . '/../templates/includes.php';
 /**
  * Builds the blog post file path.
  *
- * @param $date Date when the blog post was created.
- * @param $slug Blog post slug.
+ * @param ?string $date Date when the blog post was created.
+ * @param ?string $slug Blog post slug.
  *
- * @return Possible path to the blog post source file or null if the supplied
- *         parameters are invalid.
+ * @return ?string Possible path to the blog post source file or NULL if the
+ *                 supplied parameters are invalid.
  */
 function get_post_path(string $date = null, string $slug = null): string|null {
 	$date = $date ?? $_GET['date'];
@@ -33,7 +33,8 @@ function get_post_path(string $date = null, string $slug = null): string|null {
 /**
  * Gets the requested blog post structure.
  *
- * @return Associative array with the information and contents of the blog post.
+ * @return ?array Associative array with the information and contents of the
+ *                blog post.
  */
 function get_blog_post(): array|null {
 	// Get the post's path.
@@ -56,9 +57,9 @@ function get_blog_post(): array|null {
 /**
  * Gets the permalink to the blog post.
  *
- * @param $post Blog post structure.
+ * @param array $post Blog post structure.
  *
- * @return Permalink to the blog post.
+ * @return string Permalink to the blog post.
  */
 function post_permalink(array $post): string {
 	return href('/blog/' . date('Y-m-d', $post['date']->getTimestamp()) .
