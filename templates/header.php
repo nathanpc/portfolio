@@ -2,9 +2,7 @@
 	<!-- Title header block. -->
 	<div id="title-head">
 		<h1>Nathan Campos</h1>
-		<div id="breadcrumbs">
-			<span class="sep">/</span> <span class="label">index</span>
-		</div>
+		<?= breadcrumbs(isset($crumbs) ? $crumbs : null); ?>
 	</div>
 
 	<!-- Navigation bar. -->
