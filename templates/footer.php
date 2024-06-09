@@ -1,3 +1,8 @@
+<?php
+/**
+ * @param int [$last_modified] Document's last modified UNIX timestamp.
+ */
+?>
 </div>
 
 <div id="footer">
