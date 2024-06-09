@@ -68,11 +68,17 @@ function post_permalink(array $post): string {
 
 // Get the blog post.
 $post = get_blog_post();
+
+// Ensure that the last modified date displayed is of the post's file.
 $last_modified = null;
-if (!is_null($post)) {
-	// Ensure that the last modified date displayed is of the post's file.
+if (!is_null($post))
 	$last_modified = $post['last_modified'];
-}
+
+// Fix the breadcrumbs bar.
+$crumbs = array(
+	'blog' => '/blog',
+	$post['slug'] => post_permalink($post)
+);
 
 // Render the DOCTYPE template.
 include_once __DIR__ . '/../templates/doctype.php';
