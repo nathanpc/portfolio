@@ -1,7 +1,5 @@
 <?php
-// Render the page header.
-require_once __DIR__ . '/../templates/templates.php';
-template_head();
+require_once __DIR__ . '/../templates/includes.php';
 
 /**
  * Builds the blog post file path.
@@ -66,40 +64,44 @@ function post_permalink(array $post): string {
 		"/{$post['slug']}");
 }
 
-// Get the blog post.
+// Get the blog post and render the DOCTYPE template.
 $post = get_blog_post();
-if (is_null($post)) {
-	// Looks like we were unable to find the blog post in question.
-	http_response_code(404);
+include_once __DIR__ . '/../templates/doctype.php';
 ?>
-	<div class="section">
-		<h2>Not found</h2>
+<html>
+<head>
+	<title><?= is_null($post) ? 'Post not found' : $post['title'] ?></title>
+	
+	<?php include_once __DIR__ . '/../templates/head.php'; ?>
+</head>
+<body>
+	<?php include_once __DIR__ . '/../templates/header.php'; ?>
 
-		<p>Sorry but we were not able to find the blog post in question.</p>
-
-		<p><b>TODO: </b>Put picture of a sad cat here.</p>
-	</div>
-<?php
-	template_footer();
-	exit(1);
-}
-
-// Render the requested blog post.
-?>
-
-<!-- Blog post header. -->
-<div id="blog-post" class="section">
-	<h2><?= $post['title'] ?> <a href="<?= post_permalink($post) ?>">#</a></h2>
-	<div id="published-date">
-		<?= date('Y-m-d', $post['date']->getTimestamp()) ?>
-	</div>
-</div>
-
-<?php
-// Render the blog post.
-echo $post['content'];
-
-// Render the page footer.
-// TODO: Fix last modified date to coincide with blog post file modification.
-template_footer();
-?>
+	<?php if (!is_null($post)) { ?>
+		<!-- Blog post header. -->
+		<div id="blog-post" class="section">
+			<h2><?= $post['title'] ?>
+			<a href="<?= post_permalink($post) ?>">#</a></h2>
+			<div id="published-date">
+				<?= date('Y-m-d', $post['date']->getTimestamp()) ?>
+			</div>
+		</div>
+		
+		<?= $post['content'] ?>
+	<?php } else { ?>
+		<?php http_response_code(404); ?>
+		<div class="section">
+			<h2>Not found</h2>
+	
+			<p>Sorry but we were not able to find the blog post in question.</p>
+	
+			<p><b>TODO: </b>Put picture of a sad cat here.</p>
+		</div>
+	<?php } ?>
+	
+	<?php
+	// TODO: Fix last modified date to coincide with blog post file modification.
+	?>
+	<?php include_once __DIR__ . '/../templates/footer.php'; ?>
+</body>
+</html>
