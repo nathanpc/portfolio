@@ -18,6 +18,14 @@
 <?php if (is_debug()) { ?>
 	<!-- Debugging -->
 	<pre id="debug" class="code-block" width="800"><code><?php
-		print_r(get_browser(null, true));
-	?></code></pre>
+		if (isset($debug_var)) {
+			print_r($debug_var)
+	?>
+
+--------------------------------------------------------------------------------
+
+<?php
+		}
+		
+		print_r(get_browser(null, true));?></code></pre>
 <?php }  ?>
