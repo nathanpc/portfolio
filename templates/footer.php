@@ -19,13 +19,16 @@
 	<!-- Debugging -->
 	<pre id="debug" class="code-block" width="800"><code><?php
 		if (isset($debug_var)) {
-			print_r($debug_var)
-	?>
+			ob_start();
+			var_dump($debug_var);
+			echo htmlentities(ob_get_clean());
+?>
 
 --------------------------------------------------------------------------------
 
 <?php
 		}
 		
-		print_r(get_browser(null, true));?></code></pre>
+		echo htmlentities(print_r(get_browser(null, true), true));
+?></code></pre>
 <?php }  ?>
