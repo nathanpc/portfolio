@@ -18,12 +18,12 @@ require_once __DIR__ . '/common_utils.php';
  * @return Navigation bar item element.
  */
 function nav_item(string $label, string $loc, string $classes = ''): string {
-	# Build up the classes HTML property.
+	// Build up the classes HTML property.
 	$class_html = "class=\"item $classes\"";
 	if (empty($classes))
 		$class_html = 'class="item"';
 
-	# Build the href property value.
+	// Build the href property value.
 	$href_val = $loc;
 	if ($loc[0] == '/')
 		$href_val = href($loc);
@@ -50,11 +50,11 @@ function nav_spacer(): string {
 function navbar(array $items): string {
 	$nav = '';
 	foreach ($items as $label => $href) {
-		# Add a spacer between the items if needed.
+		// Add a spacer between the items if needed.
 		if (!empty($nav))
 			$nav .= "\n" . nav_spacer() . "\n";
 
-		# Add the actual item.
+		// Add the actual item.
 		$nav .= nav_item($label, $href);
 	}
 
