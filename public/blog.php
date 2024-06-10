@@ -33,14 +33,14 @@ include_once __DIR__ . '/../templates/doctype.php';
 
 <head>
 	<title><?php
-			if ($listing) {
-				echo "Nathan's random musings";
-			} else if (!is_null($post)) {
-				echo $post->meta('title');
-			} else {
-				echo 'Post not found';
-			}
-			?></title>
+		if ($listing) {
+			echo "Nathan's random musings";
+		} else if (!is_null($post)) {
+			echo $post->meta('title');
+		} else {
+			echo 'Post not found';
+		}
+	?></title>
 
 	<?php include_once __DIR__ . '/../templates/head.php'; ?>
 </head>
@@ -77,7 +77,8 @@ include_once __DIR__ . '/../templates/doctype.php';
 
 			<p>Sorry but we were not able to find the blog post in question.</p>
 
-			<p><b>TODO: </b>Put picture of a sad cat here.</p>
+			<p><?= compat_image('/assets/images/http-status/404.jpg',
+				'404 Not Found cat meme') ?></p>
 		</div>
 	<?php } ?>
 
