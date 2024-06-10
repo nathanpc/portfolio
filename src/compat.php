@@ -27,15 +27,22 @@ function compat_isconsole(): bool {
 /**
  * Generates a compatible image for an ancient browser.
  *
- * @param string $loc Location of an image relative to the public folder.
+ * @param string $loc   Location of an image relative to the public folder.
+ * @param string $alt   Image caption.
+ * @param array  $props Associative array of additional HTML properties.
  *
- * @return string Compatible image binary file.
+ * @return string HTML image element tailored to the requesting device.
  */
-function compat_image(string $loc): string {
+function compat_image(string $loc, string $alt, array $props = []): string {
 	global $browser_info;
 	$img_loc = href($loc);
-	// TODO: Convert the image for super old browsers.
+	// TODO: Convert the image location for super old browsers.
 
-	return $img_loc;
+	// Build up HTML properties.
+	$props_html = '';
+	foreach ($props as $key => $value)
+		$props_html .= "$key=\"$value\" ";
+
+	return "<img src=\"$img_loc\" alt=\"$alt\" $props_html>";
 }
 

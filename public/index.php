@@ -12,10 +12,15 @@
 		<h2>about me</h2>
 	
 		<p>
-			<img src="<?= href('/assets/images/nathan/profile.jpg') ?>"
-				width="200px" height="200px"
-				style="float: left; padding-right: 10px;"
-				alt="A picture of me smiling with my workbench as the background">
+			<?= compat_image('/assets/images/nathan/profile.jpg',
+					'A picture of me smiling with my workbench as the ' .
+					'background',
+					array(
+						'width' => '200px',
+						'height' => '200px',
+						'style' => 'float: left; padding-right: 10px;'
+					))
+			?>
 			<?php if (compat_isconsole()) { ?>
 				<p></p>
 			<?php } ?>
