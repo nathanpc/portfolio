@@ -120,6 +120,32 @@ class BlogPost {
 	}
 
 	/**
+	 * Array representation of this object.
+	 * 
+	 * @param bool $include_content Should we also include the content?
+	 *
+	 * @return array Object as array.
+	 */
+	public function as_array(bool $include_content = false): array {
+		$arr = array(
+			'slug' => $this->slug,
+			'published_date' => $this->published_date(),
+			'last_modified_ts' => $this->last_modified,
+			'path' => $this->path,
+			'title' => $this->meta('title')
+		);
+
+		// Should we include the contents?
+		if ($include_content)
+			$arr['content'] = $this->content();
+
+		// Include the metadata.
+		$arr['metadata'] = $this->metadata;
+		
+		return $arr;
+	}
+
+	/**
 	 * Builds the blog post file path.
 	 *
 	 * @param string $date Date when the blog post was created.
