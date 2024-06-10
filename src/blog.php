@@ -26,6 +26,35 @@ class BlogPost {
 	}
 
 	/**
+	 * Gets a list of blog posts from the index cache in a memory-efficient way.
+	 *
+	 * @return \JsonMachine\Items List of indexed blog posts.
+	 */
+	public static function List(): \JsonMachine\Items {
+		// Load the heavy libraries and read the JSON cache file.
+		load_composer_libraries();
+		return \JsonMachine\Items::fromFile(__DIR__ . '/../blog_cache.json', [
+			'pointer' => '/posts',
+			'decoder' => new \JsonMachine\JsonDecoder\ExtJsonDecoder(true)
+		]);
+	}
+
+	/**
+	 * Gets a blog post object from a JSON object that has already been decoded.
+	 *
+	 * @return BlogPost Requested blog post object.
+	 */
+	public static function FromJSON(array $json): BlogPost {
+		// Populate the object.
+		$post = new self($json['slug'], date_create($json['published_date']));
+		$post->path = $json['path'];
+		$post->last_modified = $json['last_modified_ts'];
+		$post->metadata = $json['metadata'];
+
+		return $post;
+	}
+
+	/**
 	 * Gets a blog post object from a request.
 	 *
 	 * @return ?BlogPost Requested blog post object or NULL if it wasn't found.
@@ -60,6 +89,15 @@ class BlogPost {
 	public function permalink(): string {
 		return href('/blog/' . date('Y-m-d', $this->date->getTimestamp()) .
 			"/{$this->slug}");
+	}
+
+	/**
+	 * Gets the post's title.
+	 *
+	 * @return string Blog post title.
+	 */
+	public function title(): string {
+		return (string)$this->meta('title');
 	}
 
 	/**
