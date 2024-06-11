@@ -21,6 +21,7 @@ use autodie;
 use Carp;
 use Data::Dumper qw(Dumper);
 use File::Spec;
+use File::Basename;
 
 =head1 METHODS
 
@@ -139,11 +140,67 @@ sub build_post {
 			next;
 		}
 
-		# Append line to buffer without modification.
+		# Substitute image containers.
+		if ($_ =~ /^<p class="image-container">/) {
+			if ($_ =~ /alt="(?<alt>[^"]+)"\s+src="(?<src>[^"]+)"/g) {
+				my $ifn = basename($+{src});
+				$post .= "<?= blog_image(\"$ifn\", \"$+{alt}\") ?>\n";
+
+				# TODO: Import image.
+
+				next;
+			}
+
+			print "$_\n";
+			croak "Failed to parse image container on post $tags->{title}";
+		}
+
+		# Substitute code block beginnings.
+		if ($_ =~ /^<pre><code class=\"/) {
+			if ($_ =~ /^<pre><code class=\"language-(?<lang>[^"]+)">/) {
+				$post .= "<?php compat_code_begin('$+{lang}'); ?>";
+				next;
+			}
+
+			print "$_\n";
+			croak "Failed to parse code blog beginning on post $tags->{title}";
+		}
+
+		# Substitute code block endings.
+		if ($_ =~ /<\/code><\/pre>$/) {
+			if ($_ =~ /^(?<code>[^<]+)<\/code><\/pre>$/) {
+				$post .= "$+{code}<?php compat_code_end(); ?>\n";
+				next;
+			}
+
+			print "$_\n";
+			croak "Failed to parse code blog ending on post $tags->{title}";
+		}
+
+		# Remove any silly link properties and append line to buffer.
+		$post =~ s/\s+target="_blank"//g;
 		$post .= "$_\n";
 	}
 
+	# Append imported watermark.
+	$post .= "<p style=\"font-size: 0.8em\">This article was imported from " .
+		"<a href=\"http://currentflow.net/\">my old blog\n</a>. Some things " .
+		"may be broken.</p>\n";
+
 	return $post;
+}
+
+sub process_post {
+	my ($path) = @_;
+
+	# Read the post and parse meta tags.
+	my @lines = read_lines($path);
+	my %tags = parse_meta_tags(\@lines);
+
+	# Build post file.
+	my $post_content = build_post(\@lines, \%tags);
+	print build_name(\%tags) . "\n";
+	print Dumper($post_content);
 }
 
 # Script's main entry point.
@@ -156,17 +213,11 @@ sub main {
 
 	# Get the list of post files.
 	my @post_files = get_post_files("$base_dir/posts");
-	foreach (@post_files) {
-		# Read the post and parse meta tags.
-		my @lines = read_lines("$base_dir/posts/$_");
-		my %tags = parse_meta_tags(\@lines);
-
-		# Build post file.
-		my $post_content = build_post(\@lines, \%tags);
-		print build_name(\%tags) . "\n";
-		print Dumper($post_content);
-		return;
-	}
+	process_post("$base_dir/posts/" . $post_files[36]);
+	#foreach (@post_files) {
+	#	process_post("$base_dir/posts/$_");
+	#	return;
+	#}
 }
 
 =back
