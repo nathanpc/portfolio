@@ -20,8 +20,24 @@ use autodie;
 
 use Carp;
 use Data::Dumper qw(Dumper);
+use File::Copy;
 use File::Spec;
 use File::Basename;
+use Term::ANSIColor;
+
+=head1 GLOBALS
+
+=over 4
+
+=item I<$base_dir>
+
+Directory where the levissimo blog we are importing is located at.
+
+=cut
+
+my $base_dir = undef;
+
+=back
 
 =head1 METHODS
 
@@ -102,8 +118,42 @@ sub make_slug {
 	# Create the slug.
 	$slug =~ s/[^\w\d\-_]/\-/g;  # Substitute everything illegal for dashes.
 	$slug =~ s/\-+/\-/g;         # Remove duplicate dashes.
+	$slug =~ s/\-$//;            # Remove trailing dash.
+
+	# Make lowercase and remove cruft to make it short.
+	$slug = lc $slug;
+	$slug =~ s/\-([mts])\-/$1\-/g;
+	$slug =~ s/(^|\-)(its?|is|in|a|i|the|for|to|of|and)\-/\-/g;
+
+	# Final clean up.
+	$slug =~ s/\-+/\-/g;
+	$slug =~ s/^\-//;
+	$slug =~ s/\-$//;
 
 	return $slug;
+}
+
+=item I<$path> = C<import_image>(I<$name>, I<$src>)
+
+Imports an image from levissimo to our website and returns the new I<$path> of
+the image relative to the website's public folder.
+
+=cut
+
+sub import_image {
+	my ($name, $src) = @_;
+
+	# Determine the output image folder location and create it if needed.
+	my $img_folder = dirname(dirname(__FILE__)) . "/public/assets/blog/$name";
+	if (!-d $img_folder) {
+		mkdir $img_folder;
+	}
+
+	# Copy the image from its original location to ours.
+	my $img_path = "$base_dir/static" . $src;
+	copy($img_path, "$img_folder/" . basename($src));
+
+	return "/assets/blog/$name/" . basename($src);
 }
 
 =item I<$fname> = C<build_name>(I<\%tags>)
@@ -117,7 +167,7 @@ sub build_name {
 	return "$tags->{created}_" . make_slug($tags->{title});
 }
 
-=item I<$post_contents> = C<build_post>(I<\@lines>, I<\%tags>)
+=item I<$post_contents> = C<build_post>(I<\@lines>, I<\%tags>, I<$name>)
 
 Builds up the contents of a post file in the new format from the information
 contained in the levissimo format.
@@ -125,7 +175,7 @@ contained in the levissimo format.
 =cut
 
 sub build_post {
-	my ($lines, $tags) = @_;
+	my ($lines, $tags, $name) = @_;
 	my $post = "<?php\n";
 
 	# Build metadata structure.
@@ -134,74 +184,125 @@ sub build_post {
 	$post .= ");\n?>\n";
 
 	# Build post contents.
-	foreach (@{$lines}) {
+	my $num_lines = scalar @{$lines};
+	for (my $i = 0; $i < $num_lines; ++$i) {
+		my $line = $lines->[$i];
+
 		# Ignore meta tag lines.
-		if ($_ =~ /^<meta\s/) {
+		if ($line =~ /^<meta\s/) {
 			next;
 		}
 
 		# Substitute image containers.
-		if ($_ =~ /^<p class="image-container">/) {
-			if ($_ =~ /alt="(?<alt>[^"]+)"\s+src="(?<src>[^"]+)"/g) {
-				my $ifn = basename($+{src});
+		if ($line =~ /^<p class="image-container">/) {
+			if ($line =~ /alt="(?<alt>[^"]+)"\s+src="(?<src>[^"]+)"/g) {
+				# Import image and build the PHP template.
+				my $ifn = basename(import_image($name, $+{src}));
 				$post .= "<?= blog_image(\"$ifn\", \"$+{alt}\") ?>\n";
-
-				# TODO: Import image.
 
 				next;
 			}
 
-			print "$_\n";
+			print "$i: $line\n";
 			croak "Failed to parse image container on post $tags->{title}";
 		}
 
+		# Substitute image albums.
+		if ($line =~ /^<nav class="album">/) {
+			# Process the album.
+			while ($line ne "</nav>") {
+				# Parse the image and its caption.
+				if ($line =~ /^\s*<img\s+src="(?<src>[^"]+)">/) {
+					my $ifn = $+{src};
+					if ($lines->[$i + 1] =~ /^\s*<figcaption>(?<caption>[^<]+)<\/figcaption>/) {
+						# Import image and get the file location.
+						$ifn = basename(import_image($name, $ifn));
+
+						# Build the PHP template.
+						my $caption = $+{caption};
+						$post .= "<?= blog_image(\"$ifn\", \"$caption\",\n\t" .
+							"[], [ 'caption' => true ]) ?>\n";
+					} else {
+						print "$i: $line\n";
+						croak "Image in album didn't have a caption set on " .
+							"post $tags->{title}. Captions are required in " .
+							"our website.";
+					}
+				}
+
+				# Go to the next image in the album.
+				$line = $lines->[++$i];
+			}
+
+			next;
+		}
+
 		# Substitute code block beginnings.
-		if ($_ =~ /^<pre><code class=\"/) {
-			if ($_ =~ /^<pre><code class=\"language-(?<lang>[^"]+)">/) {
+		if ($line =~ /^<pre><code class=\"/) {
+			if ($line =~ /^<pre><code class=\"language-(?<lang>[^"]+)">/) {
 				$post .= "<?php compat_code_begin('$+{lang}'); ?>";
 				next;
 			}
 
-			print "$_\n";
+			print "$i: $line\n";
 			croak "Failed to parse code blog beginning on post $tags->{title}";
 		}
 
 		# Substitute code block endings.
-		if ($_ =~ /<\/code><\/pre>$/) {
-			if ($_ =~ /^(?<code>[^<]+)<\/code><\/pre>$/) {
+		if ($line =~ /<\/code><\/pre>$/) {
+			if ($line =~ /^(?<code>[^<]+)<\/code><\/pre>$/) {
 				$post .= "$+{code}<?php compat_code_end(); ?>\n";
 				next;
 			}
 
-			print "$_\n";
+			print "$i: $line\n";
 			croak "Failed to parse code blog ending on post $tags->{title}";
 		}
 
 		# Remove any silly link properties and append line to buffer.
 		$post =~ s/\s+target="_blank"//g;
-		$post .= "$_\n";
+		$post .= "$line\n";
 	}
 
 	# Append imported watermark.
-	$post .= "<p style=\"font-size: 0.8em\">This article was imported from " .
-		"<a href=\"http://currentflow.net/\">my old blog\n</a>. Some things " .
-		"may be broken.</p>\n";
+	$post .= "<p style=\"font-size: 0.8em\">\n\tThis article was imported " .
+		"from <a href=\"http://currentflow.net/\">my old blog\n\t</a>. Some " .
+		"things may be broken.\n</p>\n";
 
 	return $post;
 }
 
+=item C<process_post>(I<$path>)
+
+Reads a levissimo post file and imports the post into our website.
+
+=cut
+
 sub process_post {
 	my ($path) = @_;
+
+	print "Importing " . basename($path) . "... ";
 
 	# Read the post and parse meta tags.
 	my @lines = read_lines($path);
 	my %tags = parse_meta_tags(\@lines);
 
 	# Build post file.
-	my $post_content = build_post(\@lines, \%tags);
-	print build_name(\%tags) . "\n";
-	print Dumper($post_content);
+	my $name = build_name(\%tags);
+	my $post_content = build_post(\@lines, \%tags, $name);
+
+	# Write the post file.
+	my $post_path = dirname(dirname(__FILE__)) . "/blog/$name.php";
+	open(my $fh, '>:encoding(UTF-8)', $post_path);
+	print $fh $post_content;
+	close $fh;
+
+	print "ok\n";
 }
+
+=back
+
+=cut
 
 # Script's main entry point.
 sub main {
@@ -209,20 +310,14 @@ sub main {
 	if (scalar(@ARGV) == 0) {
 		croak "Path to the levissimo directory must be passed as argument.";
 	}
-	my $base_dir = $ARGV[0];
+	$base_dir = $ARGV[0];
 
 	# Get the list of post files.
 	my @post_files = get_post_files("$base_dir/posts");
-	process_post("$base_dir/posts/" . $post_files[36]);
-	#foreach (@post_files) {
-	#	process_post("$base_dir/posts/$_");
-	#	return;
-	#}
+	foreach (@post_files) {
+		process_post("$base_dir/posts/$_");
+	}
 }
-
-=back
-
-=cut
 
 # Call the script's main entry point.
 main();
