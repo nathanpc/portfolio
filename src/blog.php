@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . '/common_utils.php';
+require_once __DIR__ . '/compat.php';
 
 /**
  * Blog post abstraction.
@@ -148,13 +149,15 @@ class BlogPost {
 	}
 
 	/**
-	 * Sets the associated file path.
+	 * Gets an image's location that is associated with this blog post.
 	 *
-	 * @param string $fpath File path to be associated with this post.
+	 * @param string $fname Filename of the requested image.
+	 * 
+	 * @return string Actual location of the image based on the public folder.
 	 */
-	private function set_path(string $fpath) {
-		$this->path = $fpath;
-		$this->last_modified = filemtime($this->path);
+	public function get_image_loc(string $fname): string {
+		return '/assets/blog/' . $this->published_date() . "_{$this->slug}/" .
+			$fname;
 	}
 
 	/**
@@ -184,6 +187,16 @@ class BlogPost {
 	}
 
 	/**
+	 * Sets the associated file path.
+	 *
+	 * @param string $fpath File path to be associated with this post.
+	 */
+	private function set_path(string $fpath) {
+		$this->path = $fpath;
+		$this->last_modified = filemtime($this->path);
+	}
+
+	/**
 	 * Builds the blog post file path.
 	 *
 	 * @param string $date Date when the blog post was created.
@@ -202,4 +215,38 @@ class BlogPost {
 
 		return realpath(__DIR__ . "/../blog/{$safe_date}_{$safe_slug}.php");
 	}
+}
+
+/**
+ * Generates the appropriate image element for a blog post.
+ *
+ * @param string $loc     Image file name relative to the post's image folder
+ *                        (/public/assets/blog/<post_fname>).
+ * @param string $alt     Image caption.
+ * @param array  $props   Associative array of additional HTML properties.
+ * @param array  $opts    Modification options.
+ *
+ * @return string HTML image element tailored to the requesting device.
+ */
+function blog_image(string $fname, string $alt, array $props = [],
+					array $opts = []): string {
+	// Check if the required $post template variable is available.
+	if (!isset($post) || is_null($post)) {
+		throw new Exception('Required $post variable for blog_image template ' .
+			'not set');
+	}
+
+	// Merge our options with some defaults.
+	$opts = array_merge(array(
+		'caption' => false
+	), $opts);
+
+	// Build out the element.
+	$html = "<div class=\"image-container\">\n";
+	$html .= compat_image($post->get_image_loc($fname), $alt, $props);
+	if ($opts['caption'])
+		$html .= "<br>\n<div class=\"caption\">$alt</div>\n";
+	$html = "\n</div>";
+
+	return $html;
 }

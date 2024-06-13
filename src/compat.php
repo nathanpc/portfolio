@@ -46,3 +46,22 @@ function compat_image(string $loc, string $alt, array $props = []): string {
 	return "<img src=\"$img_loc\" alt=\"$alt\" $props_html>";
 }
 
+/**
+ * Placed at the beginning of a code block in order to buffer its output and
+ * allow for the insertion of syntax highlighting on browsers that support it.
+ * 
+ * @param string $lang Programming language code for syntax highlighting.
+ */
+function compat_code_begin(string $lang = null) {
+	echo "<pre class=\"code-block\" width=\"600\"><code>";
+	ob_start();
+}
+
+/**
+ * Placed at the end of a code block to print its buffered output and allow for
+ * the insertion of syntax highlighting on browsers that support it.
+ */
+function compat_code_end() {
+	echo htmlentities(ob_get_clean());
+	echo "</code></pre>";
+}
