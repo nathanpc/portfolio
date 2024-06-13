@@ -61,7 +61,10 @@ class BlogPost {
 	 * @return ?BlogPost Requested blog post object or NULL if it wasn't found.
 	 */
 	public static function FromRequest(): ?BlogPost {
-		return self::FromDateSlug($_GET['date'], $_GET['slug']);
+		$date = preg_replace('/[^0-9\-]/', '', $_GET['date']);
+		$slug = preg_replace('/[^0-9a-zA-Z\-_]/', '', $_GET['slug']);
+
+		return self::FromDateSlug($date, $slug);
 	}
 
 	/**
@@ -156,8 +159,45 @@ class BlogPost {
 	 * @return string Actual location of the image based on the public folder.
 	 */
 	public function get_image_loc(string $fname): string {
-		return '/assets/blog/' . $this->published_date() . "_{$this->slug}/" .
-			$fname;
+		return self::build_image_loc($this->published_date(), $this->slug,
+			$fname);
+	}
+
+	/**
+	 * Gets an image's location that is associated with a blog post.
+	 *
+	 * @param string $fname Filename of the requested image.
+	 * 
+	 * @return string Actual location of the image based on the public folder.
+	 */
+	public static function build_image_loc(string $date, string $slug,
+										   string $fname): string {
+		return '/assets/blog/' . self::build_token($date, $slug) . "/$fname";
+	}
+
+	/**
+	 * Gets the name used in files and folders associated with a post.
+	 * 
+	 * WARNING: All data passed to this function will be sanitized internatlly.
+	 * The returned string should be considered safe.
+	 *
+	 * @param string $date Date of publishing.
+	 * @param string $slug Slug name.
+	 * @param bool   $fail Should we fail if someone is trying to be clever?
+	 * 
+	 * @return ?string Safe name associated with this post.
+	 */
+	public static function build_token(string $date, string $slug,
+									   bool $fail = false): ?string {
+		// Sanitize inputs.
+		$safe_date = preg_replace('/[^0-9\-]/', '', $date);
+		$safe_slug = preg_replace('/[^0-9a-zA-Z\-_]/', '', $slug);
+
+		// Ensure we always fail when someone tries to be cleaver.
+		if ($fail && (($date != $safe_date) || ($slug != $safe_slug)))
+			return null;
+
+		return "{$safe_date}_{$safe_slug}";
 	}
 
 	/**
@@ -205,48 +245,38 @@ class BlogPost {
 	 * @return ?string Possible path to the blog post source file.
 	 */
 	private static function get_path(string $date, string $slug): string|null {
-		// Sanitize inputs.
-		$safe_date = preg_replace('/[^0-9\-]/', '', $date);
-		$safe_slug = preg_replace('/[^0-9a-zA-Z\-_]/', '', $slug);
-
-		// Ensure we always fail when someone tries to be cleaver.
-		if (($date != $safe_date) || ($slug != $safe_slug))
-			return null;
-
-		return realpath(__DIR__ . "/../blog/{$safe_date}_{$safe_slug}.php");
+		return realpath(__DIR__ . '/../blog/' .
+			self::build_token($date, $slug) . '.php');
 	}
 }
 
 /**
  * Generates the appropriate image element for a blog post.
  *
- * @param string $loc     Image file name relative to the post's image folder
- *                        (/public/assets/blog/<post_fname>).
- * @param string $alt     Image caption.
- * @param array  $props   Associative array of additional HTML properties.
- * @param array  $opts    Modification options.
+ * @param string $loc   Image file name relative to the post's image folder
+ *                      (/public/assets/blog/<post_fname>).
+ * @param string $alt   Image caption.
+ * @param array  $props Associative array of additional HTML properties.
+ * @param array  $opts  Modification options.
  *
  * @return string HTML image element tailored to the requesting device.
  */
 function blog_image(string $fname, string $alt, array $props = [],
 					array $opts = []): string {
-	// Check if the required $post template variable is available.
-	if (!isset($post) || is_null($post)) {
-		throw new Exception('Required $post variable for blog_image template ' .
-			'not set');
-	}
-
 	// Merge our options with some defaults.
 	$opts = array_merge(array(
 		'caption' => false
 	), $opts);
 
+	// Get the image location.
+	$img_loc = BlogPost::build_image_loc($_GET['date'], $_GET['slug'], $fname);
+
 	// Build out the element.
-	$html = "<div class=\"image-container\">\n";
-	$html .= compat_image($post->get_image_loc($fname), $alt, $props);
+	$html = "<div class=\"image-container\">\n" . compat_image($img_loc, $alt,
+		$props);
 	if ($opts['caption'])
 		$html .= "<br>\n<div class=\"caption\">$alt</div>\n";
-	$html = "\n</div>";
+	$html .= "\n</div>";
 
 	return $html;
 }

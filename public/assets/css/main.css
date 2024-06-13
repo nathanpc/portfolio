@@ -83,6 +83,10 @@ pre.code-block {
 	margin-bottom: 10px;
 }
 
+#content img {
+	max-width: 100%;
+}
+
 #content #blog-post h2 a {
 	font-weight: normal;
 	font-size: 0.9em;
