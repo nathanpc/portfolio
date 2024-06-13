@@ -259,8 +259,12 @@ sub build_post {
 			croak "Failed to parse code blog ending on post $tags->{title}";
 		}
 
-		# Remove any silly link properties and append line to buffer.
+		# Remove any silly link properties and awful typographer quotes.
 		$post =~ s/\s+target="_blank"//g;
+		$post =~ s/&rsquo;/'/g;
+		$post =~ s/&(l|r)dquo;/"/g;
+
+		# Append line to the buffer.
 		$post .= "$line\n";
 	}
 
