@@ -37,21 +37,41 @@ function get_post_list(): array {
 	return $posts;
 }
 
+/**
+ * Builds a JSON array from a list of posts.
+ *
+ * @param array $posts List of posts.
+ * 
+ * @return array JSON representation of the posts list.
+ */
+function build_json(array $posts): array {
+	$json = array('length' => count($posts), 'posts' => array());
+
+	for ($i = 0; $i < count($posts); $i++) {
+		// Ensure we have an environment for the post to inherit.
+		$GLOBALS['_GET'] = array(
+			'date' => $posts[$i]->published_date(),
+			'slug' => $posts[$i]->slug
+		);
+
+		// Convert the post's metadata into JSON.
+		$arr = $posts[$i]->as_array();
+		echo "[$i/{$json['length']}] {$arr['published_date']} " .
+			"{$arr['title']}\n";
+
+		array_push($json['posts'], $arr);
+	}
+
+	return $json;
+}
+
 // Build post object index.
 echo "Building blog post object index...\n";
 $posts = get_post_list();
 
 // Convert the object index into an associative array that's JSON-friendly.
 echo "Reading post contents and gathering metadata...\n";
-$posts_json = array('length' => count($posts), 'posts' => array());
-$index = 1;
-foreach ($posts as $post) {
-	$arr = $post->as_array();
-	echo "[$index/{$posts_json['length']}] {$arr['published_date']} " .
-		"{$arr['title']}\n";
-	array_push($posts_json['posts'], $arr);
-	$index++;
-}
+$posts_json = build_json($posts);
 
 // Save the gathered data to a JSON cache file.
 echo "Saving index to JSON cache file...\n";
