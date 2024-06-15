@@ -159,18 +159,18 @@ class BlogPost {
 	 * @return string Actual location of the image based on the public folder.
 	 */
 	public function get_image_loc(string $fname): string {
-		return self::build_image_loc($this->published_date(), $this->slug,
+		return self::build_asset_loc($this->published_date(), $this->slug,
 			$fname);
 	}
 
 	/**
-	 * Gets an image's location that is associated with a blog post.
+	 * Gets an assets's location that is associated with a blog post.
 	 *
-	 * @param string $fname Filename of the requested image.
+	 * @param string $fname Filename of the requested asset.
 	 * 
-	 * @return string Actual location of the image based on the public folder.
+	 * @return string Location of the asset relative to the public folder.
 	 */
-	public static function build_image_loc(string $date, string $slug,
+	public static function build_asset_loc(string $date, string $slug,
 										   string $fname): string {
 		return '/assets/blog/' . self::build_token($date, $slug) . "/$fname";
 	}
@@ -251,6 +251,17 @@ class BlogPost {
 }
 
 /**
+ * Gets the href location of an asset related to the blog post.
+ *
+ * @param string $fname Filename of the asset.
+ * 
+ * @return string Location of the asset relative to the public folder.
+ */
+function blog_asset(string $fname): string {
+	return BlogPost::build_asset_loc($_GET['date'], $_GET['slug'], $fname);
+}
+
+/**
  * Generates the appropriate image element for a blog post.
  *
  * @param string $loc   Image file name relative to the post's image folder
@@ -268,12 +279,9 @@ function blog_image(string $fname, string $alt, array $props = [],
 		'caption' => false
 	), $opts);
 
-	// Get the image location.
-	$img_loc = BlogPost::build_image_loc($_GET['date'], $_GET['slug'], $fname);
-
 	// Build out the element.
-	$html = "<div class=\"blog-image\">\n" . compat_image($img_loc, $alt,
-		$props) . "\n";
+	$html = "<div class=\"blog-image\">\n" . compat_image(blog_asset($fname),
+		$alt, $props) . "\n";
 	if ($opts['caption'])
 		$html .= "<br>\n<div class=\"caption\">$alt</div>\n";
 	$html .= "</div>";
@@ -291,8 +299,7 @@ function blog_image(string $fname, string $alt, array $props = [],
 function blog_image_gallery(array $images): string {
 	// Transpose the location of the images.
 	for ($i = 0; $i < count($images); $i++) {
-		$images[$i]['loc'] = BlogPost::build_image_loc($_GET['date'],
-			$_GET['slug'], $images[$i]['loc']);
+		$images[$i]['loc'] = blog_asset($images[$i]['loc']);
 	}
 
 	// Return the gallery element.
