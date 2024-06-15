@@ -184,6 +184,7 @@ sub build_post {
 	$post .= ");\n?>\n";
 
 	# Build post contents.
+	my $state = "";
 	my $num_lines = scalar @{$lines};
 	for (my $i = 0; $i < $num_lines; ++$i) {
 		my $line = $lines->[$i];
@@ -209,6 +210,8 @@ sub build_post {
 
 		# Substitute image albums.
 		if ($line =~ /^<nav class="album">/) {
+			$post .= "<?php blog_image_gallery(array(\n";
+
 			# Process the album.
 			while ($line ne "</nav>") {
 				# Parse the image and its caption.
@@ -220,8 +223,8 @@ sub build_post {
 
 						# Build the PHP template.
 						my $caption = $+{caption};
-						$post .= "<?= blog_image(\"$ifn\", \"$caption\",\n\t" .
-							"[], [ 'caption' => true ]) ?>\n";
+						$post .= "\tarray('loc' => \"$ifn\", 'alt' => " .
+							"\"$caption\"),\n";
 					} else {
 						print "$i: $line\n";
 						croak "Image in album didn't have a caption set on " .
@@ -234,24 +237,58 @@ sub build_post {
 				$line = $lines->[++$i];
 			}
 
+			$post .= ")); ?>";
 			next;
 		}
 
 		# Substitute code block beginnings.
 		if ($line =~ /^<pre><code class=\"/) {
-			if ($line =~ /^<pre><code class=\"language-(?<lang>[^"]+)">/) {
+			if ($line =~ /^<pre><code class=\"language-(?<lang>[^"]+)"><script type="prism-html-markup">/) {
+				# Special kind with HTML entities encoding script.
 				$post .= "<?php compat_code_begin('$+{lang}'); ?>";
-				next;
+				$line = substr($line, length("<pre><code class=\"language-" .
+					"$+{lang}\"><script type=\"prism-html-markup\">"));
+				$post .= $line;
+				$state = "prism-html-markup";
+
+				# Handle cases where it's a single line code block.
+				if ($line =~ /<\/code><\/pre>$/) {
+					goto PARSE_CODE_BLOCK_END;
+				} else {
+					next;
+				}
+			} elsif ($line =~ /^<pre><code class=\"language-(?<lang>[^"]+)">/) {
+				$post .= "<?php compat_code_begin('$+{lang}'); ?>";
+				$line = substr($line,
+					length("<pre><code class=\"language-$+{lang}\">"));
+				$post .= $line;
+
+				# Handle cases where it's a single line code block.
+				if ($line =~ /<\/code><\/pre>$/) {
+					goto PARSE_CODE_BLOCK_END;
+				} else {
+					next;
+				}
 			}
 
 			print "$i: $line\n";
 			croak "Failed to parse code blog beginning on post $tags->{title}";
 		}
 
+PARSE_CODE_BLOCK_END:
 		# Substitute code block endings.
 		if ($line =~ /<\/code><\/pre>$/) {
-			if ($line =~ /^(?<code>[^<]+)<\/code><\/pre>$/) {
-				$post .= "$+{code}<?php compat_code_end(); ?>\n";
+			if (($state eq "prism-html-markup") && ($line =~ /<\/script><\/code><\/pre>$/)) {
+				$post .= substr($line, 0,
+					rindex($line, "</script></code></pre>"));
+				$post .= "<?php compat_code_end(); ?>\n";
+				$state = "";
+
+				next;
+			} elsif ($line =~ /<\/code><\/pre>$/) {
+				$post .= substr($line, 0, rindex($line, "</code></pre>"));
+				$post .= "<?php compat_code_end(); ?>\n";
+
 				next;
 			}
 
