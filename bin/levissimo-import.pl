@@ -210,7 +210,7 @@ sub build_post {
 
 		# Substitute image albums.
 		if ($line =~ /^<nav class="album">/) {
-			$post .= "<?php blog_image_gallery(array(\n";
+			$post .= "<?= blog_image_gallery(array(\n";
 
 			# Process the album.
 			my $first = 1;
@@ -250,12 +250,11 @@ sub build_post {
 
 		# Substitute code block beginnings.
 		if ($line =~ /^<pre><code class=\"/) {
-			if ($line =~ /^<pre><code class=\"language-(?<lang>[^"]+)"><script type="prism-html-markup">/) {
+			if ($line =~ /^<pre><code class=\"language-(?<lang>[^"]+)"><scrip type="prism-html-markup">/) {
 				# Special kind with HTML entities encoding script.
 				$post .= "<?php compat_code_begin('$+{lang}'); ?>";
-				$line = substr($line, length("<pre><code class=\"language-" .
-					"$+{lang}\"><script type=\"prism-html-markup\">"));
-				$post .= $line;
+				$line = substr($line, rindex($line, "</script></code></pre>"));
+				$post .= "$line\n";
 				$state = "prism-html-markup";
 
 				# Handle cases where it's a single line code block.
@@ -266,9 +265,8 @@ sub build_post {
 				}
 			} elsif ($line =~ /^<pre><code class=\"language-(?<lang>[^"]+)">/) {
 				$post .= "<?php compat_code_begin('$+{lang}'); ?>";
-				$line = substr($line,
-					length("<pre><code class=\"language-$+{lang}\">"));
-				$post .= $line;
+				$line = substr($line, rindex($line, "</code></pre>"));
+				$post .= "$line\n";
 
 				# Handle cases where it's a single line code block.
 				if ($line =~ /<\/code><\/pre>$/) {
