@@ -97,7 +97,19 @@ pre.code-block {
 }
 
 #content #blog-post #published-date {
+	margin-bottom: 15px;
 	color: #636363;
+}
+
+#content .image-gallery .item {
+	width: 200px;
+}
+
+#content .image-gallery .item .caption {
+	margin-top: 5px;
+	margin-bottom: 1em;
+
+	text-align: center;
 }
 
 #footer .last-modified {

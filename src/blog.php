@@ -272,11 +272,29 @@ function blog_image(string $fname, string $alt, array $props = [],
 	$img_loc = BlogPost::build_image_loc($_GET['date'], $_GET['slug'], $fname);
 
 	// Build out the element.
-	$html = "<div class=\"image-container\">\n" . compat_image($img_loc, $alt,
-		$props);
+	$html = "<div class=\"blog-image\">\n" . compat_image($img_loc, $alt,
+		$props) . "\n";
 	if ($opts['caption'])
 		$html .= "<br>\n<div class=\"caption\">$alt</div>\n";
-	$html .= "\n</div>";
+	$html .= "</div>";
 
 	return $html;
+}
+
+/**
+ * Creates an image gallery for a particular blog post.
+ *
+ * @param array $images List of images containing 'loc' and 'alt' fields.
+ * 
+ * @return string HTML image gallery.
+ */
+function blog_image_gallery(array $images): string {
+	// Transpose the location of the images.
+	for ($i = 0; $i < count($images); $i++) {
+		$images[$i]['loc'] = BlogPost::build_image_loc($_GET['date'],
+			$_GET['slug'], $images[$i]['loc']);
+	}
+
+	// Return the gallery element.
+	return compat_image_gallery($images);
 }

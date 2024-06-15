@@ -47,6 +47,28 @@ function compat_image(string $loc, string $alt, array $props = []): string {
 }
 
 /**
+ * Creates an image gallery that's compatible with all sorts of different
+ * browsers.
+ *
+ * @param array $images List of images containing 'loc' and 'alt' fields.
+ * 
+ * @return string HTML image gallery tailored to the requesting device.
+ */
+function compat_image_gallery(array $images): string {
+	$html = "<div class=\"image-gallery\">\n";
+
+	// Populate with image elements.
+	foreach ($images as $img) {
+		$html .= "<div class=\"item\">\n" . compat_image($img['loc'],
+			$img['alt']) . "\n<br>\n<div class=\"caption\">{$img['alt']}" .
+			"</div>\n</div>";
+	}
+
+	$html .= '</div>';
+	return $html;
+}
+
+/**
  * Placed at the beginning of a code block in order to buffer its output and
  * allow for the insertion of syntax highlighting on browsers that support it.
  * 
