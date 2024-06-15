@@ -213,6 +213,7 @@ sub build_post {
 			$post .= "<?php blog_image_gallery(array(\n";
 
 			# Process the album.
+			my $first = 1;
 			while ($line ne "</nav>") {
 				# Parse the image and its caption.
 				if ($line =~ /^\s*<img\s+src="(?<src>[^"]+)">/) {
@@ -221,10 +222,16 @@ sub build_post {
 						# Import image and get the file location.
 						$ifn = basename(import_image($name, $ifn));
 
+						# Add the comma to the previous image structure.
+						if (!$first) {
+							$post .= ",\n";
+						}
+
 						# Build the PHP template.
 						my $caption = $+{caption};
 						$post .= "\tarray('loc' => \"$ifn\", 'alt' => " .
-							"\"$caption\"),\n";
+							"\"$caption\")";
+						$first = 0;
 					} else {
 						print "$i: $line\n";
 						croak "Image in album didn't have a caption set on " .
@@ -237,7 +244,7 @@ sub build_post {
 				$line = $lines->[++$i];
 			}
 
-			$post .= ")); ?>";
+			$post .= "\n)); ?>\n";
 			next;
 		}
 
