@@ -54,6 +54,9 @@ pre.code-block {
 	background-color: #ffefd5;
 }
 
+/**
+ * Website title area.
+ */
 #title-head {
 	margin-bottom: 10px;
 }
@@ -69,6 +72,9 @@ pre.code-block {
 	font-size: 10pt;
 }
 
+/**
+ * Navigation bar.
+ */
 #navbar .spacer {
 	display: inline-block;
 	display: -moz-inline-box;
@@ -78,15 +84,17 @@ pre.code-block {
 	text-align: center;
 }
 
+/**
+ * Content area.
+ */
 #content .section h2 {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
-#content img {
-	max-width: 100%;
-}
-
+/**
+ * Blog stuff.
+ */
 #content #blog-post h2 a {
 	font-weight: normal;
 	font-size: 0.9em;
@@ -101,17 +109,42 @@ pre.code-block {
 	color: #636363;
 }
 
-#content .image-gallery .item {
-	width: 200px;
-}
-
-#content .image-gallery .item .caption {
-	margin-top: 5px;
-	margin-bottom: 1em;
-
+#content .blog-image {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 
+#content .blog-image img {
+	max-width: 100%;
+}
+
+/**
+ * Image gallery.
+ */
+#content .image-gallery {
+	margin: 0 auto;
+	border-spacing: 10px;
+}
+
+#content .image-gallery td {
+	width: 250px;
+	text-align: center;
+}
+
+#content .image-gallery img {
+	width: 250px;
+}
+
+#content .image-gallery .caption {
+	margin-top: 5px;
+	text-align: center;
+}
+
+/**
+ * Footer
+ */
 #footer .last-modified {
 	font-size: 9pt;
 }

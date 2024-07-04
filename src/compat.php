@@ -25,16 +25,40 @@ function compat_isconsole(): bool {
 }
 
 /**
+ * Checks if the browser that is requesting us is based on WebKit. This includes
+ * the Blink engine.
+ *
+ * @return bool TRUE if the browser visiting us is WebKit-based.
+ */
+function compat_iswebkit(): bool {
+	global $browser_info;
+	return ($browser_info['renderingengine_name'] == 'WebKit') ||
+		($browser_info['renderingengine_name'] == 'Blink');
+}
+
+/**
+ * Checks if the device that is requesting us is of the mobile type (smartphone
+ * or tablet).
+ *
+ * @return bool TRUE if the browser visiting us is WebKit-based.
+ */
+function compat_ismobile(): bool {
+	global $browser_info;
+	return $browser_info['ismobiledevice'];
+}
+
+/**
  * Generates a compatible image for an ancient browser.
  *
  * @param string $loc   Location of an image relative to the public folder.
  * @param string $alt   Image caption.
  * @param array  $props Associative array of additional HTML properties.
+ * @param bool   $link  Include link to the original file.
  *
  * @return string HTML image element tailored to the requesting device.
  */
-function compat_image(string $loc, string $alt, array $props = []): string {
-	global $browser_info;
+function compat_image(string $loc, string $alt, array $props = [],
+					  bool $link = false): string {
 	$img_loc = href($loc);
 	// TODO: Convert the image location for super old browsers.
 
@@ -43,7 +67,11 @@ function compat_image(string $loc, string $alt, array $props = []): string {
 	foreach ($props as $key => $value)
 		$props_html .= "$key=\"$value\" ";
 
-	return "<img src=\"$img_loc\" alt=\"$alt\" $props_html>";
+	// Get the final HTML element.
+	$html = "<img src=\"$img_loc\" alt=\"$alt\" $props_html>";
+	if ($link)
+		return "<a href=\"$img_loc\">$html</a>";
+	return $html;
 }
 
 /**
@@ -55,16 +83,26 @@ function compat_image(string $loc, string $alt, array $props = []): string {
  * @return string HTML image gallery tailored to the requesting device.
  */
 function compat_image_gallery(array $images): string {
-	$html = "<div class=\"image-gallery\">\n";
+	$wrap_point = compat_ismobile() ? 2 : 3;
+	$html = "<table class=\"image-gallery\">\n";
 
 	// Populate with image elements.
-	foreach ($images as $img) {
-		$html .= "<div class=\"item\">\n" . compat_image($img['loc'],
-			$img['alt']) . "\n<br>\n<div class=\"caption\">{$img['alt']}" .
-			"</div>\n</div>";
+	for ($i = 0; $i < count($images); $i++) {
+		$img = $images[$i];
+
+		// Add a table row for every 3 images.
+		if (($i % $wrap_point) == 0) {
+			if ($i != 0)
+				$html .= "</tr>\n";
+			$html .= "<tr>\n";
+		}
+
+		$html .= "<td valign=\"top\">\n" . compat_image($img['loc'],
+			$img['alt'], [], true) . "\n<br>\n<div class=\"caption\">" .
+			"{$img['alt']}</div>\n</td>";
 	}
 
-	$html .= '</div>';
+	$html .= "</tr>\n</table>";
 	return $html;
 }
 

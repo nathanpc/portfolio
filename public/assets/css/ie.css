@@ -1,0 +1,11 @@
+/**
+ * ie.css
+ * Stylesheet specific to the great destroyer of standards, Internet Explorer.
+ *
+ * @author Nathan Campos <nathan@innoveworkshop.com>\
+ */
+
+/* Fixes max-width not working. */
+#content .blog-image img {
+	width: 100%;
+}

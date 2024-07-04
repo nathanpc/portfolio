@@ -281,7 +281,7 @@ function blog_image(string $fname, string $alt, array $props = [],
 
 	// Build out the element.
 	$html = "<div class=\"blog-image\">\n" . compat_image(blog_asset($fname),
-		$alt, $props) . "\n";
+		$alt, $props, true) . "\n";
 	if ($opts['caption'])
 		$html .= "<br>\n<div class=\"caption\">$alt</div>\n";
 	$html .= "</div>";
