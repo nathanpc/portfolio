@@ -28,13 +28,13 @@ hr {
 }
 
 a {
-	color: #ab7025;
+	color: #138700;
 	text-decoration: none;
 }
 
 a:hover, a:active {
-	color: #7e4c0d;
-	border-bottom: 1px solid #ab7025;
+	color: #0a4c00;
+	border-bottom: 1px solid #138700;
 }
 
 a.email {
