@@ -95,6 +95,15 @@ pre.code-block {
 /**
  * Blog stuff.
  */
+#content .post-year {
+	margin-bottom: 0;
+}
+
+#content .post-listing {
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
 #content #blog-post h2 a {
 	font-weight: normal;
 	font-size: 0.9em;
