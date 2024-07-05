@@ -44,7 +44,7 @@ function compat_iswebkit(): bool {
  */
 function compat_ismobile(): bool {
 	global $browser_info;
-	return $browser_info['ismobiledevice'];
+	return (bool)$browser_info['ismobiledevice'];
 }
 
 /**
