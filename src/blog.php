@@ -251,6 +251,18 @@ class BlogPost {
 }
 
 /**
+ * Gets the permalink to another blog post.
+ *
+ * @param string $date Date the post was published.
+ * @param string $slug Post's slug.
+ *
+ * @return string Blog post's link.
+ */
+function blog_post_href(string $date, string $slug): string {
+	return href("/blog/$date/$slug");
+}
+
+/**
  * Gets the href location of an asset related to the blog post.
  *
  * @param string $fname Filename of the asset.
