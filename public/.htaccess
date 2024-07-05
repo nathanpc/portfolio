@@ -11,6 +11,7 @@ php_value error_log "/dev/stderr"
 
 # Error documents.
 ErrorDocument 404 /errors/404.php
+ErrorDocument 500 /errors/500.php
 
 # Protect the .htaccess file.
 <FilesMatch "\.htaccess$">
