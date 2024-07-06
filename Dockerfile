@@ -33,9 +33,14 @@ RUN composer install
 COPY bin/ ./bin
 COPY src/ ./src
 COPY templates/ ./templates
+COPY public/ ./public
+COPY blog/ ./blog
 COPY Makefile ./
-COPY docker-entrypoint.sh ./
+# TODO: Use a multi stage build.
+
+# Build blog cache.
+RUN make blog-cache
 
 EXPOSE 80
 
-ENTRYPOINT ["/var/www/app/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
