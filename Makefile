@@ -8,11 +8,18 @@ RM       = rm -f
 MKDIR    = mkdir -p
 PHP      = php
 COMPOSER = ./bin/composer.phar
+DOCKER   = docker
 
 # Paths
 BINDIR = ./bin
 
-.PHONY: setup blog-cache
+.PHONY: run setup blog-cache
+
+all: run
+
+run:
+	$(DOCKER) compose build
+	$(DOCKER) compose up
 
 setup: $(COMPOSER)
 	$(COMPOSER) install
