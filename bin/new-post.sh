@@ -12,7 +12,7 @@ if [ $# -eq 0 ]; then
 fi
 
 # Variables
-dt=`date -j "+%Y-%m-%d"`
+dt=`date "+%Y-%m-%d"`
 slug=$1
 fname="blog/${dt}_$slug.php"
 
