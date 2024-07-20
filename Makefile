@@ -6,6 +6,7 @@
 # Tools
 RM       = rm -f
 MKDIR    = mkdir -p
+GIT      = git
 PHP      = php
 COMPOSER = ./bin/composer.phar
 DOCKER   = docker
@@ -13,7 +14,7 @@ DOCKER   = docker
 # Paths
 BINDIR = ./bin
 
-.PHONY: run setup blog-cache
+.PHONY: run setup pull deploy blog-cache
 
 all: run
 
@@ -23,6 +24,13 @@ run:
 
 setup: $(COMPOSER)
 	$(COMPOSER) install
+
+pull:
+	$(GIT) pull
+
+deploy: pull
+	$(DOCKER) compose build
+	$(DOCKER) compose up -d
 
 blog-cache:
 	$(PHP) $(BINDIR)/build-blog-index.php
