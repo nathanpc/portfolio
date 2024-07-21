@@ -1,6 +1,6 @@
 <?php
 $post = array(
-	'title' => 'Old Computer Challenge 2024 - Day 4'
+	'title' => 'Old Computer Challenge 2024 - Day 5'
 );
 ?>
 
