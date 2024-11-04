@@ -1,3 +1,10 @@
+<?php
+$this->fill(array(
+	'title' => 'Not found',
+	'path' => '/errors',
+	'filename' => '404.html'
+));
+?>
 <?php include_once __DIR__ . '/../../templates/doctype.php'; ?>
 <html>
 <head>
@@ -8,7 +15,6 @@
 
 <body>
 	<?php include_once __DIR__ . '/../../templates/header.php'; ?>
-	<?php http_response_code(404); ?>
 
 	<div class="section">
 		<h2>Not found</h2>

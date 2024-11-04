@@ -1,3 +1,10 @@
+<?php
+$this->fill(array(
+	'title' => 'Internal server error',
+	'path' => '/errors',
+	'filename' => '500.html'
+));
+?>
 <?php include_once __DIR__ . '/../../templates/doctype.php'; ?>
 <html>
 <head>
@@ -8,7 +15,6 @@
 
 <body>
 	<?php include_once __DIR__ . '/../../templates/header.php'; ?>
-	<?php http_response_code(500); ?>
 
 	<div class="section">
 		<h2>Internal server error</h2>

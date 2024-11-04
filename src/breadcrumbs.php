@@ -42,8 +42,9 @@ function breadcrumbs(?array $crumbs = null): string {
  *
  * @return array Breadcrumbs structure based on the request.
  */
-function breadcrumbs_fromreq(): array {
-	$url_path = strtok($_SERVER['REQUEST_URI'], '?');
+function breadcrumbs_fromreq($path): array {
+	// TODO: Make this compatible with fantastique.
+	$url_path = $path;
 	$crumbs = array();
 	$paths = array();
 

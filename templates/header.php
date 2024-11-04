@@ -2,7 +2,7 @@
 	<!-- Title header block. -->
 	<div id="title-head">
 		<h1>Nathan Campos</h1>
-		<?= breadcrumbs(isset($crumbs) ? $crumbs : null); ?>
+		<?= breadcrumbs(breadcrumbs_fromreq("{$this->path}")); ?>
 	</div>
 
 	<!-- Navigation bar. -->
@@ -11,7 +11,7 @@
 			'index' => '/',
 			'projects' => '/projects',
 			'blog' => '/blog',
-			'work' => $_SERVER['REQUEST_SCHEME'] . '://innoveworkshop.com/',
+			'work' => '://innoveworkshop.com/',
 			'contact' => '/contact'
 		)); ?>
 	</div>

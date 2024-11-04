@@ -10,8 +10,7 @@
   ],
   "require": {
     "php": "^8.2",
-    "ext-json": "*",
-    "halaxa/json-machine": "^1.1"
+    "nathanpc/fantastique": "dev-main"
   },
   "autoload": {
     "psr-4": {

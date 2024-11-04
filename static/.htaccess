@@ -1,0 +1,12 @@
+# Ensure we only use index.html for the index page.
+DirectoryIndex index.html
+
+# Error documents.
+ErrorDocument 404 /errors/404.html
+ErrorDocument 500 /errors/500.html
+
+# Protect the .htaccess file.
+<FilesMatch "\.htaccess$">
+	Order Allow,Deny
+	Deny from all
+</FilesMatch>

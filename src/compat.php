@@ -9,44 +9,6 @@
 
 require_once __DIR__ . '/../src/common_utils.php';
 
-// Get the browser information once in order to infer it's oldness.
-$browser_info = get_browser(null, true);
-
-/**
- * Checks if the browser that is requesting us is console-based and won't be
- * capable of interpreting CSS or displaying images.
- *
- * @return bool TRUE if the browser visiting us is console-based.
- */
-function compat_isconsole(): bool {
-	global $browser_info;
-	return ($browser_info['browser'] == 'Lynx') ||
-		($browser_info['browser'] == 'w3m');
-}
-
-/**
- * Checks if the browser that is requesting us is based on WebKit. This includes
- * the Blink engine.
- *
- * @return bool TRUE if the browser visiting us is WebKit-based.
- */
-function compat_iswebkit(): bool {
-	global $browser_info;
-	return ($browser_info['renderingengine_name'] == 'WebKit') ||
-		($browser_info['renderingengine_name'] == 'Blink');
-}
-
-/**
- * Checks if the device that is requesting us is of the mobile type (smartphone
- * or tablet).
- *
- * @return bool TRUE if the browser visiting us is WebKit-based.
- */
-function compat_ismobile(): bool {
-	global $browser_info;
-	return (bool)$browser_info['ismobiledevice'];
-}
-
 /**
  * Generates a compatible image for an ancient browser.
  *
