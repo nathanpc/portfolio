@@ -1,7 +1,16 @@
-<?php include __DIR__ . '/../templates/doctype.php'; ?>
+<?php
+// Fantastique object building.
+$this->fill(array(
+	'title' => 'Nathan Campos',
+	'description' => 'Nathan\'s personal corner of the internet, fully ' .
+		'compatible with everything, filled with useless information.'
+));
+
+include __DIR__ . '/../templates/doctype.php';
+?>
 <html>
 <head>
-	<title>Nathan Campos</title>
+	<title><?= $this->title ?></title>
 	
 	<?php include __DIR__ . '/../templates/head.php'; ?>
 </head>

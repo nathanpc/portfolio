@@ -1,8 +1,17 @@
-<?php include __DIR__ . '/../templates/doctype.php'; ?>
+<?php
+// Fantastique object building.
+$this->fill(array(
+	'title' => 'Get in touch',
+	'description' => 'Contacting him is easy, getting a reply is not, if you ' .
+		'are willing to accept this, go for it!'
+));
+
+include __DIR__ . '/../templates/doctype.php';
+?>
 <html>
 
 <head>
-	<title>Get in contact</title>
+	<title><?= $this->title ?></title>
 
 	<?php include __DIR__ . '/../templates/head.php'; ?>
 </head>
