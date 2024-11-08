@@ -27,7 +27,7 @@ if ($listing) {
 }
 
 // Render the DOCTYPE template.
-include_once __DIR__ . '/../templates/doctype.php';
+include __DIR__ . '/../templates/doctype.php';
 ?>
 <html>
 
@@ -42,11 +42,11 @@ include_once __DIR__ . '/../templates/doctype.php';
 		}
 	?></title>
 
-	<?php include_once __DIR__ . '/../templates/head.php'; ?>
+	<?php include __DIR__ . '/../templates/head.php'; ?>
 </head>
 
 <body>
-	<?php include_once __DIR__ . '/../templates/header.php'; ?>
+	<?php include __DIR__ . '/../templates/header.php'; ?>
 
 	<?php if ($listing) { ?>
 		<!-- Blog listing. -->
@@ -91,7 +91,7 @@ include_once __DIR__ . '/../templates/doctype.php';
 		</div>
 	<?php } ?>
 
-	<?php include_once __DIR__ . '/../templates/footer.php'; ?>
+	<?php include __DIR__ . '/../templates/footer.php'; ?>
 </body>
 
 </html>

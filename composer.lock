@@ -4,26 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87e6632444ba2993822262936918498b",
+    "content-hash": "2f77512d183946bc1ee612404f80f9d6",
     "packages": [
         {
             "name": "nathanpc/fantastique",
-            "version": "dev-main",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nathanpc/fantastique.git",
-                "reference": "89597684f810ba53fa4dcee75b74100cefcd0b9e"
+                "reference": "34efdfb4dfe139d514b5a3ea277bbbca3f84e28c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nathanpc/fantastique/zipball/89597684f810ba53fa4dcee75b74100cefcd0b9e",
-                "reference": "89597684f810ba53fa4dcee75b74100cefcd0b9e",
+                "url": "https://api.github.com/repos/nathanpc/fantastique/zipball/34efdfb4dfe139d514b5a3ea277bbbca3f84e28c",
+                "reference": "34efdfb4dfe139d514b5a3ea277bbbca3f84e28c",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -44,17 +43,15 @@
             "description": "An un-opinionated static website generator for PHP",
             "support": {
                 "issues": "https://github.com/nathanpc/fantastique/issues",
-                "source": "https://github.com/nathanpc/fantastique/tree/v0.1.0"
+                "source": "https://github.com/nathanpc/fantastique/tree/0.2.0"
             },
-            "time": "2024-11-04T18:08:46+00:00"
+            "time": "2024-11-08T18:09:26+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "nathanpc/fantastique": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

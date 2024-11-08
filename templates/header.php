@@ -11,7 +11,7 @@
 			'index' => '/',
 			'projects' => '/projects',
 			'blog' => '/blog',
-			'work' => '://innoveworkshop.com/',
+			'work' => '//innoveworkshop.com/',
 			'contact' => '/contact'
 		)); ?>
 	</div>

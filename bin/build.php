@@ -15,5 +15,11 @@ use Fantastique\Page;
 $root = __DIR__ . '/..';
 $builder = new Builder("$root/site", "$root/build");
 
+// Copy static files.
+$builder->copy_static("$root/static");
+
 // Make the error pages.
 $builder->render_folder("$root/site/errors");
+
+// Create the main website pages.
+$builder->render_folder("$root/site", false, ['blog.php']);

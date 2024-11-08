@@ -1,14 +1,14 @@
-<?php include_once __DIR__ . '/../templates/doctype.php'; ?>
+<?php include __DIR__ . '/../templates/doctype.php'; ?>
 <html>
 
 <head>
 	<title>Get in contact</title>
 
-	<?php include_once __DIR__ . '/../templates/head.php'; ?>
+	<?php include __DIR__ . '/../templates/head.php'; ?>
 </head>
 
 <body>
-	<?php include_once __DIR__ . '/../templates/header.php'; ?>
+	<?php include __DIR__ . '/../templates/header.php'; ?>
 
 	<div class="section">
 		<h2>direct contact</h2>
@@ -73,7 +73,7 @@
 		</ul>
 	</div>
 
-	<?php include_once __DIR__ . '/../templates/footer.php'; ?>
+	<?php include __DIR__ . '/../templates/footer.php'; ?>
 </body>
 
 </html>

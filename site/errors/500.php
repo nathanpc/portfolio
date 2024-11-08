@@ -5,16 +5,16 @@ $this->fill(array(
 	'filename' => '500.html'
 ));
 ?>
-<?php include_once __DIR__ . '/../../templates/doctype.php'; ?>
+<?php include __DIR__ . '/../../templates/doctype.php'; ?>
 <html>
 <head>
 	<title>Internal server error</title>
 
-	<?php include_once __DIR__ . '/../../templates/head.php'; ?>
+	<?php include __DIR__ . '/../../templates/head.php'; ?>
 </head>
 
 <body>
-	<?php include_once __DIR__ . '/../../templates/header.php'; ?>
+	<?php include __DIR__ . '/../../templates/header.php'; ?>
 
 	<div class="section">
 		<h2>Internal server error</h2>
@@ -25,7 +25,7 @@ $this->fill(array(
 			'500 Internal Server Error cat meme') ?></p>
 	</div>
 
-	<?php include_once __DIR__ . '/../../templates/footer.php'; ?>
+	<?php include __DIR__ . '/../../templates/footer.php'; ?>
 </body>
 
 </html>

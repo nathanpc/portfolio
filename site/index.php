@@ -1,12 +1,12 @@
-<?php include_once __DIR__ . '/../templates/doctype.php'; ?>
+<?php include __DIR__ . '/../templates/doctype.php'; ?>
 <html>
 <head>
 	<title>Nathan Campos</title>
 	
-	<?php include_once __DIR__ . '/../templates/head.php'; ?>
+	<?php include __DIR__ . '/../templates/head.php'; ?>
 </head>
 <body>
-	<?php include_once __DIR__ . '/../templates/header.php'; ?>
+	<?php include __DIR__ . '/../templates/header.php'; ?>
 
 	<div class="section">
 		<h2>about me</h2>
@@ -21,9 +21,6 @@
 						'style' => 'float: left; padding-right: 10px;'
 					))
 			?>
-			<?php if (compat_isconsole()) { ?>
-				<p></p>
-			<?php } ?>
 	
 			I'm a <b>full-stack developer</b> (although I prefer the backend),
 			<b>creative technologist</b> and an <b>electronics engineer</b>
@@ -54,7 +51,7 @@
 	
 		<p>If you browse this website, <a href="https://github.com/nathanpc">my
 		GitHub profile</a>, or
-		<a href="<?= $_SERVER['REQUEST_SCHEME'] . '://innoveworkshop.com/' ?>">
+		<a href="//innoveworkshop.com/">
 		my company's website</a> you'll notice that I'm capable of building
 		quite a lot of amazing things. If you're looking for someone with my
 		skillset either for your company or to make your idea become a reality
@@ -102,6 +99,6 @@
 		maintain.</p>
 	</div>
 
-	<?php include_once __DIR__ . '/../templates/footer.php'; ?>
+	<?php include __DIR__ . '/../templates/footer.php'; ?>
 </body>
 </html>
