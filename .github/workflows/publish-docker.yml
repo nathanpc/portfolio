@@ -9,6 +9,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  PLATFORMS: linux/amd64,linux/arm64
 
 # Allow access to everything that's needed.
 permissions:
@@ -47,11 +48,19 @@ jobs:
         id: meta
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Set up QEMU for multi-platform build
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: ${{ env.PLATFORMS }}
+      - name: Set up Docker Buildx for multi-platform build
+        uses: docker/setup-buildx-action@v3
+        with:
+          platforms: ${{ env.PLATFORMS }}
       - name: Build and publish Docker image
         id: push
         uses: docker/build-push-action@v6
         with:
-          #platforms: linux/amd64,linux/arm64
+          platforms: ${{ env.PLATFORMS }}
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
