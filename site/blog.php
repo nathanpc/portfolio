@@ -2,11 +2,8 @@
 require_once __DIR__ . '/../templates/includes.php';
 require_once __DIR__ . '/../src/blog.php';
 
-// Template defaults.
-$crumbs = array('blog' => '/blog');
-$listing = $this->context['listing'];
-
 // Fantastique object building.
+$listing = $this->context['listing'];
 $this->fill(array(
 	'title' => 'Nathan\'s random musings',
 	'path' => '/blog'

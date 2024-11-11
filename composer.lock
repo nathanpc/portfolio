@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20561496c9a619c815986027aad0cdc1",
+    "content-hash": "c995565d702203c00d4fdab7da0814dc",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -56,16 +56,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nathanpc/fantastique.git",
-                "reference": "322db9d7d36b932a063c8f671b1686c94483e05f"
+                "reference": "d563b2fece751d5344ecc2045ba5f6a4c9d99108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nathanpc/fantastique/zipball/322db9d7d36b932a063c8f671b1686c94483e05f",
-                "reference": "322db9d7d36b932a063c8f671b1686c94483e05f",
+                "url": "https://api.github.com/repos/nathanpc/fantastique/zipball/d563b2fece751d5344ecc2045ba5f6a4c9d99108",
+                "reference": "d563b2fece751d5344ecc2045ba5f6a4c9d99108",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0"
+                "php": "^8.1"
             },
             "default-branch": true,
             "type": "library",
@@ -90,7 +90,7 @@
                 "issues": "https://github.com/nathanpc/fantastique/issues",
                 "source": "https://github.com/nathanpc/fantastique/tree/main"
             },
-            "time": "2024-11-11T09:39:17+00:00"
+            "time": "2024-11-11T17:52:46+00:00"
         }
     ],
     "packages-dev": [],
@@ -102,7 +102,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2"
+        "php": "^8.1"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"

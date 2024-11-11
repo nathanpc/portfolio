@@ -1,12 +1,8 @@
 <?php
 require_once __DIR__ . '/../templates/includes.php';
 
-// Get the last modified date from the post's file and fix the breadcrumbs bar.
+// Get the last modified date from the post's file.
 $last_modified = $this->last_modified;
-$crumbs = array(
-	'blog' => '/blog',
-	$this->slug => $this->permalink()
-);
 
 // Render the DOCTYPE template.
 include __DIR__ . '/../templates/doctype.php';

@@ -2,7 +2,7 @@
 	<!-- Title header block. -->
 	<div id="title-head">
 		<h1>Nathan Campos</h1>
-		<?= breadcrumbs(breadcrumbs_fromreq("{$this->path}")); ?>
+		<?= breadcrumbs(breadcrumbs_page($this)); ?>
 	</div>
 
 	<!-- Navigation bar. -->
