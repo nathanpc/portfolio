@@ -4,25 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f77512d183946bc1ee612404f80f9d6",
+    "content-hash": "20561496c9a619c815986027aad0cdc1",
     "packages": [
         {
-            "name": "nathanpc/fantastique",
-            "version": "0.2.0",
+            "name": "bramus/ansi-php",
+            "version": "3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nathanpc/fantastique.git",
-                "reference": "34efdfb4dfe139d514b5a3ea277bbbca3f84e28c"
+                "url": "https://github.com/bramus/ansi-php.git",
+                "reference": "f581b2fd322177e5fabd67af240811838c1c8fbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nathanpc/fantastique/zipball/34efdfb4dfe139d514b5a3ea277bbbca3f84e28c",
-                "reference": "34efdfb4dfe139d514b5a3ea277bbbca3f84e28c",
+                "url": "https://api.github.com/repos/bramus/ansi-php/zipball/f581b2fd322177e5fabd67af240811838c1c8fbc",
+                "reference": "f581b2fd322177e5fabd67af240811838c1c8fbc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bramus\\Ansi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bramus Van Damme",
+                    "email": "bramus@bram.us",
+                    "homepage": "https://www.bram.us/"
+                }
+            ],
+            "description": "ANSI Control Functions and ANSI Control Sequences (Colors, Erasing, etc.) for PHP CLI Apps",
+            "support": {
+                "issues": "https://github.com/bramus/ansi-php/issues",
+                "source": "https://github.com/bramus/ansi-php/tree/3.1"
+            },
+            "time": "2021-10-28T10:45:05+00:00"
+        },
+        {
+            "name": "nathanpc/fantastique",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nathanpc/fantastique.git",
+                "reference": "322db9d7d36b932a063c8f671b1686c94483e05f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nathanpc/fantastique/zipball/322db9d7d36b932a063c8f671b1686c94483e05f",
+                "reference": "322db9d7d36b932a063c8f671b1686c94483e05f",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -43,15 +88,17 @@
             "description": "An un-opinionated static website generator for PHP",
             "support": {
                 "issues": "https://github.com/nathanpc/fantastique/issues",
-                "source": "https://github.com/nathanpc/fantastique/tree/0.2.0"
+                "source": "https://github.com/nathanpc/fantastique/tree/main"
             },
-            "time": "2024-11-08T18:09:26+00:00"
+            "time": "2024-11-11T09:39:17+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "nathanpc/fantastique": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

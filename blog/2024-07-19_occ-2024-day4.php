@@ -16,7 +16,7 @@ with USB 3.0+ for so long that I did forget actually how painfully slow things
 were back in the day (when I thought this was fast). I'm never complaining about
 USB 3.0 speeds ever again.</p>
 
-<?= blog_image('usb2-copy.png', 'Agonizing transfer at USB 2.0 speeds') ?>
+<?= $this->image('usb2-copy.png', 'Agonizing transfer at USB 2.0 speeds') ?>
 
 <p>While following the adventures of <a href="http://sizeof.cat/post/old-computer-challenge-2024/">
 sizeof(cat)</a> and <a href="http://portal.mozz.us/gemini/gemini.jasonsanta.xyz/occ-day-1.gmi">
@@ -28,7 +28,7 @@ performance, although upon talking about it on IRC <code>unsigned</code>
 change the thermal compound of the CPU, which was a very good idea after
 all!</p>
 
-<?= blog_image('eeepc-teardown.jpeg', 'The insides of the Eee PC 1005PE') ?>
+<?= $this->image('eeepc-teardown.jpeg', 'The insides of the Eee PC 1005PE') ?>
 
 <p>As I began tearing it down, <a href="https://www.ifixit.com/Guide/Asus+Eee+PC+1005PEB+Hard+Drive+Replacement/24933">
 a process</a> that's a lot more enjoyable than in the PowerBook G4, I was glad I
@@ -44,7 +44,7 @@ while installing drivers and applications, constantly leaving the CPU at 100%,
 the highest temperature recorded by <a href="https://www.cpuid.com/softwares/hwmonitor.html">
 HWMonitor</a> was 75&deg;C, which is perfectly fine by me.</p>
 
-<?= blog_image('thermal-pad-crime.jpeg',
+<?= $this->image('thermal-pad-crime.jpeg',
 	'The crime against all that\'s holy') ?>
 
 <p>All in all I had a great time working on this old netbook and installing all

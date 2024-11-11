@@ -4,7 +4,7 @@ $post = array(
 );
 ?>
 
-<?= blog_image("kindle-gray-android.png", "My dream device") ?>
+<?= $this->image("kindle-gray-android.png", "My dream device") ?>
 
 <p>Today I was reading some of the 109 articles saved on my <a href="http://getpocket.com/">Pocket</a> account and I thought about something that I would love: A tablet running a fully customized (for stability and lightness) version of Android sporting a awesome e-ink display. As soon as possible I <a href="https://plus.google.com/u/0/112969911133615369021/posts/RVz3GRHvgw2">posted it on Google+</a>, since I really wanted to philosophize more on this idea I've wrote this article.</p>
 
@@ -24,7 +24,7 @@ $post = array(
 
 <p>This is my sketch of the perfect UI for it, <a href="http://www.fiftythree.com/paper">made with Paper</a> (sorry for my terrible drawing skills):</p>
 
-<?= blog_image("android-eink-sketch.JPG", "UI Sketch") ?>
+<?= $this->image("android-eink-sketch.JPG", "UI Sketch") ?>
 
 <p>The interface is pretty clean and extremely usable (also it looks a bit with the Kindle interface). The status bar will only show the name of the user and a clock. Below the <em>status bar</em> is the <em>app drawer</em>, I thought about it as just a simple collection of the application names (scrollable if you have more applications than it can fit on the screen). The last piece is the actual running application itself.</p>
 

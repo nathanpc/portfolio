@@ -4,7 +4,7 @@ $post = array(
 );
 ?>
 
-<?= blog_image("my-gadgets.jpg", "My daily use gadgets + my iPhone that was used to take this photo") ?>
+<?= $this->image("my-gadgets.jpg", "My daily use gadgets + my iPhone that was used to take this photo") ?>
 
 <p><em>Disclaimer: If you're a Android fan boy close this window right now.</em></p>
 

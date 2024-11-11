@@ -15,7 +15,7 @@ since I'm a lot more confortable with the Win32 API. Since the Eee PC is finally
 ready to go it'll probably be my main development machine for the first
 implementation of the client.</p>
 
-<?= blog_image('during-updates.png', 'A long way to go with the updates...') ?>
+<?= $this->image('during-updates.png', 'A long way to go with the updates...') ?>
 
 <p>Speaking of the Eee PC, it spent the whole day getting Office 2010, Visual
 Visual Studio 2010, and 216 Windows updates installed. Getting from a fresh
@@ -25,7 +25,7 @@ whole process even more tedious and cumbersome, leaving me feeling as an admin
 <a href="https://arstechnica.com/information-technology/2024/07/crowdstrike-fixes-start-at-reboot-up-to-15-times-and-get-more-complex-from-there/">
 recovering from the CrowdStrike fiasco</a>.</p>
 
-<?= blog_image('after-updates.png',
+<?= $this->image('after-updates.png',
 	'Had to reboot multiple times to get all of them to install sucessfully') ?>
 
 <p>Today was also the day when many of the participants in the challenge

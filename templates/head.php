@@ -1,3 +1,5 @@
+<title><?= $this->title ?></title>
+
 <!-- Mobile definitions. -->
 <meta name="viewport"
 	content="width=600, initial-scale=1, user-scalable=1" />

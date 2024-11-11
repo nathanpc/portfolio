@@ -37,7 +37,7 @@ of this website</b>, since it still need a ton of work, and also to
 a lot of time in Illustrator CS2 and <a href="https://macintoshgarden.org/apps/bare-bones-software-cd-2007">
 BBEdit 8.6</a>.</p>
 
-<?= blog_image('powerbook-g4-2023.jpg',
+<?= $this->image('powerbook-g4-2023.jpg',
 	'The PowerBook G4 circa 2023 before the memory disaster') ?>
 
 <p>There is only one problem with this machine... The last time I used it was
@@ -45,10 +45,10 @@ in 2023 because it developed what I can only describe as a memory issue in one
 of the soldered-on memory chips. It started randomly crashing and when I tried
 reinstalling the operating system it would randomly crash at different points
 during the installation with a kernel panic and some times would crash with
-<a href="<?= blog_asset('powerbook-crash-hard.jpg') ?>">weird linking and memory
+<a href="<?= $this->asset('powerbook-crash-hard.jpg') ?>">weird linking and memory
 allocation errors</a>.</p>
 
-<?= blog_image('powerbook-kernel-panic.jpg',
+<?= $this->image('powerbook-kernel-panic.jpg',
 	'The PowerBook G4 and its kernel panics') ?>
 
 <p>Because of this I'll have to transplant the motherboard of a parts machine I
@@ -71,7 +71,7 @@ Power Mac G5 with dual processors</a>. It's a dream machine of mine ever since I
 saw one at the Apple Store back in 2005. Even today, having a machine with two
 physical processors, that isn't a server, still amazes me.</p>
 
-<?= blog_image('powermac-sidewalk.jpg',
+<?= $this->image('powermac-sidewalk.jpg',
 	'The beast in the sidewalk\'s of Lisbon while I was taking a break from carrying it') ?>
 
 <p>My machine was a bargain I found on Facebook Marketplace last year, where an

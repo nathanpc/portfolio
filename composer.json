@@ -10,7 +10,8 @@
   ],
   "require": {
     "php": "^8.2",
-    "nathanpc/fantastique": "0.2.0"
+    "bramus/ansi-php": "^3.1",
+    "nathanpc/fantastique": "dev-main"
   },
   "autoload": {
     "psr-4": {

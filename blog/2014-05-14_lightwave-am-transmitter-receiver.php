@@ -6,7 +6,7 @@ $post = array(
 
 <p>This week I've been experimenting with a very simple and cheap project for wireless transmissions, a <a href="http://en.wikipedia.org/wiki/Light">lightwave</a> AM transmitter and receiver based on <a href="http://www.cheapscience.com/2012/03/voice-led-modulator.html">Scott's design</a>, which was based on <a href="https://www.youtube.com/watch?v=vvF77YdkzcY">VK2ZAY's design</a>. In my final design I've increased the base biasing resistors to decrease the size of the coupling capacitor and also used a darlington transistor to get more current gain.</p>
 
-<?= blog_image("basic-schematic.png", "Schematic") ?>
+<?= $this->image("basic-schematic.png", "Schematic") ?>
 
 <p>The transmitter is pretty straight forward, the input modulates the current passing by the LED, which modulates the intensity of light, if you've designed any class A amplifiers in the past you surely know how it works. The receiver is just a simple <a href="http://en.wikipedia.org/wiki/Transimpedance_amplifier">transimpedance amplifier</a>, which is amplifying the signal quite a bit (~56x gain) since the transmitter will usually be a bit far from the receiver. You can do the same with a op-amp, but I much prefer a discrete circuit for these simple things.</p>
 
@@ -14,7 +14,7 @@ $post = array(
 
 <p>If you want to experiment with different values in a simulation, here is the <a href="https://dl.dropboxusercontent.com/u/12174296/Current%20Flow/AM%20Lightwave%20Transmitter%20and%20Receiver.asc">LTspice schematic</a>. The best way to choose the best LED + photodiode combination to maximize the range is to build some breakout boards that you can plug different LEDs and photodiodes until you have the perfect combination.</p>
 
-<?= blog_image("first-prototypes.jpg", "Prototypes") ?>
+<?= $this->image("first-prototypes.jpg", "Prototypes") ?>
 
 <p style="font-size: 0.8em">
 	This article was imported from <a href="http://currentflow.net/">my old blog

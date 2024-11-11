@@ -21,7 +21,7 @@ bundled Java and not OpenJDK. You can ensure you're on the latest version by
 checking for software updates using the Software Update tool on Mac OS X 10.5.
 If there are no updates available you're set!</p>
 
-<?= blog_image('up-to-date.png',
+<?= $this->image('up-to-date.png',
 	'A completely up-to-date installation of Mac OS X 10.5') ?>
 
 <p>After that you'll need a period correct IDE to develop on. I choose to use
@@ -47,7 +47,7 @@ directory, which is where Apple stores their JRE on OS X 10.5. Your window
 should look more or less like this after Eclipse finds all the system libraries
 included:</p>
 
-<?= blog_image('jre-definition.png',
+<?= $this->image('jre-definition.png',
 	'JRE Definition for Java 1.5.0 on Eclipse 3.8.2') ?>
 
 <p>Now you should have everything to start developing Java apps on Mac OS X,

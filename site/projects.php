@@ -13,8 +13,6 @@ include __DIR__ . '/../templates/doctype.php';
 <html>
 
 <head>
-	<title><?= $this->title ?></title>
-
 	<?php include __DIR__ . '/../templates/head.php'; ?>
 </head>
 

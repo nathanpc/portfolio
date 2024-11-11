@@ -86,7 +86,7 @@ $post = array(
 	for. This was the schematic and board that I came up with:
 </p>
 
-<?= blog_image('prototype-schematic.png', 'First Concept Schematic', [], [
+<?= $this->image('prototype-schematic.png', 'First Concept Schematic', [], [
 	'caption' => true
 ]) ?>
 
@@ -103,7 +103,7 @@ $post = array(
 	supply.
 </p>
 
-<?= blog_image('prototype-pcb.png', 'First Concept PCB Layout', [], [
+<?= $this->image('prototype-pcb.png', 'First Concept PCB Layout', [], [
 	'caption' => true
 ]) ?>
 
@@ -142,7 +142,7 @@ $post = array(
 	Here's a sneak peek:
 </p>
 
-<?= blog_image_gallery(array(
+<?= $this->image_gallery(array(
 	array('loc' => "professional-pcb.jpg", 'alt' => "Manufactured PCB"),
 	array('loc' => "homemade-pcb.jpg", 'alt' => "Homemade Prototypes"),
 	array('loc' => "board-eagle.png", 'alt' => "PCB Layout")

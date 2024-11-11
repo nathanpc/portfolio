@@ -4,11 +4,11 @@ $post = array(
 );
 ?>
 
-<?= blog_image("title.png", "NativeControls") ?>
+<?= $this->image("title.png", "NativeControls") ?>
 
 <p>As many might know the most used plugins in <a href="http://phonegap.com/">PhoneGap</a> for iOS are <a href="https://github.com/purplecabbage/phonegap-plugins/tree/master/iPhone/NativeControls">NativeControls</a> and <a href="https://github.com/purplecabbage/phonegap-plugins/tree/master/iPhone/ChildBrowser">ChildBrowser</a>, but installing plugins is a bit tricky and you can't easily find this kind of help around the internet, for example in my case I've learned by reading about plugins installation in PhoneGap and doing tests, so on this post I'll cover the entire setup and usage of NativeControls (but you can use this for any other plugin in the iOS repo) in a very simple and informative way that even a PhoneGap beginner can understand. I'll assume that you've already had installed and configured the Xcode environment on your Mac and is familiarized with the latest version of it. The first thing you must do is download the <a href="https://github.com/purplecabbage/phonegap-plugins">phonegap-plugins</a> repo archive and extract it anywhere you like. Now go to the extracted folder and go to iPhone/NativeControls and copy the NativeControls.h and NativeControls.m to the <code>/Plugins</code> folder on Xcode, then move the <code>NativeControls.js</code> to your desired place in the <code>www</code> folder. After all this copying and pasting you must open your <code>PhoneGap.plist</code> under <code>/Supporting Files</code> and add a new item to the Plugins array with the <em>Key</em> and <em>Value</em> <code>NativeControls</code> and the <code>Type</code> String, at the end your project should look something like this:</p>
 
-<?= blog_image("xcode.png", "Xcode") ?>
+<?= $this->image("xcode.png", "Xcode") ?>
 
 <p>Now you're ready to start diving into the code. The first thing you should do is include the required Javascript files into your <code>index</code> HTML source in this order:</p>
 
@@ -17,7 +17,7 @@ $post = array(
 
 <p>The next thing to do is go to your main Javascript file, which contains the <code>onDeviceReady</code> event set and put the NativeControls initialization code there. On this example we are going to use the <code>TabBar</code> component to output something like this:</p>
 
-<?= blog_image("tabbar.png", "TabBar") ?>
+<?= $this->image("tabbar.png", "TabBar") ?>
 
 <p>As you might have noticed I'm using the <a href="http://glyphish.com/">Glyphish Pro</a> icon pack there, which you can get for $25, but it's worth every cent, since it's such a complete icon pack for your TabBars and more. First of all you should initialize a NativeControls variable and create a assign a <code>TabBar</code> to it using this code:</p>
 

@@ -32,7 +32,7 @@ $post = array(
 	Wizard</code> like this:
 </p>
 
-<?= blog_image('Add-Roles-and-Features-Wizard.png', 'Installing FSRM role using the GUI', [], [
+<?= $this->image('Add-Roles-and-Features-Wizard.png', 'Installing FSRM role using the GUI', [], [
 	'caption' => true
 ]) ?>
 

@@ -13,7 +13,7 @@ they should never reuse their iOS icons for their macOS applications. Given the
 unique design language of the Mac's operating system the icons must be
 different.</p>
 
-<?= blog_image('old-apple-guidelines.png',
+<?= $this->image('old-apple-guidelines.png',
 	'OS X 10.8 Human Interface Guidelines') ?>
 
 <p>It's ironic that 10 years later the complete opposite would be true. These
@@ -31,7 +31,7 @@ like a glorified iPad these days, but along the way, and along this path of
 merging the mobile and desktop design languages, we lost a very important design
 aspect related to the icons: Their shape.</p>
 
-<?= blog_image('modern-dock.png', 'Appearance of the dock on modern macOS') ?>
+<?= $this->image('modern-dock.png', 'Appearance of the dock on modern macOS') ?>
 
 <p>Whenever you look at the dock on macOS your brain has to interpret the sea of
 icons it's currently seeing. Given that they are all the exact same shape your
@@ -40,7 +40,7 @@ have to try harder in order to identify icon of the application you are looking
 for. Beforehand you could actually use the shape of the icon itself to help out
 on that cognitive task.</p>
 
-<?= blog_image('old-dock.png', 'How my dock used to look like in OS X 10.8') ?>
+<?= $this->image('old-dock.png', 'How my dock used to look like in OS X 10.8') ?>
 
 <p>Not only did we loose the shape of the icons, we also lost their unique 3D
 appearance, something that was completely different from what Windows had back

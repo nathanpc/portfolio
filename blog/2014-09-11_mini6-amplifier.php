@@ -4,23 +4,23 @@ $post = array(
 );
 ?>
 
-<?= blog_image("mini6.jpg", "Mini6 amplifier") ?>
+<?= $this->image("mini6.jpg", "Mini6 amplifier") ?>
 
 <p>I was a bit bored a couple of weeks ago so I decided to design a very simple discrete amplifier rated for 6W/channel just to make sure it would't oscillate and be more confident to build bigger ones.</p>
 
-<?= blog_image("schematic.png", "Schematic") ?>
+<?= $this->image("schematic.png", "Schematic") ?>
 
 <p>As you can see it's a fairly simple design with a op-amp pre-amplifier and a discrete power amplifier. Building it was extremely simple, the difficult part is always mounting all the panel components and wiring everything.</p>
 
-<?= blog_image("checking-values.jpg", "Checking components to be placed") ?>
+<?= $this->image("checking-values.jpg", "Checking components to be placed") ?>
 
 <p>A while ago I built a program called <a href="https://github.com/nathanpc/build-bom">build-bom</a> to help me quickly find the component values when assembling a board. It's a great use for a old EeePC that you may have laying around.</p>
 
-<?= blog_image("overview.jpg", "PCB with all components soldered") ?>
+<?= $this->image("overview.jpg", "PCB with all components soldered") ?>
 
 <p>One thing that you may have noticed is that I've used canned transistors instead of your typical plastic TO-92. The only reason I did this was because they looked cool and I have a bunch laying around.
 
-<?= blog_image_gallery(array(
+<?= $this->image_gallery(array(
 	array('loc' => "board-cad.png", 'alt' => "How the board looks like in CAD"),
 	array('loc' => "components.jpg", 'alt' => "Organizing the components to begin soldering"),
 	array('loc' => "begin-soldering.jpg", 'alt' => "Started soldering"),
