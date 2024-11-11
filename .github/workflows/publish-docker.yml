@@ -50,6 +50,14 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
+          platforms: linux/amd64,linux/arm64
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+      - name: Generate build artifact attestation
+        uses: actions/attest-build-provenance@v1
+        with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
