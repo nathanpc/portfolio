@@ -1,0 +1,55 @@
+name: Create and publish a Docker image of the static website
+
+# Run this action on push to the main branch and manually from the UI.
+on:
+  push:
+    branches: [$default-branch]
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+# Allow access to everything that's needed.
+permissions:
+  contents: read
+  packages: write
+  attestations: write
+  id-token: write
+
+# Do not allow multiple deployments.
+concurrency:
+  group: 'push'
+  cancel-in-progress: false
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+        id: 'checkout'
+      - name: Log in to the container registry
+        uses: docker/login-action
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata for Docker
+        uses: docker/metadata-action
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Build and publish Docker image
+        id: push
+        uses: docker/build-push-action
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
