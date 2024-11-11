@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM alpine:3 AS build
 
 RUN apk update && apk add \
 	make \
@@ -13,33 +13,35 @@ RUN apk update && apk add \
 	&& rm -rf /var/cache/apk/*
 
 # Setup Virtual Host.
-RUN sed -zie 's|\(<Directory "/var/www/localhost/htdocs">\)\(.*\)\(</Directory>\)|\1\nOptions Indexes FollowSymLinks\nAllowOverride All\nRequire all granted\n\3|g' /etc/apache2/httpd.conf && \
-	sed -ie 's|/var/www/localhost/htdocs|/var/www/app/public|g' /etc/apache2/httpd.conf && \
-	sed -ie 's|#\(LoadModule rewrite_module modules/mod_rewrite.so\)|\1|g' /etc/apache2/httpd.conf
+RUN sed -zie 's|\(<Directory "/var/www/localhost/htdocs">\)\(.*\)\(</Directory>\)|\1\nOptions Indexes FollowSymLinks\nAllowOverride All\nRequire all granted\n\3|g' /etc/apache2/httpd.conf
 
-# Download and setup browscap.ini
-RUN curl 'http://browscap.org/stream?q=Full_PHP_BrowsCapINI' -o \
-	/etc/php83/browscap.ini
-RUN sed -ie 's|;browscap = extra/browscap.ini|browscap = /etc/php83/browscap.ini|g' \
-	/etc/php83/php.ini
+WORKDIR /app
 
-WORKDIR /var/www/app
-
-# Composer
-COPY composer.* ./
-RUN composer install
-
-# Our source files.
+# Copy over everything.
 COPY bin/ ./bin
 COPY src/ ./src
-COPY templates/ ./templates
-COPY public/ ./public
+COPY site/ ./site
 COPY blog/ ./blog
+COPY static/ ./static
+COPY templates/ ./templates
+COPY composer.json ./
+COPY composer.lock ./
 COPY Makefile ./
-# TODO: Use a multi stage build.
 
-# Build blog cache.
-RUN make blog-cache
+# Build the static website.
+RUN make setup
+RUN make build
+
+FROM alpine:3 AS deploy
+
+RUN apk update && apk add apache2 \
+	&& rm -rf /var/cache/apk/*
+
+# Copy updated Apache configuration.
+COPY --from=build /etc/apache2/httpd.conf /etc/apache2/httpd.conf
+
+# Copy static website contents.
+COPY --from=build /app/public/ /var/www/localhost/htdocs
 
 EXPOSE 80
 

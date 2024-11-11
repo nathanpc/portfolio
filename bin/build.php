@@ -45,7 +45,7 @@ function get_post_list(string $output_path): array {
 function make_website(): void {
 	// Create the builder.
 	$root = __DIR__ . '/..';
-	$output_path = "$root/build";
+	$output_path = "$root/public";
 	$builder = new Builder("$root/site", $output_path);
 
 	// Copy static files.

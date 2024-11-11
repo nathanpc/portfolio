@@ -14,9 +14,12 @@ DOCKER   = docker
 # Paths
 BINDIR = ./bin
 
-.PHONY: run setup pull deploy blog-cache
+.PHONY: build run setup pull deploy blog-cache
 
 all: run
+
+build: setup
+	$(PHP) ./bin/build.php
 
 run:
 	$(DOCKER) compose build
@@ -31,9 +34,6 @@ pull:
 deploy: pull
 	$(DOCKER) compose build
 	$(DOCKER) compose up -d
-
-blog-cache:
-	$(PHP) $(BINDIR)/build-blog-index.php
 
 $(COMPOSER):
 	$(PHP) -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
