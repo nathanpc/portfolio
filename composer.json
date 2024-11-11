@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "php": "^8.2",
+    "php": "^8.1",
     "bramus/ansi-php": "^3.1",
     "nathanpc/fantastique": "dev-main"
   },
