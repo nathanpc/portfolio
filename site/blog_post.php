@@ -1,12 +1,4 @@
-<?php
-require_once __DIR__ . '/../templates/includes.php';
-
-// Get the last modified date from the post's file.
-$last_modified = $this->last_modified;
-
-// Render the DOCTYPE template.
-include __DIR__ . '/../templates/doctype.php';
-?>
+<?php include __DIR__ . '/../templates/doctype.php';  ?>
 <html>
 
 <head>

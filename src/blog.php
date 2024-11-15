@@ -9,16 +9,17 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/common_utils.php';
 require_once __DIR__ . '/compat.php';
+require_once __DIR__ . '/page.php';
 
-use \Fantastique\Page;
+use Fantastique\Exceptions\Exception;
+use Fantastique\Exceptions\PathException;
 
 /**
  * Blog post abstraction.
  */
-class BlogPost extends Page {
+class BlogPost extends PortfolioPage {
 	public string $slug;
 	public DateTime $date;
-	public int $last_modified;
 	public string $post_source;
 	public ?array $metadata = null;
 	public ?string $content = null;
@@ -28,7 +29,8 @@ class BlogPost extends Page {
 	 *
 	 * @param string $fpath Path to the source file of the blog post.
 	 *
-	 * @throws \Fantastique\Exceptions\PathException if the file doesn't exist.
+	 * @throws PathException if the file doesn't exist.
+	 * @throws Exception if something unexpected happens.
 	 */
 	public function __construct(string $fpath) {
 		// Get our specific parts.
@@ -36,8 +38,6 @@ class BlogPost extends Page {
 		$parts = preg_split('/[._]+/', basename($fpath, '.php'), 2);
 		$this->date = date_create($parts[0]);
 		$this->slug = $parts[1];
-		$this->last_modified = $this->date->getTimestamp();
-		// TODO: Get last modified from the actual file.
 
 		// Build up the Fantastique page.
 		parent::__construct(__DIR__ . '/../blog', $fpath);

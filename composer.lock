@@ -56,12 +56,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nathanpc/fantastique.git",
-                "reference": "d563b2fece751d5344ecc2045ba5f6a4c9d99108"
+                "reference": "c28a7e569e549c5ee15cc03baf5fbd748758826f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nathanpc/fantastique/zipball/d563b2fece751d5344ecc2045ba5f6a4c9d99108",
-                "reference": "d563b2fece751d5344ecc2045ba5f6a4c9d99108",
+                "url": "https://api.github.com/repos/nathanpc/fantastique/zipball/c28a7e569e549c5ee15cc03baf5fbd748758826f",
+                "reference": "c28a7e569e549c5ee15cc03baf5fbd748758826f",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "issues": "https://github.com/nathanpc/fantastique/issues",
                 "source": "https://github.com/nathanpc/fantastique/tree/main"
             },
-            "time": "2024-11-11T17:52:46+00:00"
+            "time": "2024-11-15T09:16:33+00:00"
         }
     ],
     "packages-dev": [],

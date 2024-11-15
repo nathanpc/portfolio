@@ -11,7 +11,7 @@
 		Nathan Campos &#169; <?= '2024-' . date('Y') ?>
 	</div>
 	<div class="last-modified">
-		Last modified: <?= date('Y-m-d H:i', $last_modified ?? getlastmod()) ?>
+		Last modified: <?= date('Y-m-d H:i', $this->last_modified) ?>
 	</div>
 </div>
 

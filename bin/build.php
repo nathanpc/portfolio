@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../src/page.php';
 require_once __DIR__ . '/../src/blog.php';
 
 use \Bramus\Ansi\Ansi;
@@ -46,7 +47,7 @@ function make_website(): void {
 	// Create the builder.
 	$root = __DIR__ . '/..';
 	$output_path = "$root/public";
-	$builder = new Builder("$root/site", $output_path);
+	$builder = new Builder("$root/site", $output_path, "PortfolioPage");
 
 	// Copy static files.
 	$builder->copy_static("$root/static");

@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="View Website" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/build" port="8888">
+  <configuration default="false" name="View Website" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" port="8888">
     <method v="2">
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build Static" run_configuration_type="PhpLocalRunConfigurationType" />
       <option name="LaunchBrowser.Before.Run" url="http://localhost:8888/" />
