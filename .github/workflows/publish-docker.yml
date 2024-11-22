@@ -41,12 +41,12 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            *Building ${{ github.repository }}*
+            *Building [${{ github.repository }}](https://github.com/${{ github.repository }})*
             
             Action was triggered by a commit from [${{ github.actor }}](https://github.com/${{ github.actor }}):
             `${{ github.event.commits[0].message }}`
             
-            See changes: https://github.com/${{ github.actor }}/${{ github.repository }}/commit/${{github.sha}}
+            See changes: [${{github.sha}}](https://github.com/${{ github.repository }}/commit/${{github.sha}})
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -80,6 +80,12 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Get Docker image download URL
+        uses: actions/github-script@v7
+        id: image-sha
+        with:
+          script: return "${{ steps.push.outputs.imageid }}".substring(7)
+          result-encoding: string
       - name: Notify on Telegram that the workflow finished
         uses: appleboy/telegram-action@master
         with:
@@ -88,9 +94,9 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            *${{ github.repository }} Docker Image Published*
+            *Docker Image Published [${{ github.repository }}](https://github.com/${{ github.repository }})*
             
-            Updated website Docker image was built and published to https://ghcr.io/${{ github.actor }}/${{ github.repository }}:sha256-${{ steps.push.outputs.imageid }}
+            Updated website Docker image was built and published to [ghcr.io/${{ github.repository }}:sha256-${{ steps.image-sha.outputs.result }}](https://ghcr.io/${{ github.repository }}:sha256-${{ steps.image-sha.outputs.result }})
       - name: Generate build artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
