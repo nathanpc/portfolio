@@ -41,7 +41,7 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            *Building [${{ github.repository }}](https://github.com/${{ github.repository }})*
+            *Building* [${{ github.repository }}](https://github.com/${{ github.repository }})
             
             Action was triggered by a commit from [${{ github.actor }}](https://github.com/${{ github.actor }}):
             `${{ github.event.commits[0].message }}`
@@ -94,7 +94,7 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            *Docker Image Published [${{ github.repository }}](https://github.com/${{ github.repository }})*
+            *Docker Image Published* [${{ github.repository }}](https://github.com/${{ github.repository }})
             
             Updated website Docker image was built and published to [ghcr.io/${{ github.repository }}:sha256-${{ steps.image-sha.outputs.result }}](https://ghcr.io/${{ github.repository }}:sha256-${{ steps.image-sha.outputs.result }})
       - name: Generate build artifact attestation
