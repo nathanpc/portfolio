@@ -33,6 +33,20 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Notify on Telegram that the workflow was triggered
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TO }}
+          format: markdown
+          disable_web_page_preview: true
+          message: |
+            *Building ${{ github.repository }}*
+            
+            Action was triggered by a commit from [${{ github.actor }}](https://github.com/${{ github.actor }}):
+            `${{ github.event.commits[0].message }}`
+            
+            See changes: https://github.com/${{ github.actor }}/${{ github.repository }}/commit/${{github.sha}}
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -66,6 +80,17 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Notify on Telegram that the workflow finished
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TO }}
+          format: markdown
+          disable_web_page_preview: true
+          message: |
+            *${{ github.repository }} Docker Image Published*
+            
+            Updated website Docker image was built and published to https://ghcr.io/${{ github.actor }}/${{ github.repository }}:sha256-${{ steps.push.outputs.imageid }}
       - name: Generate build artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
