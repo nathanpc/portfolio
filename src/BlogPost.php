@@ -1,18 +1,21 @@
 <?php
 /**
- * blog.php
+ * BlogPost.php
  * Handles everything related to the blog and its entries.
  * 
  * @author Nathan Campos <nathan@innoveworkshop.com>
  */
 
+namespace Portfolio;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/common_utils.php';
 require_once __DIR__ . '/compat.php';
-require_once __DIR__ . '/page.php';
 
+use DateTime;
 use Fantastique\Exceptions\Exception;
 use Fantastique\Exceptions\PathException;
+use Portfolio\PortfolioPage;
 
 /**
  * Blog post abstraction.

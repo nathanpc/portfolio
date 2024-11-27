@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../templates/includes.php';
-require_once __DIR__ . '/../src/blog.php';
 
 // Fantastique object building.
 $listing = $this->context['listing'];

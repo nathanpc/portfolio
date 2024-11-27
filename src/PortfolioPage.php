@@ -1,10 +1,12 @@
 <?php
 /**
- * page.php
+ * PortfolioPage.php
  * Helps out when building the pages of the website.
  *
  * @author Nathan Campos <nathan@innoveworkshop.com>
  */
+
+namespace Portfolio;
 
 use Fantastique\Page;
 use Fantastique\Exceptions\Exception;

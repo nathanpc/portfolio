@@ -7,13 +7,6 @@
  * @author Nathan Campos <nathan@innoveworkshop.com>
  */
 
- /**
-  * Loads the heavy composer libraries that are only used in specific cases.
-  */
-function load_composer_libraries() {
-	require __DIR__ . '/../vendor/autoload.php';
-}
-
 /**
  * Creates a proper href location based on our project's root path.
  *

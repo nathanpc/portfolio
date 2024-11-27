@@ -7,8 +7,6 @@
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/page.php';
-require_once __DIR__ . '/../src/blog.php';
 
 use \Bramus\Ansi\Ansi;
 use \Bramus\Ansi\Writers\StreamWriter;
@@ -16,6 +14,8 @@ use \Bramus\Ansi\ControlSequences\EscapeSequences\Enums\SGR;
 
 use \Fantastique\Exceptions\Exception;
 use \Fantastique\Builder;
+
+use \Portfolio\BlogPost;
 
 /**
  * Gets a list of our blog posts and renders them all out while we are at it.
@@ -47,7 +47,8 @@ function make_website(): void {
 	// Create the builder.
 	$root = __DIR__ . '/..';
 	$output_path = "$root/public";
-	$builder = new Builder("$root/site", $output_path, "PortfolioPage");
+	$builder = new Builder("$root/site", $output_path,
+		"\Portfolio\PortfolioPage");
 
 	// Copy static files.
 	$builder->copy_static("$root/static");
