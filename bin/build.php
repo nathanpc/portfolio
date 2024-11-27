@@ -67,11 +67,24 @@ function make_website(): void {
 	]);
 }
 
+/**
+ * Catcher of all things PHP issues.
+ *
+ * @throws ErrorException whenever some issue occurs with PHP that shows a
+ *                        message but doesn't throw an error.
+ */
+function exception_error_handler($errno, $errstr, $errfile, $errline) {
+    throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+}
+
+// Catch all PHP issues as exceptions.
+set_error_handler('exception_error_handler');
+
 // Make it!
 $ansi = new Ansi(new StreamWriter('php://stdout'));
 try {
 	make_website();
-} catch (Exception $e) {
+} catch (\Exception $e) {
 	$ansi->color(SGR::COLOR_FG_RED)
 		->text($e->getMessage())
 		->lf()
