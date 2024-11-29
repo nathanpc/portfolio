@@ -10,6 +10,7 @@ RUN apk update && apk add \
 	php83-mbstring \
     php83-openssl \
     php83-curl \
+    php83-dom \
 	&& rm -rf /var/cache/apk/*
 
 # Setup Virtual Host.
