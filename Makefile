@@ -29,6 +29,7 @@ run:
 
 setup: $(COMPOSER)
 	$(COMPOSER) install
+	$(MKDIR) $(BUILDDIR)
 
 pull:
 	$(GIT) pull
