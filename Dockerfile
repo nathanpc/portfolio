@@ -28,10 +28,6 @@ COPY composer.json ./
 COPY composer.lock ./
 COPY Makefile ./
 
-# Download the robots.txt to block AI bots.
-RUN curl 'https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/refs/heads/main/robots.txt' \
-    -o '/app/static/robots.txt'
-
 # Build the static website.
 RUN make setup
 RUN make build
