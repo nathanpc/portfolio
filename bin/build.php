@@ -16,6 +16,7 @@ use \Fantastique\Exceptions\Exception;
 use \Fantastique\Builder;
 
 use \Portfolio\BlogPost;
+use \Portfolio\Sitemap;
 
 /**
  * Gets a list of our blog posts and renders them all out while we are at it.
@@ -42,8 +43,11 @@ function get_post_list(string $output_path): array {
  * Builds up the actual static website.
  *
  * @throws Exception if something goes wrong while building the static website.
+ * @throws DOMException if an error happens while building the sitemap.
  */
 function make_website(): void {
+	$sitemap = new Sitemap("https://nathancampos.me");
+
 	// Create the builder.
 	$root = __DIR__ . '/..';
 	$output_path = "$root/public";
@@ -65,6 +69,9 @@ function make_website(): void {
 	$builder->render_page("$root/site/blog.php", [
 		'listing' => $posts
 	]);
+
+	// Save sitemap.
+	$sitemap->build_xml()->save("$output_path/sitemap.xml");
 }
 
 /**

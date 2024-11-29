@@ -26,6 +26,9 @@ class PortfolioPage extends Page {
 	public function __construct(string $base_path, string $source) {
 		parent::__construct($base_path, $source);
 		$this->set_last_modified();
+
+		// Add page to sitemap.
+		Sitemap::add_page($this);
 	}
 
 	/**
