@@ -17,7 +17,7 @@ include __DIR__ . '/../templates/doctype.php';
 
 	<div class="section">
 		<h2>about me</h2>
-	
+
 		<p>
 			<?= compat_image('/assets/images/nathan/profile.jpg',
 					'A picture of me smiling with my workbench as the ' .
@@ -28,11 +28,11 @@ include __DIR__ . '/../templates/doctype.php';
 						'style' => 'float: left; padding-right: 10px;'
 					))
 			?>
-	
-			I'm a <b>full-stack developer</b> (although I prefer the backend),
-			<b>creative technologist</b> and an <b>electronics engineer</b>
-			born in <a href="https://en.wikipedia.org/wiki/Brazil">Brazil</a>
-			and currently living in
+
+			I'm a <b>full-stack developer</b>, <b>creative technologist</b> and
+			an <b>electronics engineer</b> born in rainy
+			<a href="https://en.wikipedia.org/wiki/Brazil">Brazil</a> and
+			currently living in sunny
 			<a href="https://en.wikipedia.org/wiki/Portugal">Portugal</a>.
 			You can find me working on almost anything that involves
 			electricity, both in terms of hardware and software.  Building
@@ -43,7 +43,7 @@ include __DIR__ . '/../templates/doctype.php';
 			depending on who's counting, and my work has definitely reached at
 			least tens of millions.
 		</p>
-	
+
 		<p>I'm currently dedicating some of my time to passing some of my
 		knowledge to another generation and having a lot of fun working on
 		creative projects with my students and colleagues at
@@ -55,7 +55,7 @@ include __DIR__ . '/../templates/doctype.php';
 		Games Development</a>, and
 		<a href="https://www.iade.europeia.pt/licenciaturas/engenharia-informatica/">
 		Computer Science</a> degrees.</p>
-	
+
 		<p>If you browse this website, <a href="https://github.com/nathanpc">my
 		GitHub profile</a>, or
 		<a href="//innoveworkshop.com/">
@@ -65,10 +65,10 @@ include __DIR__ . '/../templates/doctype.php';
 		feel free to reach out to me at
 		<?=safe_email('nathan@innoveworkshop.com') ?>.</p>
 	</div>
-	
+
 	<div class="section">
 		<h2>this website</h2>
-	
+
 		<p>As you can clearly notice this website doesn't look like your
 		regular client-side rendered, Javascript-dependent, bloated, spying,
 		and resource hungry webpage that's so prevalent today. I despise the
@@ -77,7 +77,7 @@ include __DIR__ . '/../templates/doctype.php';
 		is built that I've decided to build a proper website that adheres to
 		the <a href="https://smolweb.org/guidelines.html">smolweb guidelines
 		</a>.</p>
-	
+
 		<p>This website was built to showcase that you don't need gigabytes of
 		node modules in order to build
 		<a href="https://thebestmotherfucking.website">a webpage</a>, and most
@@ -86,7 +86,7 @@ include __DIR__ . '/../templates/doctype.php';
 		you should. This website is built to be properly rendered on almost any
 		web browser, from Lynx to Netscape on Windows 3.11 to the latest version
 		of Chrome Canary.</p>
-	
+
 		<p>The main goal behind this website is to bring back
 		<a href="https://daniel.industries/2023/10/17/what-happened-to-web-design/">
 		the joy of the old web days</a> and allow me to publish more things
@@ -95,7 +95,7 @@ include __DIR__ . '/../templates/doctype.php';
 		that joy I felt when I first started building webpages and I hope will
 		allow me to keep motivated to continue publishing more of what I'm
 		currently up to.</p>
-	
+
 		<p>You can check the source code that powers this amazing webpage
 		<a href="https://github.com/nathanpc/portfolio">here</a>. I'm currently
 		working on a solution to hosting my Git repositories on GitHub, so that
