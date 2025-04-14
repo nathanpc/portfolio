@@ -4,3 +4,16 @@ services:
     build: '.'
     ports:
       - '8004:80'
+  gopher:
+    image: ghcr.io/nathanpc/docker-gophernicus:main
+    restart: unless-stopped
+    ports:
+      - '0.0.0.0:70:70'
+    volumes:
+      - ./gopher:/var/gopher
+    hostname: nathancampos.me
+    environment:
+      DEFAULT_WIDTH: 80
+      DISABLE_VHOSTS: 'true'
+      DISABLE_FOOTER: 'true'
+      DISABLE_USERDIRS: 'true'
