@@ -94,6 +94,18 @@ pre.code-block {
 }
 
 /**
+ * Project area.
+ */
+#content .project-comp h3 {
+	margin-bottom: 0;
+}
+
+#content .project-comp p {
+	margin-top: 0.3em;
+}
+
+
+/**
  * Blog stuff.
  */
 #content .post-year {

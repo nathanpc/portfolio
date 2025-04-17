@@ -59,6 +59,7 @@ function make_website(): void {
 
 	// Build the website.
 	$builder->render_folder("$root/site/errors");
+	$builder->render_folder("$root/site/projects");
 	$builder->render_folder("$root/site", false, [
 		'blog.php',
 		'blog_post.php'
@@ -88,6 +89,7 @@ function exception_error_handler($errno, $errstr, $errfile, $errline) {
 set_error_handler('exception_error_handler');
 
 // Make it!
+$error_ocurred = false;
 $ansi = new Ansi(new StreamWriter('php://stdout'));
 try {
 	make_website();
@@ -96,4 +98,9 @@ try {
 		->text($e->getMessage())
 		->lf()
 		->text($e->getTraceAsString());
+	$error_ocurred = true;
 }
+
+// Ensure that we exit with an error state if needed.
+if ($error_ocurred)
+	exit(1);
