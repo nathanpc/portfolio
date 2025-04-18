@@ -18,25 +18,31 @@ RUN sed -zie 's|\(<Directory "/var/www/localhost/htdocs">\)\(.*\)\(</Directory>\
 
 WORKDIR /app
 
-# Copy over everything.
-COPY bin/ ./bin
-COPY src/ ./src
-COPY site/ ./site
-COPY blog/ ./blog
-COPY static/ ./static
-COPY templates/ ./templates
+# Copy over things needed to setup the website.
 COPY composer.json ./
 COPY composer.lock ./
 COPY Makefile ./
+COPY bin/ ./bin
+COPY src/ ./src
+COPY templates/ ./templates
+
+# Setup the website.
+RUN make setup
+
+# Copy over everything that makes the website itself.
+COPY site/ ./site
+COPY static/ ./static
+COPY blog/ ./blog
 
 # Build the static website.
-RUN make setup
 RUN make build
 
 FROM alpine:3 AS deploy
 
 RUN apk update && apk add apache2 \
 	&& rm -rf /var/cache/apk/*
+
+WORKDIR /var/www/localhost/htdocs
 
 # Copy updated Apache configuration.
 COPY --from=build /etc/apache2/httpd.conf /etc/apache2/httpd.conf
