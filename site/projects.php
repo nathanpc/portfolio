@@ -69,6 +69,11 @@ include __DIR__ . '/../templates/doctype.php';
 			'on modern platforms while still being compatible with browsers ' .
 			'from the nineties.') ?>
 
+		<?= project_component('litterbox', 'Litter Box',
+			'A simple solution to upload and share files extremely quickly ' .
+			'with strangers on the internet. Supports uploading and sharing ' .
+			'with weirdos that still use 90s computers.') ?>
+
 	</div>
 
 	<div class="section">
