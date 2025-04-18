@@ -1,4 +1,7 @@
 <?php
+// Require utilities for project pages.
+require_once __DIR__ . '/../../src/projects_utils.php';
+
 // Fantastique object building.
 $this->fill(array(
 	'title' => 'Fantastique',
