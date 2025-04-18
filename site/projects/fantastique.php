@@ -71,7 +71,7 @@ include __DIR__ . '/../../templates/doctype.php';
 			example of how to use the framework and its features:
 		</p>
 
-		<?php compat_code_begin(); ?>use \Fantastique\Builder;
+		<?php compat_code_begin('php'); ?>use \Fantastique\Builder;
 
 // Get our builder helper.
 $builder = new Builder(__DIR__ . '/example', __DIR__ . '/build');
