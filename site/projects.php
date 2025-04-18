@@ -52,6 +52,10 @@ include __DIR__ . '/../templates/doctype.php';
 			'generator for PHP. Allowing users to have all the flexibility ' .
 			'they need to create any kind of static web site as if it were a ' .
 			'classic PHP project.') ?>
+
+		<?= project_component('ascii-image', 'ascii-image',
+			'A Ruby gem to convert any image into a lovely, colored, blocky, ' .
+			'ASCII representation for showing off on your terminal.') ?>
 	</div>
 
 	<?php include __DIR__ . '/../templates/footer.php'; ?>
