@@ -33,27 +33,6 @@ include __DIR__ . '/../templates/doctype.php';
 	</div>
 
 	<div class="section">
-		<h2>libraries</h2>
-		<p>Some of the libraries that I have created to help myself and other
-			developers when writing solutions.</p>
-
-		<?= project_component('fantastique', 'Fantastique',
-			'An unopinionated, and labour intensive, static website ' .
-			'generator for PHP. Allowing users to have all the flexibility ' .
-			'they need to create any kind of static web site as if it were a ' .
-			'classic PHP project.') ?>
-
-		<?= project_component('pickle', 'PickLE',
-			'An application and a parsing library to create an electronic ' .
-			'component pick list file format designed to be human-readable ' .
-			'and completely usable in its own plain-text form.') ?>
-
-		<?= project_component('ascii-image', 'ascii-image',
-			'A Ruby gem to convert any image into a lovely, colored, blocky, ' .
-			'ASCII representation for showing off on your terminal.') ?>
-	</div>
-
-	<div class="section">
 		<h2>web applications</h2>
 		<p>The concept of a web application these days is, sadly, of a
 			full-fledged desktop application that runs in your browser, with
@@ -74,6 +53,34 @@ include __DIR__ . '/../templates/doctype.php';
 			'with strangers on the internet. Supports uploading and sharing ' .
 			'with weirdos that still use 90s computers.') ?>
 
+		<?= project_component('php-photo-viewer', 'PHP Photo Viewer',
+			'A super lightweight and retro-friendly PHP 5.4 photo viewer ' .
+			'library and website. Perfect for a digicam photo gallery.') ?>
+	</div>
+
+	<div class="section">
+		<h2>libraries</h2>
+		<p>Some of the libraries that I have created to help myself and other
+			developers when writing solutions.</p>
+
+		<?= project_component('fantastique', 'Fantastique',
+			'An unopinionated, and labour intensive, static website ' .
+			'generator for PHP. Allowing users to have all the flexibility ' .
+			'they need to create any kind of static web site as if it were a ' .
+			'classic PHP project.') ?>
+
+		<?= project_component('pickle', 'PickLE',
+			'An application and a parsing library to create an electronic ' .
+			'component pick list file format designed to be human-readable ' .
+			'and completely usable in its own plain-text form.') ?>
+
+		<?= project_component('ascii-image', 'ascii-image',
+			'A Ruby gem to convert any image into a lovely, colored, blocky, ' .
+			'ASCII representation for showing off on your terminal.') ?>
+
+		<?= project_component('php-photo-viewer', 'PHP Photo Viewer',
+			'A super lightweight and retro-friendly PHP 5.4 photo viewer ' .
+			'library and website. Perfect for a digicam photo gallery.') ?>
 	</div>
 
 	<div class="section">
