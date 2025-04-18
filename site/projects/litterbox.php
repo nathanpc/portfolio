@@ -47,6 +47,7 @@ include __DIR__ . '/../../templates/doctype.php';
 			<a href="https://en.wikipedia.org/wiki/Time-based_one-time_password">TOTP</a>,
 			so you are protected against random people uploading things to your
 			server.
+		</p>
 	</div>
 
 	<div class="section">
