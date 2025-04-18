@@ -53,6 +53,24 @@ include __DIR__ . '/../templates/doctype.php';
 			'ASCII representation for showing off on your terminal.') ?>
 	</div>
 
+	<div class="section">
+		<h2>web applications</h2>
+		<p>The concept of a web application these days is, sadly, of a
+			full-fledged desktop application that runs in your browser, with
+			millions of lines of obfuscated Javascript, and sometimes other
+			languages compiled to WebAssembly and running straight on your
+			browser. The web applications that I have developed are nothing like
+			that, never will be, and are basically what you would expect a web
+			application to be back in 2010.</p>
+
+		<?= project_component('pickle', 'PickLE',
+			'A web application for managing and using electronic component ' .
+			'pick lists with a theming engine that allows it to look great ' .
+			'on modern platforms while still being compatible with browsers ' .
+			'from the nineties.') ?>
+
+	</div>
+
 	<?php include __DIR__ . '/../templates/footer.php'; ?>
 </body>
 
