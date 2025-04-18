@@ -30,8 +30,8 @@ COPY templates/ ./templates
 RUN make setup
 
 # Copy over everything that makes the website itself.
-COPY site/ ./site
 COPY static/ ./static
+COPY site/ ./site
 COPY blog/ ./blog
 
 # Build the static website.
