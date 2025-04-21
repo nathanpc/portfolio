@@ -14,7 +14,7 @@ fi
 
 # Variables
 dt_slug=`basename "$1" .php`
-folder="public/assets/blog/${dt_slug}"
+folder="static/assets/blog/${dt_slug}"
 
 # Create the assets directory if needed.
 if [ ! -d "$folder" ]; then
