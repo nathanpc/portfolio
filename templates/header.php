@@ -2,18 +2,24 @@
 	<!-- Title header block. -->
 	<div id="title-head">
 		<h1>Nathan Campos</h1>
-		<?= breadcrumbs(breadcrumbs_page($this)); ?>
+		<?php
+			require_once __DIR__ . '/../src/breadcrumbs.php';
+			echo breadcrumbs(isset($crumbs) ? $crumbs : breadcrumbs_fromreq());
+		?>
 	</div>
 
 	<!-- Navigation bar. -->
 	<div id="navbar">
-		<?= navbar(array(
-			'index' => '/',
-			'projects' => '/projects',
-			'blog' => '/blog',
-			'work' => '//innoveworkshop.com/',
-			'contact' => '/contact'
-		)); ?>
+		<?php
+			require_once __DIR__ . '/../src/navbar.php';
+			echo navbar(array(
+				'index' => '/',
+				'projects' => '/projects',
+				'blog' => '/blog',
+				'work' => $_SERVER['REQUEST_SCHEME'] . '://innoveworkshop.com/',
+				'contact' => '/contact'
+			));
+		?>
 	</div>
 
 	<hr>

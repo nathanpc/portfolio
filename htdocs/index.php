@@ -1,45 +1,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-	<meta charset="UTF-8">
+	<?php include __DIR__ . '/../templates/head.php'; ?>
 
+	<!-- Page information. -->
 	<title>Nathan Campos</title>
 	<meta name="description" content="Nathan's personal corner of the internet, fully compatible with everything, filled with useless information.">
-
-	<!-- Mobile definitions. -->
-	<meta name="viewport" content="width=600, initial-scale=1, user-scalable=1" />
-
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="/assets/css/main.css">
-	<!--[if IE]>
-	<link rel="stylesheet" href="/assets/css/ie.css">
-	<![endif]-->
 </head>
 <body>
-<div id="header">
-	<!-- Title header block. -->
-	<div id="title-head">
-		<h1>Nathan Campos</h1>
-		<!--<?= breadcrumbs(breadcrumbs_page($this)); ?>-->
-	</div>
+	<?php include_template('header'); ?>
 
-	<!-- Navigation bar. -->
-	<div id="navbar">
-		<span class="item"><a href="/">index</a></span>
-		<span class="spacer">|</span>
-		<span class="item"><a href="/projects">projects</a></span>
-		<span class="spacer">|</span>
-		<span class="item"><a href="/blog">blog</a></span>
-		<span class="spacer">|</span>
-		<span class="item"><a href="//inonveworkshop.com">work</a></span>
-		<span class="spacer">|</span>
-		<span class="item"><a href="/contact">contact</a></span>
-	</div>
-
-	<hr>
-</div>
-
-<div id="content">
 	<div class="section">
 		<h2>about me</h2>
 
@@ -80,8 +50,8 @@
 		website</a> you'll notice that I'm capable of building quite a lot of
 		amazing things. If you're looking for someone with my skillset either
 		for your company or to make your idea become a reality feel free to
-		reach out to me at <a class="email" href="mailto:nathan@innoveworkshop.com">nathan
-		[at] innoveworkshop [dot] com</a>.</p>
+		reach out to me <a href="mailto:nathan@innoveworkshop.com">via
+		email</a>.</p>
 	</div>
 
 	<div class="section">
@@ -123,16 +93,7 @@
 		three way solution that is publicly accessible and won't be fiddly to
 		maintain.</p>
 	</div>
-</div>
 
-<div id="footer">
-	<hr>
-	<div class="copyright">
-		Nathan Campos &#169; 2024-<!--% date('Y') %-->
-	</div>
-	<div class="last-modified">
-		Last modified: <!--% date('Y-m-d H:i', $this->last_modified) %-->
-	</div>
-</div>
+	<?php include_template('footer'); ?>
 </body>
 </html>

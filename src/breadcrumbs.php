@@ -12,10 +12,10 @@ require_once __DIR__ . '/common_utils.php';
  * Builds up the breadcrumbs bar.
  *
  * @param array $crumbs Paths contained in the breadcrumbs bar.
- * 
+ *
  * @return string Breadcrumbs bar element.
  */
-function breadcrumbs(array $crumbs): string {
+function breadcrumbs($crumbs) {
 	$sep = '<span class="sep">/</span>';
 	$html = "<div id=\"breadcrumbs\">\n";
 
@@ -33,28 +33,20 @@ function breadcrumbs(array $crumbs): string {
 }
 
 /**
- * Builds a breadcrumbs structure from a Fantastique page object.
+ * Builds a breadcrumbs structure from the request.
  *
- * @return array Breadcrumbs structure.
- *
- * @see breadcrumbs
+ * @return array Breadcrumbs structure based on the request.
  */
-function breadcrumbs_page(\Fantastique\Page $page): array {
+function breadcrumbs_fromreq() {
+	$url_path = strtok($_SERVER['REQUEST_URI'], '?');
 	$crumbs = array();
 	$paths = array();
 
 	// Build the crumbs from the requested path.
-	foreach (explode('/', $page->path) as $path) {
-		$paths[] = $path;
+	foreach (explode('/', $url_path) as $path) {
+		array_push($paths, $path);
 		if (!empty($path))
 			$crumbs[htmlentities($path)] = implode('/', $paths);
-	}
-
-	// Include the file if it's not an index.html.
-	if ($page->filename != 'index.html') {
-		$name = preg_replace('/\.[^.]+$/', '', $page->filename);
-		$crumbs[htmlentities($name)] = implode('/', $paths) .
-			"/{$page->filename}";
 	}
 
 	// Ensure this works for the index page.

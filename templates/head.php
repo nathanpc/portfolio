@@ -1,4 +1,7 @@
-<title><?= $this->title ?></title>
+<?php require_once __DIR__ . '/includes.php'; ?>
+
+<!-- Character set. -->
+<meta charset="UTF-8">
 
 <!-- Mobile definitions. -->
 <meta name="viewport"

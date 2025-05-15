@@ -18,7 +18,7 @@ require_once __DIR__ . '/common_utils.php';
  *
  * @return string Navigation bar item element.
  */
-function nav_item(string $label, string $loc, string $classes = ''): string {
+function nav_item($label, $loc, $classes = '') {
 	// Build up the classes HTML property.
 	$class_html = "class=\"item $classes\"";
 	if (empty($classes))
@@ -37,7 +37,7 @@ function nav_item(string $label, string $loc, string $classes = ''): string {
  *
  * @return string Navigation bar spacer element.
  */
-function nav_spacer(): string {
+function nav_spacer() {
 	return '<span class="spacer">|</span>';
 }
 
@@ -48,7 +48,7 @@ function nav_spacer(): string {
  *
  * @return string Navigation bar elements. Should be placed inside a container.
  */
-function navbar(array $items): string {
+function navbar($items) {
 	$nav = '';
 	foreach ($items as $label => $href) {
 		// Add a spacer between the items if needed.

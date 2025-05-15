@@ -10,15 +10,18 @@ MKDIR = mkdir -p
 CURL  = curl
 
 # Paths
-BINDIR   = ./bin
-BUILDDIR = ./htdocs
+BINDIR = ./bin
+HTDOCS = ./htdocs
+
+# Files
+SOURCES = $(find $(HTDOCS) -type f -name '*.html')
 
 .PHONY: all build
 
 all: build
 
-build: $(BUILDDIR)/robots.txt
+build: $(HTDOCS)/robots.txt
 
-$(BUILDDIR)/robots.txt:
-	$(MKDIR) $(BUILDDIR)
-	$(CURL) -o "$(BUILDDIR)/robots.txt" 'https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/refs/heads/main/robots.txt'
+$(HTDOCS)/robots.txt:
+	$(MKDIR) $(HTDOCS)
+	$(CURL) -o "$(HTDOCS)/robots.txt" 'https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/refs/heads/main/robots.txt'

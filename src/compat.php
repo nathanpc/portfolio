@@ -7,7 +7,7 @@
  * @author Nathan Campos <nathan@innoveworkshop.com>
  */
 
-require_once __DIR__ . '/../src/common_utils.php';
+require_once __DIR__ . '/common_utils.php';
 
 /**
  * Generates a compatible image for an ancient browser.
@@ -19,8 +19,7 @@ require_once __DIR__ . '/../src/common_utils.php';
  *
  * @return string HTML image element tailored to the requesting device.
  */
-function compat_image(string $loc, string $alt, array $props = [],
-					  bool $link = false): string {
+function compat_image($loc, $alt, $props = [], $link = false) {
 	$img_loc = href($loc);
 	// TODO: Convert the image location for super old browsers.
 
@@ -41,10 +40,10 @@ function compat_image(string $loc, string $alt, array $props = [],
  * browsers.
  *
  * @param array $images List of images containing 'loc' and 'alt' fields.
- * 
+ *
  * @return string HTML image gallery tailored to the requesting device.
  */
-function compat_image_gallery(array $images): string {
+function compat_image_gallery($images) {
 	$wrap_point = 3; //compat_ismobile() ? 2 : 3;
 	$html = "<table class=\"image-gallery\">\n";
 
@@ -71,10 +70,10 @@ function compat_image_gallery(array $images): string {
 /**
  * Placed at the beginning of a code block in order to buffer its output and
  * allow for the insertion of syntax highlighting on browsers that support it.
- * 
+ *
  * @param string $lang Programming language code for syntax highlighting.
  */
-function compat_code_begin(string $lang = null) {
+function compat_code_begin($lang = null) {
 	echo "<pre class=\"code-block\" width=\"600\"><code>";
 	ob_start();
 }
