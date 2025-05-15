@@ -1,0 +1,12 @@
+# Ensure we support PHP index pages.
+DirectoryIndex index.php index.html
+
+# Error documents.
+ErrorDocument 404 /errors/404.php
+ErrorDocument 500 /errors/500.php
+
+# Protect the .htaccess file.
+<FilesMatch "\.htaccess$">
+	Order Allow,Deny
+	Deny from all
+</FilesMatch>

@@ -1,21 +1,14 @@
-<?php
-// Fantastique object building.
-$this->fill(array(
-	'title' => 'Get in touch',
-	'description' => 'Contacting him is easy, getting a reply is not, if you ' .
-		'are willing to accept this, go for it!'
-));
-
-include __DIR__ . '/../templates/doctype.php';
-?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
 <head>
-	<?php include __DIR__ . '/../templates/head.php'; ?>
-</head>
+	<?php include __DIR__ . '/../../templates/head.php'; ?>
 
+	<!-- Page information. -->
+	<title>Get in touch</title>
+	<meta name="description" content="Contacting him is easy, getting a reply is not, if you are willing to accept this, go for it!">
+</head>
 <body>
-	<?php include __DIR__ . '/../templates/header.php'; ?>
+	<?php include_template('header'); ?>
 
 	<div class="section">
 		<h2>direct contact</h2>
@@ -28,7 +21,7 @@ include __DIR__ . '/../templates/doctype.php';
 		</p>
 
 		<ul>
-			<li><b>Email:</b> <?= safe_email('nathan@innoveworkshop.com') ?></li>
+			<li><b>Email:</b> <a href="mailto:nathan@innoveworkshop.com">nathan@innoveworkshop.com</a></li>
 			<li><b>Discord:</b> <a href="https://discordapp.com/users/nathan.campos">@nathan.campos</a></li>
 			<li><b>Telegram:</b> <a href="https://t.me/nathancampos">@nathancampos</a></li>
 		</ul>
@@ -80,7 +73,6 @@ include __DIR__ . '/../templates/doctype.php';
 		</ul>
 	</div>
 
-	<?php include __DIR__ . '/../templates/footer.php'; ?>
+	<?php include_template('footer'); ?>
 </body>
-
 </html>

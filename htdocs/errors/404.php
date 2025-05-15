@@ -1,20 +1,11 @@
-<?php
-$this->fill(array(
-	'title' => 'Not found',
-	'path' => '/errors',
-	'filename' => '404.html'
-));
-?>
-<?php include __DIR__ . '/../../templates/doctype.php'; ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-	<title>Not found</title>
-
-	<?php include __DIR__ . '/../../templates/head.php'; ?>
+	<?php include __DIR__ . '/../templates/head.php'; ?>
+	<title>404 Not Found</title>
 </head>
-
 <body>
-	<?php include __DIR__ . '/../../templates/header.php'; ?>
+	<?php include_template('header'); ?>
 
 	<div class="section">
 		<h2>Not found</h2>
@@ -25,7 +16,6 @@ $this->fill(array(
 			'404 Not Found cat meme') ?></p>
 	</div>
 
-	<?php include __DIR__ . '/../../templates/footer.php'; ?>
+	<?php include_template('footer'); ?>
 </body>
-
 </html>

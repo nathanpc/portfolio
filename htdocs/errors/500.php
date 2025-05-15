@@ -1,20 +1,11 @@
-<?php
-$this->fill(array(
-	'title' => 'Internal server error',
-	'path' => '/errors',
-	'filename' => '500.html'
-));
-?>
-<?php include __DIR__ . '/../../templates/doctype.php'; ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-	<title>Internal server error</title>
-
-	<?php include __DIR__ . '/../../templates/head.php'; ?>
+	<?php include __DIR__ . '/../templates/head.php'; ?>
+	<title>500 Internal Server Error</title>
 </head>
-
 <body>
-	<?php include __DIR__ . '/../../templates/header.php'; ?>
+	<?php include_template('header'); ?>
 
 	<div class="section">
 		<h2>Internal server error</h2>
@@ -25,7 +16,6 @@ $this->fill(array(
 			'500 Internal Server Error cat meme') ?></p>
 	</div>
 
-	<?php include __DIR__ . '/../../templates/footer.php'; ?>
+	<?php include_template('footer'); ?>
 </body>
-
 </html>
