@@ -4,44 +4,21 @@
 ### Author: Nathan Campos <nathan@innoveworkshop.com>
 
 # Tools
-RM       = rm -f
-MKDIR    = mkdir -p
-GIT      = git
-PHP      = php
-CURL     = curl
-COMPOSER = ./bin/composer.phar
-DOCKER   = docker
+RM    = rm -f
+LN    = ln -s
+MKDIR = mkdir -p
+CURL  = curl
 
 # Paths
 BINDIR   = ./bin
-BUILDDIR = ./public
+BUILDDIR = ./htdocs
 
-.PHONY: build run setup pull deploy blog-cache
+.PHONY: all build
 
-all: run
+all: build
 
-build: $(BUILDDIR)/robots.txt setup
-	$(PHP) $(BINDIR)/build.php
-
-run:
-	$(DOCKER) compose build
-	$(DOCKER) compose up
-
-setup: $(COMPOSER)
-	$(COMPOSER) install
-	$(MKDIR) $(BUILDDIR)
-
-pull:
-	$(GIT) pull
-
-deploy: pull
-	$(DOCKER) compose build
-	$(DOCKER) compose up -d
+build: $(BUILDDIR)/robots.txt
 
 $(BUILDDIR)/robots.txt:
+	$(MKDIR) $(BUILDDIR)
 	$(CURL) -o "$(BUILDDIR)/robots.txt" 'https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/refs/heads/main/robots.txt'
-
-$(COMPOSER):
-	$(PHP) -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-	$(PHP) composer-setup.php --install-dir=$(BINDIR)
-	$(RM) composer-setup.php
