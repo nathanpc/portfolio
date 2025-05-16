@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-	<?php include __DIR__ . '/../templates/head.php'; ?>
+	<?php include __DIR__ . '/../../templates/head.php'; ?>
 	<title>500 Internal Server Error</title>
 </head>
 <body>
