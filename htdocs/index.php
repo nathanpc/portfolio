@@ -14,9 +14,16 @@
 		<h2>about me</h2>
 
 		<p>
-			<img src="/assets/images/nathan/profile.jpg" width="200px"
-				height="200px" style="float: left; padding-right: 10px;"
-				alt="A picture of me smiling with my workbench as the background" />
+			<?= compat_image('/assets/images/nathan/profile.jpg',
+					'A picture of me smiling with my workbench as the ' .
+					'background',
+					array(
+						'width' => '200px',
+						'height' => '200px',
+						'style' => 'float: left; padding-right: 10px;'
+					))
+			?>
+			<?php if (compat_isconsole()) { echo '<p></p>'; } ?>
 
 			I'm a <b>full-stack developer</b>, <b>creative technologist</b> and
 			an <b>electronics engineer</b> born in rainy
