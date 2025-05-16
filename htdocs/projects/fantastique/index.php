@@ -1,25 +1,14 @@
-<?php
-// Require utilities for project pages.
-require_once __DIR__ . '/../../src/projects_utils.php';
-
-// Fantastique object building.
-$this->fill(array(
-	'title' => 'Fantastique',
-	'description' => 'An unopinionated static website generator for PHP.'
-));
-
-// Render the DOCTYPE template.
-require_once __DIR__ . '/../../templates/includes.php';
-include __DIR__ . '/../../templates/doctype.php';
-?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
 <head>
-	<?php include __DIR__ . '/../../templates/head.php'; ?>
-</head>
+	<?php include __DIR__ . '/../../../templates/head.php'; ?>
 
+	<!-- Page information. -->
+	<title>Fantastique</title>
+	<meta name="description" content="An unopinionated static website generator for PHP.">
+</head>
 <body>
-	<?php include __DIR__ . '/../../templates/header.php'; ?>
+	<?php include_template('header'); ?>
 
 	<div class="section">
 		<h2>Fantastique</h2>
@@ -32,9 +21,11 @@ include __DIR__ . '/../../templates/doctype.php';
 		</p>
 
 		<p>
-			This framework <a href="<?= href('/blog/2024-11-15/this-as-static-website.html') ?>">was
+			This framework <a href="<?= blog_href('2024-11-15', 'this-as-static-website') ?>">was
 			developed to convert this website to static</a>, so this already is
-			a great showcase of the capabilities of this project.
+			a great showcase of the capabilities of this project, although in
+			May of 2025 the site was brought back to a dynamic PHP website and
+			is no longer using the framework.
 		</p>
 	</div>
 
@@ -98,7 +89,6 @@ $builder->render_page($builder->base_path . '/context.php', [
 		</ul>
 	</div>
 
-	<?php include __DIR__ . '/../../templates/footer.php'; ?>
+	<?php include_template('footer'); ?>
 </body>
-
 </html>

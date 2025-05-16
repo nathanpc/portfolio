@@ -19,10 +19,36 @@ function href($loc) {
 }
 
 /**
+ * Creates a proper href location for a blog post.
+ *
+ * @param string $date Date of the blog post in ISO8601 format.
+ * @param string $slug Slug of the blog post.
+ *
+ * @return string Link to the blog post in question.
+ */
+function blog_href($date, $slug) {
+	return href('/blog/' . $date . '/' . $slug . '/');
+}
+
+/**
  * Includes the contents of a template file from the templates folder.
  *
  * @param string $name Name of the template file without the extension.
  */
 function include_template($name) {
 	include __DIR__ . '/../templates/' . $name . '.php';
+}
+
+/**
+ * Creates a project section card. To be used in the projects listing page.
+ *
+ * @param string $id   Slug of the corresponding project page.
+ * @param string $name Name of the project.
+ * @param string $desc A short, but lengthy, description of the project.
+ */
+function project_component(string $id, string $name, string $desc) {
+	echo "<div id=\"$id\" class=\"project-comp\">\n";
+	echo "	<h3><a href=\"" . href("/projects/$id") . "\">$name</a></h3>\n";
+	echo "	<p>$desc</p>";
+	echo '</div>';
 }

@@ -1,26 +1,14 @@
-<?php
-// Require utilities for project pages.
-require_once __DIR__ . '/../../src/projects_utils.php';
-
-// Fantastique object building.
-$this->fill(array(
-	'title' => 'ascii-image',
-	'description' => 'A Ruby gem to convert any image into a lovely, blocky, ' .
-		'ASCII representation.'
-));
-
-// Render the DOCTYPE template.
-require_once __DIR__ . '/../../templates/includes.php';
-include __DIR__ . '/../../templates/doctype.php';
-?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
 <head>
-	<?php include __DIR__ . '/../../templates/head.php'; ?>
-</head>
+	<?php include __DIR__ . '/../../../templates/head.php'; ?>
 
+	<!-- Page information. -->
+	<title>ascii-image</title>
+	<meta name="description" content="A Ruby gem to convert any image into a lovely, blocky, ASCII representation.">
+</head>
 <body>
-	<?php include __DIR__ . '/../../templates/header.php'; ?>
+	<?php include_template('header'); ?>
 
 	<div class="section">
 		<h2>ascii-image</h2>
@@ -89,7 +77,6 @@ ascii.build(60)<?php compat_code_end(); ?>
 		</ul>
 	</div>
 
-	<?php include __DIR__ . '/../../templates/footer.php'; ?>
+	<?php include_template('footer'); ?>
 </body>
-
 </html>

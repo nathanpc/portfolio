@@ -1,26 +1,14 @@
-<?php
-// Require utilities for project pages.
-require_once __DIR__ . '/../../src/projects_utils.php';
-
-// Fantastique object building.
-$this->fill(array(
-	'title' => 'PickLE',
-	'description' => 'An electronic component pick list application and file ' .
-		'parser library.'
-));
-
-// Render the DOCTYPE template.
-require_once __DIR__ . '/../../templates/includes.php';
-include __DIR__ . '/../../templates/doctype.php';
-?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
 <head>
-	<?php include __DIR__ . '/../../templates/head.php'; ?>
-</head>
+	<?php include __DIR__ . '/../../../templates/head.php'; ?>
 
+	<!-- Page information. -->
+	<title>PickLE</title>
+	<meta name="description" content="An electronic component pick list application and file parser library.">
+</head>
 <body>
-	<?php include __DIR__ . '/../../templates/header.php'; ?>
+	<?php include_template('header'); ?>
 
 	<div class="section">
 		<h2>PickLE</h2>
@@ -82,16 +70,17 @@ include __DIR__ . '/../../templates/doctype.php';
 			application looks like with an example document loaded:
 		</p>
 
-		<?= project_image_gallery('pickle', array(
-			array('loc' => "bootstrap-archive.png", 'alt' => "List of pick lists page with the Bootstrap theme"),
-			array('loc' => "bootstrap-pick.png", 'alt' => "Pick list page with the Bootstrap theme"),
-			array('loc' => "bootstrap-upload.png", 'alt' => "Upload page with the Bootstrap theme"),
-			array('loc' => "bootstrap-spec.png", 'alt' => "File specification page with the Bootstrap theme"),
-			array('loc' => "goldenera-archive.png", 'alt' => "List of pick lists page with the Golden Era theme"),
-			array('loc' => "goldenera-pick.png", 'alt' => "Pick list page with the Golden Era theme"),
-			array('loc' => "goldenera-upload.png", 'alt' => "Upload page with the Golden Era theme"),
-			array('loc' => "nineties-archive.png", 'alt' => "List of pick lists page with the Nineties theme"),
-			array('loc' => "nineties-pick.png", 'alt' => "Pick list page with the Nineties theme")
+		<?= compat_image_gallery(array(
+			array('loc' => "./screenshots/bootstrap-archive.png",
+				'alt' => "List of pick lists page with the Bootstrap theme"),
+			array('loc' => "./screenshots/bootstrap-pick.png", 'alt' => "Pick list page with the Bootstrap theme"),
+			array('loc' => "./screenshots/bootstrap-upload.png", 'alt' => "Upload page with the Bootstrap theme"),
+			array('loc' => "./screenshots/bootstrap-spec.png", 'alt' => "File specification page with the Bootstrap theme"),
+			array('loc' => "./screenshots/goldenera-archive.png", 'alt' => "List of pick lists page with the Golden Era theme"),
+			array('loc' => "./screenshots/goldenera-pick.png", 'alt' => "Pick list page with the Golden Era theme"),
+			array('loc' => "./screenshots/goldenera-upload.png", 'alt' => "Upload page with the Golden Era theme"),
+			array('loc' => "./screenshots/nineties-archive.png", 'alt' => "List of pick lists page with the Nineties theme"),
+			array('loc' => "./screenshots/nineties-pick.png", 'alt' => "Pick list page with the Nineties theme")
 		)); ?>
 
 		<p>
@@ -388,7 +377,6 @@ BATT1<?php compat_code_end(); ?>
 		</p>
 	</div>
 
-	<?php include __DIR__ . '/../../templates/footer.php'; ?>
+	<?php include_template('footer'); ?>
 </body>
-
 </html>

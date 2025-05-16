@@ -1,26 +1,14 @@
-<?php
-// Require utilities for project pages.
-require_once __DIR__ . '/../../src/projects_utils.php';
-
-// Fantastique object building.
-$this->fill(array(
-	'title' => 'PHP Photo Viewer',
-	'description' => 'A super lightweight and retro-friendly PHP 5.4 photo ' .
-		'viewer library and website.'
-));
-
-// Render the DOCTYPE template.
-require_once __DIR__ . '/../../templates/includes.php';
-include __DIR__ . '/../../templates/doctype.php';
-?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
 <head>
-	<?php include __DIR__ . '/../../templates/head.php'; ?>
-</head>
+	<?php include __DIR__ . '/../../../templates/head.php'; ?>
 
+	<!-- Page information. -->
+	<title>PHP Photo Viewer</title>
+	<meta name="description" content="A super lightweight and retro-friendly PHP 5.4 photo viewer library and website.">
+</head>
 <body>
-	<?php include __DIR__ . '/../../templates/header.php'; ?>
+	<?php include_template('header'); ?>
 
 	<div class="section">
 		<h2>PHP Photo Viewer</h2>
@@ -45,11 +33,11 @@ include __DIR__ . '/../../templates/doctype.php';
 	<div class="section">
 		<h3>screenshots</h3>
 
-		<?= project_image_gallery('php-photo-viewer', array(
-			array('loc' => "home.png", 'alt' => "Home page of the application"),
-			array('loc' => "gallery.png", 'alt' => "A folder/gallery page"),
-			array('loc' => "photo-top.png", 'alt' => "Top of a photo page"),
-			array('loc' => "photo-bottom.png", 'alt' => "Bottom of a photo page")
+		<?= compat_image_gallery(array(
+			array('loc' => "./screenshots/home.png", 'alt' => "Home page of the application"),
+			array('loc' => "./screenshots/gallery.png", 'alt' => "A folder/gallery page"),
+			array('loc' => "./screenshots/photo-top.png", 'alt' => "Top of a photo page"),
+			array('loc' => "./screenshots/photo-bottom.png", 'alt' => "Bottom of a photo page")
 		)); ?>
 	</div>
 
@@ -164,7 +152,6 @@ services:
 		</ul>
 	</div>
 
-	<?php include __DIR__ . '/../../templates/footer.php'; ?>
+	<?php include_template('footer'); ?>
 </body>
-
 </html>

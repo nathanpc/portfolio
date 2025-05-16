@@ -2,7 +2,6 @@
 <html>
 <head>
 	<?php include __DIR__ . '/../../templates/head.php'; ?>
-	<?php include __DIR__ . '/../../src/projects_utils.php'; ?>
 
 	<!-- Page information. -->
 	<title>Nathan's Projects</title>

@@ -82,7 +82,7 @@ function compat_image($loc, $alt, $props = [], $link = false) {
  * @return string HTML image gallery tailored to the requesting device.
  */
 function compat_image_gallery($images) {
-	$wrap_point = 3; //compat_ismobile() ? 2 : 3;
+	$wrap_point = compat_ismobile() ? 2 : 3;
 	$html = "<table class=\"image-gallery\">\n";
 
 	// Populate with image elements.

@@ -1,26 +1,14 @@
-<?php
-// Require utilities for project pages.
-require_once __DIR__ . '/../../src/projects_utils.php';
-
-// Fantastique object building.
-$this->fill(array(
-	'title' => 'Litter Box',
-	'description' => 'A simple solution to upload and share files extremely ' .
-		'quickly with strangers on the internet.'
-));
-
-// Render the DOCTYPE template.
-require_once __DIR__ . '/../../templates/includes.php';
-include __DIR__ . '/../../templates/doctype.php';
-?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
 <head>
-	<?php include __DIR__ . '/../../templates/head.php'; ?>
-</head>
+	<?php include __DIR__ . '/../../../templates/head.php'; ?>
 
+	<!-- Page information. -->
+	<title>Litter Box</title>
+	<meta name="description" content="A simple solution to upload and share files extremely quickly with strangers on the internet.">
+</head>
 <body>
-	<?php include __DIR__ . '/../../templates/header.php'; ?>
+	<?php include_template('header'); ?>
 
 	<div class="section">
 		<h2>Litter Box</h2>
@@ -53,10 +41,10 @@ include __DIR__ . '/../../templates/doctype.php';
 	<div class="section">
 		<h3>screenshots</h3>
 
-		<?= project_image_gallery('litterbox', array(
-			array('loc' => "home.png", 'alt' => "Home page of the application"),
-			array('loc' => "home-filled.png", 'alt' => "Home page with every field populated"),
-			array('loc' => "uploaded.png", 'alt' => "Successful upload page")
+		<?= compat_image_gallery(array(
+			array('loc' => "./screenshots/home.png", 'alt' => "Home page of the application"),
+			array('loc' => "./screenshots/home-filled.png", 'alt' => "Home page with every field populated"),
+			array('loc' => "./screenshots/uploaded.png", 'alt' => "Successful upload page")
 		)); ?>
 	</div>
 
@@ -89,9 +77,10 @@ services:
 		<p>
 			This will pull the image from the registry and expose the service on
 			port <code>8001</code>. It will also setup a volume where the
-			uploaded files will be stored. You should <b>change the TOTP_SECRET
-			environment variable</b> to something a bit more secure, since this
-			will be the key used to generate your one-time passwords.
+			uploaded files will be stored. You should <b>change the
+			<code>TOTP_SECRET</code> environment variable</b> to something a bit
+			more secure, since this will be the key used to generate your
+			one-time passwords.
 		</p>
 
 		<p>
@@ -114,7 +103,6 @@ services:
 		</ul>
 	</div>
 
-	<?php include __DIR__ . '/../../templates/footer.php'; ?>
+	<?php include_template('footer'); ?>
 </body>
-
 </html>
