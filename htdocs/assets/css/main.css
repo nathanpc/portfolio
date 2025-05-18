@@ -93,6 +93,10 @@ pre.code-block {
 	margin-bottom: 10px;
 }
 
+#content img {
+	max-width: 100%;
+}
+
 /**
  * Project area.
  */
@@ -103,7 +107,6 @@ pre.code-block {
 #content .project-comp p {
 	margin-top: 0.3em;
 }
-
 
 /**
  * Blog stuff.
@@ -136,10 +139,6 @@ pre.code-block {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-}
-
-#content .blog-image img {
-	max-width: 100%;
 }
 
 /**
