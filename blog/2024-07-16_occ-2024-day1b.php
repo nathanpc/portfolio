@@ -6,7 +6,7 @@ $post = array(
 
 <p>This post is part of a series for the <a href="https://occ.deadnet.se/">Old
 Computer Challenge 2024</a>. You can find my previous post on this series
-<a href="<?= $this->link_post('2024-07-15', 'occ-2024-day1') ?>">here</a>.</p>
+<a href="<?= blog_href('2024-07-15', 'occ-2024-day1') ?>">here</a>.</p>
 
 <p>Yesterday was an "interesting" day. I had to start a bit late because I still
 had a bit of work-related tasks to do before jumping 100% into the challenge. In
@@ -17,7 +17,7 @@ it's by far the most painful repair I've done in my life. The good news is that
 the repair was successful. I'm typing this article in it! Although the path to
 get here wasn't very straightforward.</p>
 
-<?= $this->image('hollow-chassis.jpeg',
+<?= compat_image('./hollow-chassis.jpeg',
 	'The hollow chassis without its motherboard') ?>
 
 <p>Upon finishing the board swap, screwing back every single one of the 62
@@ -30,7 +30,7 @@ boot it in verbose mode (<code>Command-V</code> on boot) and am immediately
 greeted with the exact same kernel panics and random errors I've described in
 the previous post. Apparently the original motherboard was fine after all.</p>
 
-<?= $this->image('screws.jpeg', 'Every single one of the 62 screws') ?>
+<?= compat_image('./screws.jpeg', 'Every single one of the 62 screws') ?>
 
 <p>Putting in all this work and getting nowhere was really frustrating, but
 anyway, I powered through it, trying every imaginable thing to get the machine
@@ -48,7 +48,7 @@ Cloner</a> and leaving it overnight to very slowly clone the disks. Today I woke
 up, swapped the SSD in to the PowerBook, assembled everything back, and it's now
 fully working, and it's blazingly fast (for a 2005 computer).</p>
 
-<?= $this->image('bbedit.png',
+<?= compat_image('./bbedit.png',
 	'Fully working and editing writing this article') ?>
 
 <p>Today my plan is to get a <a href="https://wiki.znc.in/ZNC">ZNC bouncer</a>

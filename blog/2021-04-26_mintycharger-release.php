@@ -4,11 +4,11 @@ $post = array(
 );
 ?>
 
-<?= $this->image('product-hero-shot.jpg', 'The final version of the product') ?>
+<?= compat_image('./product-hero-shot.jpg', 'The final version of the product') ?>
 
 <p>
-	In <a href="<?= $this->link_post('2021-04-06', 'revisiting-mintycharger') ?>">
-	a previous post</a>, we've talked about how we were developing a better "9V"
+	In <a href="<?= blog_href('2021-04-06', 'revisiting-mintycharger') ?>">a
+	previous post</a>, we've talked about how we were developing a better "9V"
 	(PP3) battery charger and how it was based on an old project of mine. After
 	about a week since the first prototype PCB was soldered up and ready for
 	firmware development, we've <a href="https://innoveworkshop.com/product/mintycharger">

@@ -60,6 +60,6 @@ $post = array(
 <p>
 	All in all I'm very pleased with the final result and these changes make me
 	even more motivated to dedicate time to this website, which
-	<a href="<?= $this->link_post('2024-07-05', 'building-website') ?>">was the
-	goal of creating this whole thing in the first place</a>.
+	<a href="<?= blog_href('2024-07-05', 'building-website') ?>">was the goal of
+	creating this whole thing in the first place</a>.
 </p>

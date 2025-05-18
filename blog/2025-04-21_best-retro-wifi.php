@@ -55,7 +55,7 @@ $post = array(
 	easily be accomplished with OpenWRT and a MAC address allowlist.
 </p>
 
-<?= $this->image('network-settings.png', 'macOS network preferences for flashing') ?>
+<?= compat_image('./network-settings.png', 'macOS network preferences for flashing') ?>
 
 <p>
 	The first step on this journey was to flash <a href="https://openwrt.org/start">OpenWRT</a>
@@ -77,9 +77,9 @@ $post = array(
 </p>
 
 <?=
-	$this->image_gallery(array(
-		array('loc' => 'pumpkin-settings.png', 'alt' => 'PumpKIN TFTP server settings'),
-		array('loc' => 'pumpkin-flashing.png', 'alt' => 'PumpKIN serving the OpenWRT firmware')
+	compat_image_gallery(array(
+		array('loc' => './pumpkin-settings.png', 'alt' => 'PumpKIN TFTP server settings'),
+		array('loc' => './pumpkin-flashing.png', 'alt' => 'PumpKIN serving the OpenWRT firmware')
 	))
 ?>
 
@@ -90,7 +90,7 @@ $post = array(
 	it. The following settings were used for this purpose:
 </p>
 
-<?= $this->image('openwrt-ssid.png', 'OpenWRT wireless network settings') ?>
+<?= compat_image('./openwrt-ssid.png', 'OpenWRT wireless network settings') ?>
 
 <p>
 	After enabling the network, the last thing to do was to go to the

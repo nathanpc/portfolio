@@ -15,7 +15,7 @@ project, not just something thrown together, so I'm taking my time to properly
 implement things in a way that's maintainable and future proof. I sure don't
 want to be spelunking around this code base in the future.</p>
 
-<?= $this->image('programming-desktop.png',
+<?= compat_image('./programming-desktop.png',
 	'Using good old TextMate, my editor of choice back on the day') ?>
 
 <p>Since I later want to port my client to as many platforms as I possibly can,

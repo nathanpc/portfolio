@@ -13,7 +13,7 @@ $post = array(
 	how they arranged the results:
 </p>
 
-<?= $this->image('everything-me-screenshot.png',
+<?= compat_image('./everything-me-screenshot.png',
 	'Screenshot of the application on my iPhone') ?>
 
 <p>

@@ -25,7 +25,7 @@ For example: Pictures start at <code>G0020001.JPG</code> and when they reach
 <code>G0020999.JPG</code> a new folder will be created and the process will
 start over, just like every digital camera you ever had.</p>
 
-<?= $this->image('gopro-folder.png',
+<?= compat_image('./gopro-folder.png',
 	'The folder structure created by the GoPro for timelapses') ?>
 
 <p>That wouldn't be such a big deal, you could always copy the contents of each

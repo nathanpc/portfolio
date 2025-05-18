@@ -24,7 +24,7 @@ $post = array(
 	exactly how an instance of this blog generator is, that's the place to go.
 </p>
 
-<?= $this->image('current-flow.png', 'How a Levissimo Instance Looks Like', [], [
+<?= compat_image('./current-flow.png', 'How a Levissimo Instance Looks Like', [], [
 	'caption' => true
 ]) ?>
 

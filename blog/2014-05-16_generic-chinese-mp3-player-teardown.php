@@ -8,21 +8,21 @@ $post = array(
 
 <p>Yesterday it arrived and as it was expected, it's the best of Shenzhen. Horrible plastics and build quality, the buttons are super stiff, and overall a shitty product as it was expected to be, but since I'm only going to use it for testing, I don't care. Here are some pictures of the "beautiful" thing:
 
-<?= $this->image_gallery(array(
-	array('loc' => "unboxed.jpg", 'alt' => "Unboxing this cheap little thing"),
-	array('loc' => "disassembled.jpg", 'alt' => "Taking it to bits"),
-	array('loc' => "front.jpg", 'alt' => "Front side"),
-	array('loc' => "left-side.jpg", 'alt' => "Left side"),
-	array('loc' => "right-side.jpg", 'alt' => "Right side")
+<?= compat_image_gallery(array(
+	array('loc' => "./unboxed.jpg", 'alt' => "Unboxing this cheap little thing"),
+	array('loc' => "./disassembled.jpg", 'alt' => "Taking it to bits"),
+	array('loc' => "./front.jpg", 'alt' => "Front side"),
+	array('loc' => "./left-side.jpg", 'alt' => "Left side"),
+	array('loc' => "./right-side.jpg", 'alt' => "Right side")
 )); ?>
 
 <p>As you can see it's a typical chinese product. The LiPo battery has no markings, except for a weird XI logo, it doesn't look like a protected pack and the flimsy wires that connect it to the main board can snap off at any second and short the thing out.</p>
 
-<?= $this->image("board-view.jpg", "Board view") ?>
+<?= compat_image("./board-view.jpg", "Board view") ?>
 
 <p>Right next to what looks like the main processor, which sadly I couldn't find any information about it, there's a very nicely heat-shrunk clock crystal. On the center of the board you can see a generic <a href="http://www.ti.com/lit/ds/symlink/lm4871.pdf">4871</a> audio power amplifier, and on the left side there's a <a href="http://www.kingroad-china.net/Uploadfiles/2010763471154996.pdf">BK1080</a> FM receiver IC.</p>
 
-<?= $this->image("top-board.jpg", "Top board view") ?>
+<?= compat_image("./top-board.jpg", "Top board view") ?>
 
 <p>On the other side of the board all you can see is the horrible LCD and the shittiest buttons you can buy in the Shenzhen market. </p>
 

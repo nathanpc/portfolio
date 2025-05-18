@@ -29,7 +29,7 @@ temporary sharing files. I wanted to do all of this with Docker, but after some
 frustrations trying to get a proper FTP server running on Alpine I've decided to
 put a stop on this project while I play around with shinnier things.</p>
 
-<?= $this->image('znc-desktop.png',
+<?= compat_image('./znc-desktop.png',
 	'A view from my Power Mac 5G\'s desktop right now with ZNC open in ' .
 	'Safari just as I remember setting it up back in 2010') ?>
 
@@ -49,7 +49,7 @@ the fastest way for me to get a Gopher client running on OS X, it did start
 feeling a bit wrong using a lot of CPU power and memory simply to display
 something that was meant to be an extremely lightweight protocol.</p>
 
-<?= $this->image('gopher-netscape.png',
+<?= compat_image('./gopher-netscape.png',
 	'Browsing Gopher on Netscape 3 via VNC') ?>
 
 <p>I do understand that a lot of people prefer browsing gopher using a terminal
