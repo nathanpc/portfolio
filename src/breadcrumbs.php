@@ -42,6 +42,10 @@ function breadcrumbs_fromreq() {
 	$crumbs = array();
 	$paths = array();
 
+	// Make better crumbs for blog posts.
+	if (strpos($url_path, '/blog/') === 0)
+		$url_path = preg_replace('/_/', '/', $url_path);
+
 	// Build the crumbs from the requested path.
 	foreach (explode('/', $url_path) as $path) {
 		array_push($paths, $path);

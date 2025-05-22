@@ -10,3 +10,15 @@ ErrorDocument 500 /errors/500.php
 	Order Allow,Deny
 	Deny from all
 </FilesMatch>
+
+# Protect .gitignore files.
+<FilesMatch "\.gitignore$">
+	Order Allow,Deny
+	Deny from all
+</FilesMatch>
+
+# URL rewrites.
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteRule ^blog/([0-9\-]+)/([0-9a-zA-Z\-_]+)/?$ blog/$1_$2
+</IfModule>

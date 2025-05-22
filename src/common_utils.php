@@ -27,7 +27,19 @@ function href($loc) {
  * @return string Link to the blog post in question.
  */
 function blog_href($date, $slug) {
-	return href('/blog/' . $date . '/' . $slug . '/');
+	// Determine the proper separator.
+	static $sep = null;
+	if (is_null($sep)) {
+		$sep = '_';
+		foreach (apache_get_modules() as $module) {
+			if ($module == 'mod_rewrite') {
+				$sep = '/';
+				break;
+			}
+		}
+	}
+
+	return href('/blog/' . $date . $sep . $slug . '/');
 }
 
 /**
