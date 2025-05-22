@@ -1,5 +1,6 @@
 # Generated files.
 htdocs/robots.txt
+htdocs/blog/index.php
 
 # Misc.
 .DS_Store

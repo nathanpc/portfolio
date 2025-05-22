@@ -16,11 +16,14 @@ HTDOCS = ./htdocs
 # Files
 SOURCES = $(find $(HTDOCS) -type f -name '*.html')
 
-.PHONY: all build
+.PHONY: all build blog
 
 all: build
 
-build: $(HTDOCS)/robots.txt
+build: $(HTDOCS)/robots.txt blog
+
+blog:
+	$(BINDIR)/build-blog-index.pl
 
 $(HTDOCS)/robots.txt:
 	$(MKDIR) $(HTDOCS)
