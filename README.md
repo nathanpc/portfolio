@@ -41,14 +41,9 @@ services:
       DISABLE_USERDIRS: 'true'
 ```
 
-Running `docker compose build` will build the container with all of its
-dependencies, then you have to run `make` to ensure we have proper indexes (blog
-post index, sitemap, etc.) for the website to function properly, then running
-`docker compose up -d` will bring everything up and serve the website and any
-additional services, such as Gopher.
-
-Every time a modification is made to the website make sure to run `make` again
-to update any necessary files.
+Running `make docker` will build the indexes (blog post index, sitemap, etc.)
+for the website, update the container with all of its dependencies, and deploy
+the container all automatically.
 
 ### Manual setup
 
