@@ -12,7 +12,6 @@ RUN apk update && apk add \
 
 # Setup Virtual Host.
 RUN sed -zie 's|\(<Directory "/var/www/localhost/htdocs">\)\(.*\)\(</Directory>\)|\1\nOptions Indexes FollowSymLinks\nAllowOverride All\nRequire all granted\n\3|g' /etc/apache2/httpd.conf && \
-	sed -ie 's|/var/www/localhost/htdocs|/var/www/app/htdocs|g' /etc/apache2/httpd.conf && \
 	sed -ie 's|#\(LoadModule rewrite_module modules/mod_rewrite.so\)|\1|g' /etc/apache2/httpd.conf
 
 # Download and setup browscap.ini
@@ -25,15 +24,7 @@ RUN curl 'http://browscap.org/stream?q=Full_PHP_BrowsCapINI' -o /etc/php83/brows
 #	sed -ie 's/display_startup_errors = Off/display_startup_errors = On/g' /etc/php83/php.ini && \
 #	sed -ie 's/;html_errors = On/html_errors = On/g' /etc/php83/php.ini
 
-WORKDIR /var/www/app
-
-# Copy over everything we need to run the web site.
-COPY bin/ ./bin
-COPY gopher/ ./gopher
-COPY templates/ ./templates
-COPY blog/ ./blog
-COPY src/ ./src
-COPY htdocs/ ./htdocs
+WORKDIR /var/www/localhost
 
 EXPOSE 80
 

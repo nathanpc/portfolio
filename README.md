@@ -22,6 +22,10 @@ services:
     build: '.'
     ports:
       - '0.0.0.0:8004:80'
+    volumes:
+      - ./htdocs:/var/www/localhost/htdocs
+      - ./src:/var/www/localhost/src
+      - ./templates:/var/www/localhost/templates
  gopher:
    image: ghcr.io/nathanpc/docker-gophernicus:main
     restart: unless-stopped
