@@ -26,8 +26,8 @@ services:
       - ./htdocs:/var/www/localhost/htdocs
       - ./src:/var/www/localhost/src
       - ./templates:/var/www/localhost/templates
- gopher:
-   image: ghcr.io/nathanpc/docker-gophernicus:main
+  gopher:
+    image: ghcr.io/nathanpc/docker-gophernicus:main
     restart: unless-stopped
     ports:
       - '0.0.0.0:70:70'
