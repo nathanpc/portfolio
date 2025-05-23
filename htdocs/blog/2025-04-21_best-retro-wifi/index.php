@@ -4,13 +4,13 @@
 	<?php include __DIR__ . '/../../../templates/head.php'; ?>
 
 	<!-- Page information. -->
-	<title>Best Access Point Solution for Retro Computers</title>
+	<title>Best Wi-Fi router solution for retro computers</title>
 </head>
 <body>
 	<?php include_template('header'); ?>
 
 	<div id="blog-post" class="section">
-		<h2>Best Access Point Solution for Retro Computers</h2>
+		<h2>Best Wi-Fi router solution for retro computers</h2>
 		<div id="published-date">2025-04-21</div>
 	</div>
 
