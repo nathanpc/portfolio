@@ -174,9 +174,7 @@
 	Challenge</a> community: <a href="http://tekk.in">Tekk</a> and
 	<a href="https://sizeof.cat">unsigned</a>.
 </p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

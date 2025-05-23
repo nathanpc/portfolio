@@ -121,9 +121,7 @@
 	the allowlist, or something like this. If I ever get around to developing a
 	solution for this I'll surely post about it.
 </p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

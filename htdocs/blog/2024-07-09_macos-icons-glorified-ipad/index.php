@@ -59,9 +59,7 @@ operating system, even Windows 11 looks more or less like it. It doesn't even
 stand out from its mobile, and highly paired down, variants. It doesn't feel
 like a professional operating system that you can get work done as it felt back
 in the days when Steve Jobs was proud to advertise its UNIX features.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

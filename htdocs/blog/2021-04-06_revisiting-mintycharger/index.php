@@ -163,9 +163,7 @@
 	project now, but I promise I'll try my best to finish it quickly this time.
 	I hope to post updates on it here pretty soon!
 </p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

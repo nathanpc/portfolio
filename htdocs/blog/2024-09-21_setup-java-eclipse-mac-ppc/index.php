@@ -95,9 +95,7 @@ development environment to play around and to write some amazing retro
 applications, or just port Java software to older systems. I wish someone could
 find a way of providing a lasting archive of Eclipse's entire back catalog to
 keep these older systems alive.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

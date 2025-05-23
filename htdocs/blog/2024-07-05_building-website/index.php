@@ -44,9 +44,7 @@
 	trying to learn everything that I could about computers back in the early
 	2000s.
 </p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

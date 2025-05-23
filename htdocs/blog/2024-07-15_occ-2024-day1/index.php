@@ -112,9 +112,7 @@ Eee PC 1005PE</a> if I need "modern" Windows.</p>
 I'm able to finish it without failling, although I'm sure I'll have a ton of fun
 nonetheless. I should start disassembling PowerBooks and get to swapping
 motherboards...</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

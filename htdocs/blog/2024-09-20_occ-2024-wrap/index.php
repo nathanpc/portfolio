@@ -66,9 +66,7 @@ thanks to the amazing
 <a href="https://bb.deadnet.se/memberlist.php?mode=viewprofile&u=2">Headcrash
 </a> for inviting me over to the challenge, I wouldn't have had this amazing
 experience if it weren't for you.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

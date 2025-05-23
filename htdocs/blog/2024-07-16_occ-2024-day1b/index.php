@@ -74,9 +74,7 @@ quality of life projects that will enable me to be more inclined to use my retro
 gear in the future. It's a lot more inviting to use a machine if you know it's
 all set up and that it'll be able to perform "modern" tasks without you having
 to spend time setting things up.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

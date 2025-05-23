@@ -66,9 +66,7 @@
 	<a href="https://en.wikipedia.org/wiki/Sigil_(computer_programming)">sigils
 	</a>, you might end up loving it as well.
 </p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

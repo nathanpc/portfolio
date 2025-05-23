@@ -222,9 +222,7 @@ Write-Output "All done!"<?php compat_code_end(); ?>
 	remind you of this in case you forget. The script will also ask if you want
 	to delete any of these files that might already be in your network shares.
 </p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

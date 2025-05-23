@@ -73,9 +73,7 @@
 	<a href="<?= blog_href('2024-07-05', 'building-website') ?>">was the goal of
 	creating this whole thing in the first place</a>.
 </p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

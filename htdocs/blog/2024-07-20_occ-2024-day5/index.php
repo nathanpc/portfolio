@@ -47,9 +47,7 @@ indefinitely, only breaking out modern machines when needed, let's see if I can
 in fact keep this up.</p>
 
 <p><i>FIY:</i> This post was written inside Notepad++ on the Eee PC.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

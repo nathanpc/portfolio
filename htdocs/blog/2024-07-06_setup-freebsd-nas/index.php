@@ -102,9 +102,7 @@ ran into issues when trying to mount the shares on newer versions of macOS, so
 instead of just running a <code>service nfsd start</code> I do advice you to
 <b>restart the server</b>. This will ensure everything is brand new and ready to
 go.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

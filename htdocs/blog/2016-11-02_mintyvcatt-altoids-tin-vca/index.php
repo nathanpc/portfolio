@@ -34,9 +34,7 @@
 	This article was imported from <a href="http://currentflow.net/">my old blog
 	</a>. Some things may be broken.
 </p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

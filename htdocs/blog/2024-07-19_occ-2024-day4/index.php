@@ -61,9 +61,7 @@ HWMonitor</a> was 75&deg;C, which is perfectly fine by me.</p>
 of its drivers and must-have applications. It sure is always quite a nostalgia
 trip to install Visual Studio 2010. Let's hope tomorrow I'll do some coding in
 it.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

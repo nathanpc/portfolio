@@ -73,9 +73,7 @@ that kind of look like the "ListView-based" applications from the past.</p>
 <p>Because of all this gophering I may be inclined to use some of my OCC time to
 enjoy writing a proper graphical Gopher client since the protocol is so easy to
 implement.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

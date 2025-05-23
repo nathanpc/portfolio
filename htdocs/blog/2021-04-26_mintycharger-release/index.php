@@ -45,9 +45,7 @@
 			src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png">
 	</a>
 </div>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

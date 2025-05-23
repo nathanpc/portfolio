@@ -88,9 +88,7 @@ original resolution of the pictures, ensuring you have a high resolution
 archival copy of the timelapse, leaving you the option of deleting the original
 pictures, and it'll also create a 1080p (respecting the original aspect ratio)
 version of the video for sharing purposes.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-

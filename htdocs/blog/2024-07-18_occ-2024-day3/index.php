@@ -40,9 +40,7 @@ does take a long time.</p>
 server with <a href="https://git.zx2c4.com/cgit/about/">cgit</a> that I use for
 all local development, but the only public mirror of everything I do locally is
 GitHub, although I really want to change this in the future.</p>
-	</div>
 
 	<?php include_template('footer'); ?>
 </body>
 </html>
-
