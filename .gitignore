@@ -2,6 +2,9 @@
 htdocs/robots.txt
 htdocs/blog/index.php
 
+# Docker
+docker-compose.yml
+
 # Misc.
 .DS_Store
 Thumbs.db
