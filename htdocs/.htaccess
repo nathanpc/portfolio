@@ -21,4 +21,5 @@ ErrorDocument 500 /errors/500.php
 <IfModule mod_rewrite.c>
 	RewriteEngine on
 	RewriteRule ^blog/([0-9\-]+)/([0-9a-zA-Z\-_]+)/?$ blog/$1_$2
+	RewriteRule ^blog/([0-9\-]+)/([0-9a-zA-Z\-_]+).html$ blog/$1_$2
 </IfModule>
