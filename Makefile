@@ -4,10 +4,11 @@
 ### Author: Nathan Campos <nathan@innoveworkshop.com>
 
 # Tools
-RM    = rm -f
-LN    = ln -s
-MKDIR = mkdir -p
-CURL  = curl
+RM     = rm -f
+LN     = ln -s
+MKDIR  = mkdir -p
+CURL   = curl
+DOCKER = docker
 
 # Paths
 BINDIR = ./bin
@@ -16,11 +17,16 @@ HTDOCS = ./htdocs
 # Files
 SOURCES = $(find $(HTDOCS) -type f -name '*.html')
 
-.PHONY: all build blog sitemap
+.PHONY: all build docker blog sitemap
 
 all: build
 
 build: $(HTDOCS)/robots.txt blog sitemap
+
+docker: build
+	$(DOCKER) compose pull
+	$(DOCKER) compose build
+	$(DOCKER) compose up -d
 
 blog: $(find $(HTDOCS)/blog/*/ -type f -name '*.php')
 	$(BINDIR)/build-blog-index.pl
