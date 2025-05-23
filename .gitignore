@@ -1,5 +1,6 @@
 # Generated files.
 htdocs/robots.txt
+htdocs/sitemap.xml
 htdocs/blog/index.php
 
 # Docker
