@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
-## render-md.pl
-## Renders Extended Markdown (my own version of it) into multiple formats.
+## render-tml.pl
+## Renders Tiny Markup Language (TML) into multiple formats.
 ##
 ## Author: Nathan Campos <nathan@innoveworkshop.com>
 
