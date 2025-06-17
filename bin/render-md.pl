@@ -12,6 +12,7 @@ use Data::Dumper;
 
 # Global variables.
 our @stack = ();
+our %links = (count => 0, hrefs => []);
 our $title = '';
 our $format = 'html';
 
@@ -34,13 +35,9 @@ our %tags = (
 			'open' => "<code>",
 			'close' => "</code>"
 		},
-		'url_begin' => {
-			'open' => "<a href=\"",
-			'close' => "\">"
-		},
-		'url_end' => {
+		'url' => {
 			'open' => "",
-			'close' => "</a>"
+			'close' => "<a href=\"%href%\">%label%</a>"
 		},
 	}
 );
@@ -49,6 +46,14 @@ our %tags = (
 sub open_tag {
 	my ($tag) = @_;
 	push @stack, $tag;
+
+	# Handle special case for links.
+	if ($tag eq 'url') {
+		$links{'count'}++;
+		push @{$links{'hrefs'}}, '';
+		return '';
+	}
+
 	return $tags{$format}{$tag}->{'open'};
 }
 
@@ -56,6 +61,28 @@ sub open_tag {
 sub close_tag {
 	my ($tag) = @_;
 	$tag = pop @stack if not defined $tag;
+
+	# Handle special case for links.
+	if ($tag eq 'url') {
+		my ($url, $label) = split(/\|/, shift @{$links{'hrefs'}});
+		$label = handle_tags($label);
+
+		# Fix special URLs.
+		if ($url =~ m/^blog:/) {
+			$url =~ s/^blog://;
+			my ($date, $slug) = split /_/, $url;
+			$url = "<?= blog_href('$date', '$slug') ?>";
+
+		}
+
+		# Build URL tag.
+		my $ret = $tags{$format}{'url'}->{'close'};
+		$ret =~ s/%href%/$url/ge;
+		$ret =~ s/%label%/$label/ge;
+
+		return $ret;
+	}
+
 	return $tags{$format}{$tag}->{'close'};
 }
 
@@ -77,6 +104,36 @@ sub auto_tag {
 	} else {
 		return open_tag(@_);
 	}
+}
+
+# Parses tags that are found in lines that can overflow.
+sub handle_tags {
+	my ($line) = @_;
+	my $output = '';
+
+	foreach my $char (split '', $line) {
+		# Ignore everything if we are inside a code section.
+		if (current_tag() eq 'code' and $char ne '`') {
+			$output .= $char;
+			next;
+		}
+
+		# Handle inside of link definitions.
+		if (current_tag() eq 'url' and $char ne ']') {
+			$links{'hrefs'}[-1] .= $char;
+			next;
+		}
+
+		# Handle special (tags) characters.
+		if    ($char eq '*') { $output .= auto_tag('bold'); }
+		elsif ($char eq '/') { $output .= auto_tag('italic'); }
+		elsif ($char eq '`') { $output .= auto_tag('code'); }
+		elsif ($char eq '[') { $output .= auto_tag('url'); }
+		elsif ($char eq ']') { $output .= auto_tag('url'); }
+		else                 { $output .= $char; }
+	}
+
+	return $output;
 }
 
 # Get title and jump obligatory title line break.
@@ -118,29 +175,7 @@ while (my $line = <STDIN>) {
 	}
 
 	# Handle various tags that can overflow to the next line.
-	foreach my $char (split '', $line) {
-		# Ignore everything if we are inside a code section.
-		if ((current_tag() eq 'code' and $char ne '`') or
-			(current_tag() eq 'url_begin' and $char ne '|')) {
-			$section .= $char;
-			next;
-		}
-
-		# Handle inside of links.
-		if (current_tag() eq 'url_begin' and $char eq '|') {
-			$section .= close_tag();
-			$section .= open_tag('url_end');
-			next;
-		}
-
-		# Handle special (tags) characters.
-		if    ($char eq '*') { $section .= auto_tag('bold'); }
-		#elsif ($char eq '/') { $section .= auto_tag('italic'); }
-		elsif ($char eq '`') { $section .= auto_tag('code'); }
-		elsif ($char eq '[') { $section .= auto_tag('url_begin'); }
-		elsif ($char eq ']') { $section .= auto_tag('url_end'); }
-		else                 { $section .= $char; }
-	}
+	$section .= handle_tags($line);
 
 next_line:
 	# Store line for later.
