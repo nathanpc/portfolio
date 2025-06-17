@@ -39,6 +39,10 @@ our %tags = (
 			'open' => "",
 			'close' => "<a href=\"%href%\">%label%</a>"
 		},
+		'literal' => {
+			'open' => "",
+			'close' => ""
+		},
 	}
 );
 
@@ -66,17 +70,19 @@ sub close_tag {
 	if ($tag eq 'url') {
 		my ($url, $label) = split(/\|/u, shift @{$links{'hrefs'}});
 		$label = handle_tags($label);
+		my $ret = $tags{$format}{'url'}->{'close'};
 
 		# Fix special URLs.
 		if ($url =~ m/^blog:/) {
 			$url =~ s/^blog://;
 			my ($date, $slug) = split /_/, $url;
 			$url = "<?= blog_href('$date', '$slug') ?>";
-
+		} elsif ($url =~ m/^img:/) {
+			$url =~ s/^img://;
+			$ret = "<?= compat_image('%href%', '%label%') ?>";
 		}
 
 		# Build URL tag.
-		my $ret = $tags{$format}{'url'}->{'close'};
 		$ret =~ s/%href%/$url/ge;
 		$ret =~ s/%label%/$label/ge;
 
@@ -116,6 +122,12 @@ sub handle_tags {
 	my $output = '';
 
 	foreach my $char (split //u, $line) {
+		# Ignore everything if we are inside a literal section.
+		if (current_tag() eq 'literal' and $char ne '\\') {
+			$output .= $char;
+			next;
+		}
+
 		# Ignore everything if we are inside a code section.
 		if (current_tag() eq 'code' and $char ne '`') {
 			$output .= $char;
@@ -129,12 +141,12 @@ sub handle_tags {
 		}
 
 		# Handle special (tags) characters.
-		if    ($char eq '*') { $output .= auto_tag('bold'); }
-		elsif ($char eq '/') { $output .= auto_tag('italic'); }
-		elsif ($char eq '`') { $output .= auto_tag('code'); }
-		elsif ($char eq '[') { $output .= auto_tag('url'); }
-		elsif ($char eq ']') { $output .= auto_tag('url'); }
-		else                 { $output .= $char; }
+		if    ($char eq '*')  { $output .= auto_tag('bold'); }
+		elsif ($char eq '_')  { $output .= auto_tag('italic'); }
+		elsif ($char eq '`')  { $output .= auto_tag('code'); }
+		elsif ($char eq '\\') { $output .= auto_tag('literal'); }
+		elsif ($char eq '[' or $char eq ']') { $output .= auto_tag('url'); }
+		else                  { $output .= $char; }
 	}
 
 	return $output;
@@ -170,8 +182,12 @@ while (my $line = <STDIN>) {
 		goto next_line;
 	} else {
 		# Continuation from a previous line in the section.
-		if (defined current_tag() and current_tag() eq 'url') {
-			$links{'hrefs'}[-1] .= ' ';
+		if (defined current_tag()) {
+			if (current_tag() eq 'url') {
+				$links{'hrefs'}[-1] .= ' ';
+			} elsif (current_tag() eq 'literal') {
+				$section .= "\n";
+			}
 		} else {
 			$section .= ' ';
 		}
