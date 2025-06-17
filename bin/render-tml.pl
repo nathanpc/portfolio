@@ -64,7 +64,7 @@ sub close_tag {
 
 	# Handle special case for links.
 	if ($tag eq 'url') {
-		my ($url, $label) = split(/\|/, shift @{$links{'hrefs'}});
+		my ($url, $label) = split(/\|/u, shift @{$links{'hrefs'}});
 		$label = handle_tags($label);
 
 		# Fix special URLs.
@@ -115,7 +115,7 @@ sub handle_tags {
 	my ($line) = @_;
 	my $output = '';
 
-	foreach my $char (split '', $line) {
+	foreach my $char (split //u, $line) {
 		# Ignore everything if we are inside a code section.
 		if (current_tag() eq 'code' and $char ne '`') {
 			$output .= $char;
@@ -178,7 +178,7 @@ while (my $line = <STDIN>) {
 	}
 
 	# Handle paragraph beginning.
-	if ($prev_line eq '' and $line =~ m/^[A-Za-z0-9"']/) {
+	if ($prev_line eq '' and length $line > 0) {
 		$section .= open_tag('paragraph');
 	}
 
