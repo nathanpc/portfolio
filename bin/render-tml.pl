@@ -88,6 +88,10 @@ sub close_tag {
 
 # Gets the tag we are currently inside of.
 sub current_tag {
+	# Check if we have anything at the stack first.
+	return undef if (scalar @stack == 0);
+
+	# Get the newest tag in the stack.
 	my $idx = index($stack[-1], "\t");
 	if ($idx == -1) {
 		return $stack[-1];
@@ -166,7 +170,11 @@ while (my $line = <STDIN>) {
 		goto next_line;
 	} else {
 		# Continuation from a previous line in the section.
-		$section .= ' ';
+		if (defined current_tag() and current_tag() eq 'url') {
+			$links{'hrefs'}[-1] .= ' ';
+		} else {
+			$section .= ' ';
+		}
 	}
 
 	# Handle paragraph beginning.
