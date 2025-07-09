@@ -43,6 +43,10 @@ our %tags = (
 			'open' => "",
 			'close' => ""
 		},
+		"block_gallery" => {
+			'open' => "<?=\n\tcompat_image_gallery(array(",
+			'close' => "\t))\n?>\n"
+		},
 	}
 );
 
@@ -164,6 +168,28 @@ while (my $line = <STDIN>) {
 	chomp $line;
 	my $tag = undef;
 
+	# Handle special cases.
+	if (defined current_tag()) {
+		# Handle blocks.
+		if (current_tag() =~ /^block/) {
+			$section .= "$line\n";
+			goto next_line;
+		} elsif ($line =~ m/^<([a-z0-9]+)/) {
+			$section .= open_tag("block_$1");
+			goto next_line;
+		} elsif ($line =~ m/^<$/) {
+			$section .= close_tag();
+			goto next_line;
+		}
+
+		# Handle tag continuations.
+		if (current_tag() eq 'url') {
+			$links{'hrefs'}[-1] .= ' ';
+		} elsif (current_tag() eq 'literal') {
+			$section .= "\n";
+		}
+	}
+
 	# Handle the end of paragraphs.
 	if ($line eq '') {
 		# Ignore multiple empty lines.
@@ -182,15 +208,7 @@ while (my $line = <STDIN>) {
 		goto next_line;
 	} else {
 		# Continuation from a previous line in the section.
-		if (defined current_tag()) {
-			if (current_tag() eq 'url') {
-				$links{'hrefs'}[-1] .= ' ';
-			} elsif (current_tag() eq 'literal') {
-				$section .= "\n";
-			}
-		} else {
-			$section .= ' ';
-		}
+		$section .= ' ';
 	}
 
 	# Handle paragraph beginning.

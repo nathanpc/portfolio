@@ -13,7 +13,7 @@ will quickly realize that these devices either don't support the newer wireless
 standards, requiring [https://en.wikipedia.org/wiki/IEEE_802.11g-2003|802.11g]
 or [https://en.wikipedia.org/wiki/IEEE_802.11b-1999|802.11b], or they can only
 authenticate using [https://en.wikipedia.org/wiki/Wired_Equivalent_Privacy|WEP]
-or the first generation of[https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access|WPA],
+or the first generation of [https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access|WPA],
 both of which are deprecated and most wireless routers, including smartphone
 hotspots, won't even allow you to select as an option for protection.
 
@@ -54,12 +54,10 @@ I was on a Mac, so I had to use [https://kin.klever.net/pumpkin/|PumpKIN] as my
 TFTP server which, despite my past experiences with TFTP, worked flawlessly, and
 I was able to flash the router after many tries with different network settings.
 
-<?=
-compat_image_gallery(array(
-	array('loc' => './pumpkin-settings.png', 'alt' => 'PumpKIN TFTP server settings'),
-	array('loc' => './pumpkin-flashing.png', 'alt' => 'PumpKIN serving the OpenWRT firmware')
-))
-?>
+<gallery
+	./pumpkin-settings.png PumpKIN TFTP server settings
+	./pumpkin-flashing.png PumpKIN serving the OpenWRT firmware
+<
 
 After the initial configuration of OpenWRT, setting it up to use my DHCP server
 and other things specific to my network, the only thing left to do was to setup
