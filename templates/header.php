@@ -16,6 +16,7 @@
 				'index' => '/',
 				'projects' => '/projects',
 				'blog' => '/blog',
+				'wiki' => $_SERVER['REQUEST_SCHEME'] . '://wiki.nathancampos.me/',
 				'work' => $_SERVER['REQUEST_SCHEME'] . '://innoveworkshop.com/',
 				'contact' => '/contact'
 			));
