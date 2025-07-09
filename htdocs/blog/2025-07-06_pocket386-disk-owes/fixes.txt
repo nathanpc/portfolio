@@ -1,0 +1,7 @@
+steps to fix image:
+
+1. setup in linux
+2. ddo using ontrack
+3. sys c: msdos floppy
+4. xcopy d c
+5. label from booted hdd
