@@ -58,9 +58,24 @@ function include_template($name) {
  * @param string $name Name of the project.
  * @param string $desc A short, but lengthy, description of the project.
  */
-function project_component(string $id, string $name, string $desc) {
+function project_component($id, $name, $desc) {
 	echo "<div id=\"$id\" class=\"project-comp\">\n";
 	echo "	<h3><a href=\"" . href("/projects/$id") . "\">$name</a></h3>\n";
 	echo "	<p>$desc</p>";
+	echo '</div>';
+}
+
+/**
+ * Creates a link section card. To be used in the links listing page.
+ *
+ * @param string      $name Name of the link.
+ * @param string      $url  URL of the link.
+ * @param string|null $desc A short description of the link.
+ */
+function link_component($name, $url, $desc = null) {
+	echo "<div class=\"link-comp\">\n";
+	echo "	<a href=\"$url\">$name</a>\n";
+	if (!is_null($desc))
+		echo "	&ndash; <span class=\"desc\">$desc</span>";
 	echo '</div>';
 }
