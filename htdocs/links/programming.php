@@ -19,3 +19,45 @@
 	'http://nuclear.mutantstargoat.com/articles/make/',
 	'Great resource on Open Watcom\'s makefiles.'
 ); ?>
+
+<!-- ----------------------------------------------------------------------- -->
+
+<h3 id="prog-git">Git</h3>
+<p>The <i>de facto</i> standard in version control systems. Created by Linus
+	Torvalds and popularized by the Ruby community.</p>
+
+<?php link_component(
+	'Setting up cgit on Debian',
+	'https://floatingoctothorpe.uk/2017/setting-up-cgit-on-debian.html',
+	'Great tutorial on how to setup cgit for a self-hosted Git server.'
+); ?>
+
+<!-- ----------------------------------------------------------------------- -->
+
+<h3 id="prog-cvs">CVS (Concurrent Versions System)</h3>
+<p>The horrible and outdated version control system that's still plenty good
+	enough for some BSD distributions.</p>
+
+<?php link_component(
+	'Secure CVS Pserver Mini-HOWTO',
+	'http://www.faqs.org/docs/Linux-mini/Secure-CVS-Pserver.html',
+	'Most of what you need to know to quickly setup a pserver.'
+); ?>
+
+<?php link_component(
+	'Open Source Development with CVS, 3rd Edition',
+	'http://cvsbook.red-bean.com/',
+	'The bible on how to properly use CVS for open source development.'
+?>
+
+<!-- ----------------------------------------------------------------------- -->
+
+<h3 id="prog-docker">Docker</h3>
+<p>The thing that unfortunately popularized containers. Think of FreeBSD's
+	jails, except 100% declarable, and worst in many ways.</p>
+
+<?php link_component(
+	'How To Run Container Background Tasks With Cron By Using Supervisord',
+	'https://huyhoang8398.github.io/blog/posts/how-to-run-container-background-tasks-with-cron-by-using-supervisord/',
+	'Running multiple services with supervidord and cron made easy.'
+); ?>

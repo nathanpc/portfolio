@@ -43,6 +43,9 @@
 			<li><a href="#prog">Programming</a>
 				<ul>
 					<li><a href="#prog-msdos">MS-DOS</a></li>
+					<li><a href="#prog-git">Git</a></li>
+					<li><a href="#prog-cvs">CVS (Concurrent Versions System)</a></li>
+					<li><a href="#prog-docker">Docker</a></li>
 				</ul>
 			</li>
 		</ul>

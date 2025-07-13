@@ -21,6 +21,11 @@
 	'this by now.'
 ); ?>
 <?php link_component(
+	'Interesting DOS programs',
+	'https://dosprograms.info.tt',
+	'Nice collection of free applications.'
+); ?>
+<?php link_component(
 	'LIP6 Direction des Systemes d\'Information File Lists',
 	'https://ftp.lip6.fr/pub/pc/garbo/pc/filelist/INDEX.TXT',
 	'Massive collection of software and utilities.'
