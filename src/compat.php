@@ -18,7 +18,7 @@ $browser_info = get_browser(null, true);
  *
  * @return bool TRUE if the browser visiting us is console-based.
  */
-function compat_isconsole(): bool {
+function compat_isconsole() {
 	global $browser_info;
 	return ($browser_info['browser'] == 'Lynx') ||
 		($browser_info['browser'] == 'w3m');
@@ -30,7 +30,7 @@ function compat_isconsole(): bool {
  *
  * @return bool TRUE if the browser visiting us is WebKit-based.
  */
-function compat_iswebkit(): bool {
+function compat_iswebkit() {
 	global $browser_info;
 	return ($browser_info['renderingengine_name'] == 'WebKit') ||
 		($browser_info['renderingengine_name'] == 'Blink');
@@ -42,7 +42,7 @@ function compat_iswebkit(): bool {
  *
  * @return bool TRUE if the browser visiting us is WebKit-based.
  */
-function compat_ismobile(): bool {
+function compat_ismobile() {
 	global $browser_info;
 	return (bool)$browser_info['ismobiledevice'];
 }

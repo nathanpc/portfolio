@@ -7,6 +7,9 @@
  * @author Nathan Campos <nathan@innoveworkshop.com>
  */
 
+// Ensures a default timezone for date() function.
+date_default_timezone_set('UTC');
+
 /**
  * Creates a proper href location based on our project's root path.
  *
