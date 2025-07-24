@@ -43,7 +43,6 @@
 	'http://www.faqs.org/docs/Linux-mini/Secure-CVS-Pserver.html',
 	'Most of what you need to know to quickly setup a pserver.'
 ); ?>
-
 <?php link_component(
 	'Open Source Development with CVS, 3rd Edition',
 	'http://cvsbook.red-bean.com/',
@@ -60,4 +59,28 @@
 	'How To Run Container Background Tasks With Cron By Using Supervisord',
 	'https://huyhoang8398.github.io/blog/posts/how-to-run-container-background-tasks-with-cron-by-using-supervisord/',
 	'Running multiple services with supervidord and cron made easy.'
+); ?>
+
+<!-- ----------------------------------------------------------------------- -->
+
+<h3 id="prog-sockets">Sockets</h3>
+<p>Like driving a manual car, except it's a network. The way you create and
+	implement protocols when no library is available.</p>
+
+<?php link_component(
+	'Beej\'s Guide to Network Programming',
+	'https://beej.us/guide/bgnet/',
+	'At this point this is basically the bible of network programming. ' .
+		'Definitely a required read.'
+); ?>
+<?php link_component(
+	'Beej\'s Socket Examples Ported to Windows',
+	'https://www.tallyhawk.net/WinsockExamples/',
+	'All of Beej\'s great examples ported to WinSock 2. Also a great resource '
+	'to learn the differences between UNIX and Windows sockets.'
+); ?>
+<?php link_component(
+	'Programming with sockets - SCO OpenServer 6',
+	'http://osr600doc.xinuos.com/en/SDK_netapi/CONTENTS.html#:~:text=Programming%20with%20sockets',
+	'An amazing tutorial on how to do proper sockets programming.'
 ); ?>

@@ -33,6 +33,7 @@
 				<ul>
 					<li><a href="#os-msdos">MS-DOS</a></li>
 					<li><a href="#os-win9x">Windows 9x</a></li>
+					<li><a href="#os-osx">Mac OS X</a></li>
 				</ul>
 			</li>
 			<li><a href="#computers">Computers</a>
@@ -46,6 +47,7 @@
 					<li><a href="#prog-git">Git</a></li>
 					<li><a href="#prog-cvs">CVS (Concurrent Versions System)</a></li>
 					<li><a href="#prog-docker">Docker</a></li>
+					<li><a href="#prog-sockets">Sockets</a></li>
 				</ul>
 			</li>
 		</ul>

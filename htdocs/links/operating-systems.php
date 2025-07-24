@@ -70,3 +70,21 @@
 	'https://4therecord.org/2024/05/15/setting-up-and-installing-sound-drivers-for-windows-98se-on-vmware/',
 	'How to get sound working on VMWare.'
 ); ?>
+
+<!-- ----------------------------------------------------------------------- -->
+
+<h3 id="os-osx">Mac OS X</h3>
+<p>Apple's UNIX-based operating system that used to be amazing and is slowly
+	turning into a glorified version of their mobile OS.</p>
+
+<?php link_component(
+	'MacPorts',
+	'https://guide.macports.org/',
+	'The only package manager you need for you Mac, be it old or new.'
+); ?>
+<?php link_component(
+	'How to install an older version of a port',
+	'https://trac.macports.org/wiki/howto/InstallingOlderPort',
+	'This guide will be your best friend if you plan on using MacPorts on ' .
+		'older, specially PowerPC-based, Macs.'
+); ?>
